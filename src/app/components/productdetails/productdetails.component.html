@@ -1,0 +1,161 @@
+<div class="container productDetails">
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+      <img id="myImg" src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg" alt="Snow" style="width:100%;max-width:300px">
+
+
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 details">
+      <h4>Apple Iphone X </h4>
+      <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
+      &nbsp;&nbsp;&nbsp;
+      <span class="rate">Rating : 5</span>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="size">Size
+            <br/>
+            <a>128gb</a> &nbsp;
+            <a>256gb</a>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>color</p>
+
+          <a class="black"></a>
+          <a class="cream"></a>
+
+
+        </div>
+      </div>
+
+      <p>Price : $1299
+        <span>
+          <strike>$1941</strike>(Inclusive of all taxes)</span>
+      </p>
+      <p class="stoke">In Stoke</p>
+      <p>
+        <span>Sold By MRR Mobiles Stores &</span> 3 Other |
+        <span>Fulfilled by vendorEcommerce</span>
+      </p>
+      <br/>
+      <button class="btn btn-maroon">Buy Now</button>
+      <button class="btn btn-maroon">Add to Cart</button>
+    </div>
+
+  </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+  <br/>
+
+  <div class="row desription">
+    <h5>Description</h5>
+    <div class="col-md-12">
+      <p>The Apple iPhone X features an all?new 5.8?inch super retina display that delivers a crisp and clear visual output.
+        The display employs new techniques and technology to precisely follow the curves of the design, It runs on iOS 11
+        that takes care of all its functions. With the 64 GB built-in memory, Capture the world around you with the 12-megapixel
+        wide-angle and telephoto cameras with f/1.8 wide angle aperture, f/2.8 telephoto aperture and digital zoom of up
+        to 10x.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="row desription">
+
+    <h5>Specification</h5>
+    <br/>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <ul>
+            <li>
+              <img src="assets/images/bionic.png"> A11 Bionic processor
+            </li>
+            <li>
+              <img src="assets/images/memory.png"> 64GB internal storage
+            </li>
+            <li>
+              <img src="assets/images/ram.png"> 3GB RAM
+            </li>
+            <li>
+              <img src="assets/images/sim.png"> Single SIM (Nano SIM)
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li>
+              <img src="assets/images/camera.png"> Dual 12 M. Pixels rear & 7 M.Pixel selfie
+            </li>
+            <li>
+              <img src="assets/images/battery.png"> 2716 mAh battery
+            </li>
+            <li>
+              <img src="assets/images/phone.png"> 5.8 inch screen
+            </li>
+            <li>
+              <img src="assets/images/apple.png"> iOS 11
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row desription">
+    <h5>Reviews</h5>
+    <div class="col-md-12">
+
+
+      <p>Showing 1-3 of 71 reviews</p>
+      <div>
+        <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
+        <p>By
+          <spn class="name">Madhusudhan</spn>&nbsp;&nbsp;&nbsp; on 20 June 2018</p>
+        <p>
+          <span>Colour : Black</span> &nbsp;|
+          <span class="maroon">Verified Purchase</span>
+        </p>
+        <p>Slow internet Speed.. Hong Mobile... charging ok ok ... less than 10000</p>
+        <input type="text" placeholder="Write a comment...">
+        <button class="btn btn-maroon">
+          Post
+        </button>
+      </div>
+      <br/>
+      <div>
+        <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
+        <p>By
+          <spn class="name">Balakrishna</spn>&nbsp;&nbsp;&nbsp; on 20 June 2018</p>
+        <p>
+          <span>Colour : Black</span> &nbsp;|
+          <span class="maroon">Verified Purchase</span>
+        </p>
+        <p>Slow internet Speed.. Hong Mobile... charging ok ok ... less than 10000</p>
+        <input type="text" placeholder="Write a comment...">
+        <button class="btn btn-maroon">
+          Post
+        </button>
+      </div>
+      <br/>
+      <div>
+        <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
+        <p>By
+          <spn class="name">Pawan kalyan</spn>&nbsp;&nbsp;&nbsp; on 20 June 2018</p>
+        <p>
+          <span>Colour : Black</span> &nbsp;|
+          <span class="maroon">Verified Purchase</span>
+        </p>
+        <p>Slow internet Speed.. Hong Mobile... charging ok ok ... less than 10000</p>
+        <input type="text" placeholder="Write a comment...">
+        <button class="btn btn-maroon">
+          Post
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,464 @@
+<div class="container cart-payment">
+	<div class="row">
+		<h5 (click)="showCart()">
+			<span>
+				<i class="fa fa-plus" aria-hidden="true" *ngIf="!showCartItems"></i>
+				<i class="fa fa-minus" aria-hidden="true" *ngIf="showCartItems"></i>
+			</span>&nbsp;&nbsp;My Cart</h5>
+		<div class="container mycart" *ngIf="showCartItems">
+			<div class="row">
+				<h4 class="text-center"> My Cart</h4>
+				<div class="col-md-12 cart-1">
+					<div class="cart-item">
+						<div class="row items align-items-center">
+
+							<div class="col-md-3 text-center">
+								<img src="/assets/images/cherry.png">
+							</div>
+							<div class="col-md-3">
+								<h6>cherry</h6>
+								<div class="sort">
+									<select>
+										<option>100gms</option>
+										<option>200 gms</option>
+										<option>300 gms</option>
+										<option>500 gms</option>
+									</select>
+								</div>
+								<div class="custom-control custom-radio mahali-radio">
+									<input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input" checked>
+									<label class="custom-control-label mahali-label" for="customRadio3">Use Promocode to get 20% Cashback</label>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<button class="btn btn-icon btn-maroon btn-minus">
+									<span>
+										<i class="fa fa-minus" aria-hidden="true"></i>
+									</span>
+								</button>
+								<input type="text" value="1" disabled>
+								<button class="btn btn-icon btn-maroon btn-plus">
+									<span>
+										<i class="fa fa-plus" aria-hidden="true"></i>
+									</span>
+								</button>
+							</div>
+							<div class="col-md-3">
+								<p class="close-btn">X</p>
+							</div>
+
+							<div class="col-md-6 price">
+								<h6>Price : $187
+									<span>
+										<strike>$214</strike>
+									</span>
+								</h6>
+							</div>
+							<div class="col-md-6 price">
+								<h6>Total : $214</h6>
+							</div>
+						</div>
+
+						<hr>
+						<div class="row items align-items-center">
+							<div class="col-md-3 text-center">
+								<img src="/assets/images/pinapple.png" height="140px" width="140px">
+							</div>
+							<div class="col-md-3">
+								<h6>PineApple</h6>
+								<div class="sort">
+									<select>
+										<option>100gms</option>
+										<option>200 gms</option>
+										<option>300 gms</option>
+										<option>500 gms</option>
+									</select>
+								</div>
+								<div class="custom-control custom-radio mahali-radio">
+									<input type="radio" id="customRadio2" name="customRadio2" class="custom-control-input mahali-input">
+									<label class="custom-control-label mahali-label" for="customRadio2">Use Promocode to get 20% Cashback</label>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<button class="btn btn-icon btn-maroon btn-minus">
+									<span>
+										<i class="fa fa-minus" aria-hidden="true"></i>
+									</span>
+								</button>
+								<input type="text" value="1" disabled>
+								<button class="btn btn-icon btn-maroon btn-plus">
+									<span>
+										<i class="fa fa-plus" aria-hidden="true"></i>
+									</span>
+								</button>
+							</div>
+							<div class="col-md-3">
+								<p class="close-btn">X</p>
+							</div>
+
+							<div class="col-md-6 price">
+								<h6>Price : $187
+									<span>
+										<strike>$214</strike>
+									</span>
+								</h6>
+							</div>
+							<div class="col-md-6 price">
+								<h6>Total : $214
+
+								</h6>
+							</div>
+						</div>
+						<hr>
+						<div class="row items ">
+							<div class="col-md-3 text-center">
+								<img src="/assets/images/onion.png" height="140px" width="140px">
+							</div>
+							<div class="col-md-3">
+								<h6>Onions</h6>
+								<div class="sort">
+									<select>
+										<option>100gms</option>
+										<option>200 gms</option>
+										<option>300 gms</option>
+										<option>500 gms</option>
+									</select>
+								</div>
+								<div class="custom-control custom-radio mahali-radio">
+									<input type="radio" id="customCheck1" name="customRadio1" class="custom-control-input mahali-input">
+									<label class="custom-control-label mahali-label" for="customCheck1">Use Promocode to get 20% Cashback</label>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<button class="btn btn-icon btn-maroon btn-minus">
+									<span>
+										<i class="fa fa-minus" aria-hidden="true"></i>
+									</span>
+								</button>
+								<input type="text" value="1" disabled>
+								<button class="btn btn-icon btn-maroon btn-plus">
+									<span>
+										<i class="fa fa-plus" aria-hidden="true"></i>
+									</span>
+								</button>
+							</div>
+							<div class="col-md-3">
+								<p class="close-btn">X</p>
+							</div>
+
+							<div class="col-md-6 price">
+								<h6>Price : $187
+									<span>
+										<strike>$214</strike>
+									</span>
+								</h6>
+
+							</div>
+							<div class="col-md-6 price">
+								<h6>Total : $214
+
+								</h6>
+							</div>
+						</div>
+					</div>
+					<div class="sub-total">
+						<table class="table table-borderless">
+							<tbody>
+								<tr>
+
+									<td>Sub-Total</td>
+									<td> : $642</td>
+								</tr>
+								<tr>
+									<td>Delivery charges </td>
+									<td> : ***</td>
+								</tr>
+							</tbody>
+						</table>
+						<button class="btn btn-maroon" value="Checkout">Checkout</button>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+	<div class="row">
+		<h5 (click)="showAddress()">
+			<span>
+				<i class="fa fa-plus" aria-hidden="true" *ngIf="!showDeliveryAddress"></i>
+				<i class="fa fa-minus" aria-hidden="true" *ngIf="showDeliveryAddress"></i>
+			</span>&nbsp;&nbsp;Delivery Address
+
+		</h5>
+		<div class="container mycart" *ngIf="showDeliveryAddress">
+			<div class="row">
+				<h4 class="text-center"> Delivery Address</h4>
+
+				<div class="col-md-12 cart-2">
+					<a (click)="addAddress()" *ngIf="showAddresses">
+						<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;Add new delivery address</a>
+					<!-- delivery address -->
+					<div class="row del-address" *ngIf="showAddresses">
+						<div class="col-md-6">
+							<br/>
+							<div>
+								<h6>Home</h6>
+								<p>Uni Space Business Center, Modern Tech park,
+									<br/> Bangalore
+									<br/> 500038
+								</p>
+								<p>Ph : 1234567891</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-maroon" (click)="shipmentType()">Delivery Here</button>
+						</div>
+					</div>
+					<div class="row del-address" *ngIf="showAddresses">
+						<div class="col-md-6">
+							<br/>
+							<div>
+								<h6>Office</h6>
+								<p>Uni Space Business Center, Modern Tech park,
+									<br/> Bangalore
+									<br/> 500038
+								</p>
+								<p>Ph : 1234567891</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<button class="btn btn-maroon">Delivery Here</button>
+						</div>
+					</div>
+					<!-- delivery address -->
+					<!-- add address -->
+					<div class="row addaddress" *ngIf="addresses">
+						<div class="col-md-12">
+
+							<form class="details login-fields register-fields">
+								<div class="form-group row">
+									<label class="col-sm-4 col-md-4 col-form-label">Full Name
+										<span>:</span>
+									</label>
+									<div class="col-sm-8 col-md-8">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 col-md-4 col-form-label">Mobile Number
+										<span>:</span>
+									</label>
+									<div class="col-sm-8 col-md-8">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 col-md-4 col-form-label">House No.
+										<span>:</span>
+									</label>
+									<div class="col-sm-8 col-md-8">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4 col-md-4 col-form-label">City
+										<span>:</span>
+									</label>
+									<div class="col-sm-8 col-md-8">
+										<select class="form-control">
+											<option></option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4  col-md-4 col-form-label">state
+										<span>:</span>
+									</label>
+									<div class="col-sm-8  col-md-8">
+										<select class="form-control">
+											<option></option>
+										</select>
+									</div>
+
+								</div>
+
+								<div class="form-group row">
+									<label class="col-sm-4  col-md-4 col-form-label">Landmark
+										<span>:</span>
+									</label>
+									<div class="col-sm-8  col-md-8">
+										<input type="text" class="form-control">
+									</div>
+
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-4  col-md-4 col-form-label">Pincode
+										<span>:</span>
+									</label>
+									<div class="col-sm-8  col-md-8">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div>
+									<p>Choose nick name for this address</p>
+									<p class="addresses">
+										<a>Home</a>
+										<a>Office</a>
+										<a>Other</a>
+									</p>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+										<label class="custom-control-label" for="defaultUnchecked5">Set this as my default address</label>
+									</div>
+								</div>
+								<div class="form-group row">
+
+									<div class="col-sm-12 submit text-right">
+										<button class="btn btn-maroon submit" type="submit" (click)="saveAddress()">Submit</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- add address -->
+					<!-- delvery type -->
+					<div class="row addaddress mt-5 mb-5" *ngIf="showDeliveryType">
+						<div class="col-md-6 text-center">
+							<h4>shipment 1</h4>
+							<div class="shippipng">
+								<h4>Immediate Delivery</h4>
+								<p>Uni Space Business Center, Modern Tech park,
+									<br/> Bangalore
+									<br/> 500038
+								</p>
+								<p>Ph : 1234567891</p>
+								<p>
+									<a (click)="showItems()">3 Items</a>@ BD 52.90</p>
+								<p>Delivery Charge: BD 30
+									<img src="/assets/images/!.png">
+								</p>
+								<div class="row justify-content-center">
+									<div class="col-md-8">
+										<select>
+											<option>
+												<img src="/assets/images/clock.png"> With in next 10minutes</option>
+											<option>2:00 PM - 3:00 PM</option>
+											<option>3:00 PM - 4:00 PM</option>
+											<option>4:00 PM - 5:00 PM</option>
+											<option>5:00 PM - 6:00 PM</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 text-center">
+							<h4>shipment 2</h4>
+							<div class="shippipng">
+								<h4>Scheduled Delivery</h4>
+								<p>Uni Space Business Center, Modern Tech park,
+									<br/> Bangalore
+									<br/> 500038
+								</p>
+								<p>Ph : 1234567891</p>
+								<p>
+									<a (click)="showItems()">3 Items</a>@ BD 52.90</p>
+								<p>Delivery Charge: BD 30
+									<img src="/assets/images/!.png">
+								</p>
+								<div class="row justify-content-center">
+									<div class="col-md-8">
+										<select>
+											<option>With in next 10minutes</option>
+											<option>2:00 PM - 3:00 PM</option>
+											<option>3:00 PM - 4:00 PM</option>
+											<option>4:00 PM - 5:00 PM</option>
+											<option>5:00 PM - 6:00 PM</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- delivery type -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" [ngClass]="{'margin':showPaymentMethode || !showPaymentMethode}">
+		<h5 (click)="showPayment()">
+			<span>
+				<i class="fa fa-plus" aria-hidden="true" *ngIf="!showPaymentMethode"></i>
+				<i class="fa fa-minus" aria-hidden="true" *ngIf="showPaymentMethode"></i>
+			</span>&nbsp;&nbsp;Payment Method
+		</h5>
+		<div class="container mycart paymentMethode" *ngIf="showPaymentMethode">
+
+			<h4> Payment Method</h4>
+			<!-- total amount -->
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-9 payment">
+					<div class="row ">
+						<div class="col-md-6">
+							<h4>Total</h4>
+						</div>
+						<div class="col-md-6">
+							<h4>
+								<span>BD.64.00</span>
+							</h4>
+						</div>
+					</div>
+					<hr>
+					<div class="row ">
+						<div class="col-md-6">
+							<h4>Total Payable Amount</h4>
+						</div>
+						<div class="col-md-6">
+							<h4>
+								<span>BD.164.00</span>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- total amount -->
+			<!-- payment option -->
+			<h4>Select Payment Option</h4>
+			<div class="row justify-content-center">
+				<div class="col-md-9 payment">
+					<div class="row ">
+						<div class="col-md-12">
+							<div class="custom-control custom-radio mahali-radio">
+								<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input mahali-input">
+								<label class="custom-control-label mahali-label" for="customRadio1">Credit Card/Debit Card</label>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="row ">
+						<div class="col-md-12">
+							<div class="custom-control custom-radio mahali-radio">
+								<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input mahali-input" checked>
+								<label class="custom-control-label mahali-label" for="customRadio2">Cash On Delivery</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- payment option -->
+			<div class="row mt-5 justify-content-center place-order">
+				<div class="col-md-9 text-right">
+					<button class="btn btn-maroon" routerLink="/Orderplaced">Place Order</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
