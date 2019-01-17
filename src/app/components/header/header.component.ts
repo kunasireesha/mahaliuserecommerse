@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var jQuery: any;
+import swal from 'sweetalert'
 // import { } from 'googlemaps';
 declare var google: any;
 @Component({
@@ -195,7 +196,7 @@ export class HeaderComponent implements OnInit {
           console.log(response.json());
           localStorage.setItem('phone', (response.json().data[0].mobile_number));
           localStorage.setItem('email', (response.json().data[0].email));
-          localStorage.setItem('userId', (response.json().data[0].id));
+          localStorage.setItem('userId', (response.json().data[0].reg_id));
           localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
           this.loginDetails = response.json().data[0];
           this.phone = true;

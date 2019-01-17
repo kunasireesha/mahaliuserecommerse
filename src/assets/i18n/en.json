@@ -14,5 +14,9 @@
   "common.signup": "Sign Up",
   "common.email": "Email ID",
   "common.forgotPswrd": "Forgot Password",
-  "common.orderplaced": "Thank You Your Order Placed Successfully"
+  "common.orderplaced": "Thank You Your Order Placed Successfully",
+  "common.myProducts": "My Products",
+  "common.myOrders": "My Orders",
+  "common.changePassword": "Change Password",
+  "common.myAddress": "myAddress"
 }

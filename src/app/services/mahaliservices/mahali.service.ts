@@ -38,7 +38,7 @@ export class appService {
             'Content-Type': "application/JSON",
             'x-access-token': (localStorage.token),
         });
-        return this.http.put(AppSettings.updateProfile+"/"+this.vendor_id, params, { headers: headers })
+        return this.http.put(AppSettings.updateProfile + "/" + this.vendor_id, params, { headers: headers })
     }
     forgotPassword(params) {
         const headers = new Headers({
@@ -85,7 +85,7 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.bankDetails + "/" + this.vendor_id, parmas, { headers: headers });
     }
-    getBanners(){
+    getBanners() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getBanners, { headers: headers });
     }
@@ -136,15 +136,15 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.updateAcc + "/" + this.vendor_id, params, { headers: headers });
     }
-    dealOfDay(){
+    dealOfDay() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.dealOfDay, { headers: headers });
     }
-    getJewel(){
+    getJewel() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getJewel, { headers: headers });
     }
-    getCloth(){
+    getCloth() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getCloth, { headers: headers });
     }
@@ -152,9 +152,9 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.ProductById + "/" + params, { headers: headers });
     }
-    ecomProducts(){
+    ecomProducts() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.ecomProducts,  { headers: headers });
+        return this.http.get(AppSettings.ecomProducts, { headers: headers });
     }
     getPlaceOrder() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
@@ -173,22 +173,22 @@ export class appService {
     update(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.put(AppSettings.updateAddress+"/"+this.vendor_id+"/"+params, { headers: headers });
+        return this.http.put(AppSettings.updateAddress + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
     // updateAdd(params){
     //     const headers = new Headers({ 'Content-Type': "application/JSON" });
     //     this.vendor_id = localStorage.userId;
     //     return this.http.get(AppSettings.updateAddress+"/"+this.vendor_id+"/"+params, { headers: headers });   
     // }
-    updateAddData(params,addId){
+    updateAddData(params, addId) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.put(AppSettings.updateAddress+"/"+this.vendor_id+"/"+addId,params, { headers: headers });   
+        return this.http.put(AppSettings.updateAddress + "/" + this.vendor_id + "/" + addId, params, { headers: headers });
     }
-    filterVendor(params){
+    filterVendor(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.post(AppSettings.filterVendor+"/"+this.vendor_id,params, { headers: headers });
+        return this.http.post(AppSettings.filterVendor + "/" + this.vendor_id, params, { headers: headers });
     }
 }
 
