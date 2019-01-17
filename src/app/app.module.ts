@@ -1,12 +1,16 @@
+import { appService } from './services/mahaliServices/mahali.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import swal from 'sweetalert'
 
 
 //components
@@ -30,7 +34,8 @@ import { UseraccountComponent } from './components/useraccount/useraccount.compo
 import { MysavedlistComponent } from './components/mysavedlist/mysavedlist.component';
 import { PromocodesComponent } from './components/promocodes/promocodes.component';
 
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ImageZoomModule } from 'angular2-image-zoom';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -53,14 +58,18 @@ export function HttpLoaderFactory(http: HttpClient) {
 		OrderplacedComponent,
 		UseraccountComponent,
 		MysavedlistComponent,
-		PromocodesComponent
+		PromocodesComponent,
 
 	],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
 		MatDialogModule,
+		HttpModule,
+		FormsModule,
+		ReactiveFormsModule,
 		BrowserAnimationsModule,
+		ImageZoomModule,
 		MDBBootstrapModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {
@@ -79,27 +88,25 @@ export function HttpLoaderFactory(http: HttpClient) {
 				component: ProductsComponent,
 			},
 			{
-				path: 'Mycart',
+				path: 'mycart',
 				component: MycartComponent,
 			},
 			{
 				path: 'Orderplaced',
 				component: OrderplacedComponent,
 			},
-			{
-				path: 'Products',
-				component: ProductsComponent,
-			},
 			{ path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
 			{ path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
 			{ path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
-			{ path: 'notifications', component: UseraccountComponent, data: [{ page: 'notifications' }] },
+			{ path: 'changePw', component: UseraccountComponent, data: [{ page: 'changePw' }] },
 			{ path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
-			{ path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] }
+			{ path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
+			{ path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
+			{ path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
 		], { useHash: true })
 	],
 	schemas: [NO_ERRORS_SCHEMA],
-	providers: [],
+	providers: [appService],
 	bootstrap: [AppComponent],
 	entryComponents: [LoginComponent, RegistrationComponent, ItemsComponent, PromocodesComponent],
 	exports: [BrowserModule, TranslateModule]
