@@ -1,318 +1,166 @@
+
 <div class="container products">
-  <div class="row">
-    <div class="col-md-3">
-      <h5>Category</h5>
-      <br />
-      <div class="categories">
-        <p (click)="collapse()">
-          <a>
-            <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories"></i>
-            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories"></i>
-          </a> &nbsp;&nbsp;Fruits & vegetables</p>
-        <hr>
-        <p *ngIf="showCategories" class="subCat">Fresh vegetables
-        </p>
-        <hr *ngIf="showCategories">
-        <p *ngIf="showCategories" class="subCat">Herbs & Seasoning
-        </p>
-        <hr *ngIf="showCategories">
-        <p>
-          <a>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </a> &nbsp;&nbsp;Beverages</p>
-        <hr>
-        <p>
-          <a>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </a> &nbsp;&nbsp;Foodgrains & Masala</p>
-        <hr>
-        <p>
-          <a>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </a> &nbsp;&nbsp;Bakery cake & Dairy</p>
-        <hr>
-        <p>
-          <a>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </a> &nbsp;&nbsp;Beauty & Hygeini</p>
-        <hr>
+	<div class="row">
+		<div class="col-md-3">
+			<h5>Category</h5>
+			<br />
+			<!-- <div class="categories">
+				<div id="panel-group">
+				  <div class="panel panel-default" *ngFor="let item of category; let i = index">
+					<div class="panel-heading" (click) = "current = i;item.id">
+					<p class="panel-title">
+						<i class="fa fa-plus" aria-hidden="true" *ngIf="i != current"></i>
+						<i class="fa fa-minus" aria-hidden="true" *ngIf="i == current"></i>
+					   {{item.category_name}}
+					</p>
+					   <hr>
+					</div>
+					 <div id="collapse1" class="panel-collapse"  [class.collapse]='current != i' *ngFor="let subCat of subCatData">
+					<div class="panel-body subcat" *ngIf="item.id===subCat.category_id"><p class="subCat">{{subCat.sub_category_name}}</p> </div>
+					</div>
+				  </div>
+				  </div> 
+			  </div> -->
 
-      </div>
-      <h5>Sort</h5>
-      <div class="sort">
-        <select>
-          <option>Popular</option>
-          <option>low to high</option>
-          <option>High to low</option>
-          <option>relevence</option>
-        </select>
-      </div>
-      <h5>Country</h5>
-      <div class="sort">
-        <select>
-          <option>India</option>
-          <option>Bangladesh</option>
-          <option>China</option>
-        </select>
-      </div>
-      <br>
-      <h5>Pack of size</h5>
-      <div class="brands">
-        <input type="text" placeholder="Search by Pack of size">
-        <br />
-        <div class="brand-names">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-            <label class="custom-control-label" for="defaultUnchecked">100 to 500gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-            <label class="custom-control-label" for="defaultUnchecked1">500 to 700 gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-            <label class="custom-control-label" for="defaultUnchecked2">700 to 1kg</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-            <label class="custom-control-label" for="defaultUnchecked3">100 to 500gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
-            <label class="custom-control-label" for="defaultUnchecked4">500 to 700 gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
-            <label class="custom-control-label" for="defaultUnchecked5">700 to 1kg</label>
-          </div>
-        </div>
-      </div>
+			<div class="categories" *ngFor="let cat of category; let i = index">
+				<p [ngClass]="{'active':showCategories && i==selectedCat}">
+					<a>
+						<i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
+						<i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
+						<i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+					</a> &nbsp;&nbsp;<span (click)="showCateProd(cat.id,cat.name)">{{cat.category_name}}</span>
+				</p>
+				<hr>
+				<!-- categories -->
 
-      <br />
-      <h5>Price</h5>
-      <div class="price">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
-          <label class="custom-control-label" for="defaultUnchecked6">Less than 100</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
-          <label class="custom-control-label" for="defaultUnchecked7">Less than 200</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
-          <label class="custom-control-label" for="defaultUnchecked8">Less than 300</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
-          <label class="custom-control-label" for="defaultUnchecked9">Less than 400</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
-          <label class="custom-control-label" for="defaultUnchecked10">Less than 500</label>
-        </div>
-      </div>
+				<div class="subCates">
+					<div *ngFor="let subCat of subCategory;let ii = index">
+						<p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
+							<span (click)="getSubcatProd(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
 
-    </div>
-    <div class="col-md-9 items">
-      <p>
-        <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-        <a>Grocery</a>
-      </p>
-      <div class="row">
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/vivo.png" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
+			<h5>Brand</h5>
+			<div class="brands">
+				<input type="text" placeholder="Search by Brand">
+				<br />
+				<div class="brand-names">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+						<label class="custom-control-label" for="defaultUnchecked">Apple</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+						<label class="custom-control-label" for="defaultUnchecked1">Asus</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+						<label class="custom-control-label" for="defaultUnchecked2">Celkon</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+						<label class="custom-control-label" for="defaultUnchecked3">HTC</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+						<label class="custom-control-label" for="defaultUnchecked4">Intex</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+						<label class="custom-control-label" for="defaultUnchecked5">Lenovo</label>
+					</div>
+				</div>
+			</div>
 
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/1.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
+			<h5>Sort</h5>
+			<div class="sort">
+				<select>
+					<option>Sort</option>
+				</select>
+			</div>
+			<br />
+			<h5>Price</h5>
+			<div class="price">
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
+					<label class="custom-control-label" for="defaultUnchecked6">Less than 5000</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
+					<label class="custom-control-label" for="defaultUnchecked7">Less than 10000</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
+					<label class="custom-control-label" for="defaultUnchecked8">Less than 15000</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
+					<label class="custom-control-label" for="defaultUnchecked9">Less than 20000</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
+					<label class="custom-control-label" for="defaultUnchecked10">Less than 25000</label>
+				</div>
+			</div>
 
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/2.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
+		</div>
+		<div class="col-md-9 items">
+			<p>
+				<a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+				<a>Electronics</a>
+			</p>
+			<div class="row" *ngIf="searchProd">
+				<!-- <div class="col-md-3 item" *ngFor="let data of serProducts">
+					<div class="card" (click)="showProduxtDetails()">
+						<img class="img-fluid" src="assets/images/vivo.png" alt="Card image cap">
+						<div class="card-block">
+							<h5 class="text-center">Vivo V9 plus </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+						</div>
+					</div>
+				</div> -->
+				<!-- <div class="quantity-price text-center">
+					<select (change)="changeSize($event.target.value)">
+						<option  [value]="sku.skid">{{sku.size}}</option>
+					</select>
+				</div>
+				<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button> -->
+				<div class="noData">
+					No records Found
+				</div>
 
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/3.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
+			</div>
+			<div class="row" *ngIf="seeAll">
+				<div class="col-md-3 item" *ngFor="let data of skuArr">
+					<div class="card">
+						<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+						<div class="card-block">
+							<h5 class="text-center">{{data.product_name}} </h5>
+							<p class="text-center">
+								BD {{data.selling_price}}
+								<strike>BD {{data.actual_price}}</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select (change)="changeSize($event.target.value)">
+									<option [value]="data.skid">{{data.size}}</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+								To Cart</button>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="noData&&!serProducts">
+					No records Found
+				</div>
 
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/4.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/5.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/6.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 item">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" src="/assets/images/7.jpg" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">Electric Kettle </h5>
-              <p class="text-center">
-                BD 7.500
-                <strike>BD 8.000</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select>
-                  <option value="" disabled selected>500gms-Rs 20.40</option>
-                  <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                  <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-                </select>
-              </div>
-              <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
