@@ -142,7 +142,7 @@ export class ProductsComponent implements OnInit {
         product_id: Id,
         sku_id: skId
       }],
-      "vendor_id": JSON.parse(localStorage.getItem('userId')),
+      "user_id": JSON.parse(localStorage.getItem('userId')),
       "item_type": "ecommerce"
     }
     this.appService.addtoCart(inData).subscribe(res => {

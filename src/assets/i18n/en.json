@@ -6,7 +6,7 @@
   "common.myOrder": "My Orders",
   "common.wishlist": "Wishlist",
   "common.notifications": "Notifications",
-  "common.logout": "Logout",
+  "common.signout": "Signout",
   "common.intro": "Mahali Market?",
   "common.loreum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
   "common.loreum1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -18,5 +18,6 @@
   "common.myProducts": "My Products",
   "common.myOrders": "My Orders",
   "common.changePassword": "Change Password",
-  "common.myAddress": "myAddress"
+  "common.myAddress": "My Address",
+  "common.grocery": "Switch to Grocery"
 }

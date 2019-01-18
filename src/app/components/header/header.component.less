@@ -1,3 +1,15 @@
+// css
+.product-cart{
+    p{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 111px; 
+    height: 1.2em; 
+    white-space: nowrap;
+    font-weight:600;
+    } 
+    }
+
 /* cust styles */
 .cust-navbarnav{
     margin: auto 15px;
@@ -42,12 +54,11 @@
     border: 1px solid gray;
     background-color: whitesmoke;
 }
-.cust-slct{
+.cust-slct {
     border: 1px solid gray;
     padding: 5px 8px;
-    margin-top: 25px;
-    margin-left: 25px;
-}
+    margin-top: -10px;
+    }
 .cust-mhdr{
     border-bottom: none !important;
 }
@@ -228,16 +239,22 @@ font-size:14px!important;
     margin-top: 12px;
     margin-bottom: 13px;
     input {
-        width: 81px;
-        height: 33px;
-        border: 1px #7fba00 solid;
-        text-align: center;
+    width: 30px;
+    height: 30px;
+    border: 1px #801424 solid;
+    text-align: center;
     }
-}
-.minus-btn {
-    height: 33px;
-    background-color: #7fba00;
-    border: 1px #7fba00 solid;
+    i{
+    font-size:10px!important;
+    color:#ffffff!important;
+    }
+    }
+    
+    .minus-btn {
+        margin-top: 1px;
+    height: 30px;
+    background-color: #801424;
+    border: 1px #801424 solid;
     width: 34px;
     color: white;
     border-top-left-radius: 11px;
@@ -245,11 +262,13 @@ font-size:14px!important;
     cursor: pointer;
     outline: none !important;
     box-shadow: none !important;
-}
-.plus-btn {
-    height: 33px;
-    background-color: #7fba00;
-    border: 1px #7fba00 solid;
+    }
+    
+    .plus-btn {
+        margin-top: 1px;
+    height: 30px;
+    background-color: #801424;
+    border: 1px #801424 solid;
     width: 34px;
     color: white;
     border-top-right-radius: 11px;
@@ -257,7 +276,7 @@ font-size:14px!important;
     cursor: pointer;
     outline: none !important;
     box-shadow: none !important;
-}
+    }
 .navbar-expand-md .navbar-nav .dropdown-menu {
     position: absolute !important;
 }

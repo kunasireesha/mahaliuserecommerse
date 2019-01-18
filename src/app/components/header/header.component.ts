@@ -193,7 +193,6 @@ export class HeaderComponent implements OnInit {
         this.showLoginScreen = false;
         this.myAccount = true;
         this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
-          console.log(response.json());
           localStorage.setItem('phone', (response.json().data[0].mobile_number));
           localStorage.setItem('email', (response.json().data[0].email));
           localStorage.setItem('userId', (response.json().data[0].reg_id));
@@ -235,7 +234,6 @@ export class HeaderComponent implements OnInit {
   getProduct() {
     this.appService.getProduct().subscribe(resp => {
       this.product = resp.json().products;
-      console.log(this.product);
     });
   }
   getCategories() {
@@ -255,8 +253,6 @@ export class HeaderComponent implements OnInit {
         if (Id === this.category[i].subcategory[j].category_id) {
           this.category[i].subcategory[j].cat_name = this.category[i].category_name;
           this.subCatData.push(this.category[i].subcategory[j]);
-          console.log(this.subCatData);
-
         }
       }
     }
@@ -283,21 +279,16 @@ export class HeaderComponent implements OnInit {
   cartData = [];
   billing;
   getCart() {
-    var inData = localStorage.getItem('userId');
-    this.appService.getCart(inData).subscribe(res => {
-      this.cartData = res.json().cart_details;
-      for (var i = 0; i < this.cartData.length; i++) {
+    for (var i = 0; i < this.cartData.length; i++) {
+      this.cartData[i].prodName = this.cartData[i].products.product_name;
+      for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
+        this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
         this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
         this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
         this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
-        this.cartData[i].prodName = this.cartData[i].products.product_name;
         this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
       }
-      this.cartCount = res.json().count;
-      this.billing = res.json().selling_Price_bill;
-    }, err => {
-
-    })
+    }
   }
   delCart(cartId) {
     var inData = cartId;
