@@ -8,7 +8,9 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class appService {
     product: any;
+    user_id;
     constructor(private http: Http) { }
+
     registration(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.post(AppSettings.registrationUrl, params, { headers: headers });
@@ -189,6 +191,26 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
         return this.http.post(AppSettings.filterVendor + "/" + this.vendor_id, params, { headers: headers });
+    }
+    getAdd(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        // this.vendor_id = localStorage.userId;
+        return this.http.get(AppSettings.getAddbyId + "/" + params, { headers: headers });
+    }
+    addToWish(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.addWish, params, { headers: headers });
+    }
+    getWish() {
+
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        this.user_id = localStorage.userId;
+        return this.http.get(AppSettings.getWish + "/" + this.user_id, { headers: headers });
+    }
+    delWishList(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        this.user_id = localStorage.userId;
+        return this.http.delete(AppSettings.delWish + "/" + this.user_id + "/" + params, { headers: headers });
     }
 }
 

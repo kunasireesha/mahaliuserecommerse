@@ -137,22 +137,31 @@
 			</div>
 			<div class="row" *ngIf="seeAll">
 				<div class="col-md-3 item" *ngFor="let data of skuArr">
-					<div class="card">
-						<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-						<div class="card-block">
-							<h5 class="text-center">{{data.product_name}} </h5>
-							<p class="text-center">
-								BD {{data.selling_price}}
-								<strike>BD {{data.actual_price}}</strike>
-							</p>
-							<div class="quantity-price text-center">
-								<select (change)="changeSize($event.target.value)">
-									<option [value]="data.skid">{{data.size}}</option>
-								</select>
+					<div class="wrapper">
+						<div class="card">
+							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+							<div class="card-block">
+								<h5 class="text-center">{{data.product_name}} </h5>
+								<p class="text-center">
+									BD {{data.selling_price}}
+									<strike>BD {{data.actual_price}}</strike>
+								</p>
+								<div class="quantity-price text-center">
+									<select (change)="changeSize($event.target.value)">
+										<option [value]="data.skid">{{data.size}}</option>
+									</select>
+								</div>
+								<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+									To Cart</button>
 							</div>
-							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
-								To Cart</button>
 						</div>
+						<ul class="expand-button">
+							<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+							<li><a href="#"><img src="assets/images/maximize.png"></a></li>
+						</ul>
+						<ul class="expand-button2 expand-button-2">
+							<li><a href="#"><i class="fas fa-heart"></i></a></li>
+						</ul>
 					</div>
 				</div>
 				<div *ngIf="noData&&!serProducts">

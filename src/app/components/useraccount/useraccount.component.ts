@@ -181,6 +181,7 @@ export class UseraccountComponent implements OnInit {
         this.editAccount = false;
         this.showAddProducts = false;
         this.showAddProducts5 = false;
+        this.getWish();
     }
 
     changePassword() {
@@ -490,8 +491,8 @@ export class UseraccountComponent implements OnInit {
             first_name: this.profileData.first_name,
             email: this.profileData.email,
             mobile_number: this.profileData.mobile_number,
-            bussiness_area: this.profileData.bussiness_area,
-            bussiness_city: this.profileData.bussiness_city
+            bussiness_area: this.profileData.area,
+            bussiness_city: this.profileData.city
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {
@@ -509,6 +510,7 @@ export class UseraccountComponent implements OnInit {
     get f1() { return this.addressForm.controls; }
 
     saveAddress() {
+
         this.submitted = true;
         // stop here if form is invalid
         if (this.addressForm.invalid) {
@@ -517,6 +519,8 @@ export class UseraccountComponent implements OnInit {
         this.appService.addaddress(this.addressForm.value).subscribe(res => {
             this.addressForm.reset();
             swal(res.json().message, "", "success");
+            this.showDeliveryAddress = true;
+            this.showAddAddress = false;
             this.getAdd();
             //   this.addressForm.reset();
             // this.showAddresses = true;
@@ -669,6 +673,7 @@ export class UseraccountComponent implements OnInit {
         }
         this.appService.updateAddData(indata, addId).subscribe(resp => {
             console.log(resp.json());
+            this.getAdd();
         }, err => {
 
         })
@@ -691,6 +696,33 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
+    wishData = [];
+    wishListData = [];
+    wishArr = [];
+    getWish() {
+        this.wishArr = [];
+        this.appService.getWish().subscribe(res => {
+            if (res.json().message === "Success") {
+                this.wishData = res.json().wishlist;
+                for (var i = 0; i < this.wishData.length; i++) {
+                    this.wishData[i].sku_details.wishlist_id = this.wishData[i].wishlist_id;
+                    this.wishData[i].sku_details.product_name = this.wishData[i].product_details[0].product_name;
+                    this.wishArr.push(this.wishData[i].sku_details);
+                }
+            }
 
+        }, err => {
+
+        })
+    }
+    delWish(wishId) {
+        this.appService.delWishList(wishId).subscribe(res => {
+            if (res.json().message === "Success") {
+                this.getWish();
+                swal(res.json().message, "", "success");
+            }
+
+        })
+    }
 
 }

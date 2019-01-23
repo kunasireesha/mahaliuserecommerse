@@ -9,9 +9,9 @@ export const AppSettings = {
     loginDetailsbyEmail: baseUrl + 'users/',
     getWholeSellersUrl: baseUrl + 'wholesalers',
     updateProfile: baseUrl + 'vendors/update_profile',
-    forgotPw: baseUrl + 'vendors/forgot_password',
-    addaddress: baseUrl + "delivery_address",
-    getAddress: baseUrl + "delivery_address",
+    forgotPw: baseUrl + 'users/forgot_password',
+    addaddress: baseUrl + "delivery_address/user",
+    getAddress: baseUrl + "delivery_address/user",
     delAddress: baseUrl + "delivery_address",
     updateAddress: baseUrl + "delivery_address",
     businessDetails: baseUrl + "vendors/update_profile",
@@ -38,6 +38,10 @@ export const AppSettings = {
     ordById: baseUrl + "place_order/order_products",
     reqProducts: baseUrl + "place_order/request_products/vendor",
     updateProd: baseUrl + "place_order/pricing",
-    filterVendor: baseUrl + "products/filter/vendor"
+    filterVendor: baseUrl + "products/filter/vendor",
+    getAddbyId: baseUrl + "delivery_address/address_id",
+    addWish: baseUrl + "wish_list",
+    getWish: baseUrl + "wish_list",
+    delWish: baseUrl + "wish_list",
 }
 
