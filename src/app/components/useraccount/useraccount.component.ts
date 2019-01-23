@@ -72,7 +72,7 @@ export class UseraccountComponent implements OnInit {
     showAddAddress = false;
     showDeliveryAddress = false;
     editUserProfile = false;
-    showProfile = false;
+    showProfile = true;
     showAccountDetails = false;
     editAccount = false;
     showAddProducts = false;
@@ -167,21 +167,21 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
     }
 
-    // wishList() {
-    //     this.showNotifications = false;
-    //     this.showOrderDetails = false;
-    //     this.showMyOrders = false;
-    //     this.showChangePassword = false;
-    //     this.showWishlist = true;
-    //     this.showAddAddress = false;
-    //     this.showDeliveryAddress = false;
-    //     this.editUserProfile = false;
-    //     this.showProfile = false;
-    //     this.showAccountDetails=false;
-    //     this.editAccount = false;
-    //     this.showAddProducts=false;
-    //     this.showAddProducts5=false;
-    // }
+    wishList() {
+        this.showNotifications = false;
+        this.showOrderDetails = false;
+        this.showMyOrders = false;
+        this.showChangePassword = false;
+        this.showWishlist = true;
+        this.showAddAddress = false;
+        this.showDeliveryAddress = false;
+        this.editUserProfile = false;
+        this.showProfile = false;
+        this.showAccountDetails = false;
+        this.editAccount = false;
+        this.showAddProducts = false;
+        this.showAddProducts5 = false;
+    }
 
     changePassword() {
         this.showNotifications = false;

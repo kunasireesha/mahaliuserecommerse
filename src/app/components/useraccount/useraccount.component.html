@@ -55,8 +55,9 @@
 
 		<!-- edit Profile -->
 		<div class="col-lg-9" *ngIf="editUserProfile">
+
+
 			<h3 class="profile-header">Edit Profile</h3>
-			<img src="assets/images/user.png" class="edit-image-user">
 			<br />
 			<br />
 			<form class="form-details">
@@ -64,7 +65,7 @@
 					<label for="inputname1" class="col-sm-2 col-form-label">Name
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputname1" placeholder="N.Tarun Kumar">
 					</div>
 				</div>
@@ -72,7 +73,7 @@
 					<label for="inputEmail3" class="col-sm-2 col-form-label">Email ID
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com">
 					</div>
 				</div>
@@ -80,7 +81,7 @@
 					<label for="inputphoneno" class="col-sm-2 col-form-label">Phone No
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500">
 					</div>
 				</div>
@@ -88,7 +89,7 @@
 					<label for="inputhouseno" class="col-sm-2 col-form-label">House No
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputhouseno" placeholder="Unispace Bussiness Center #143">
 					</div>
 				</div>
@@ -96,13 +97,13 @@
 					<label for="inputstate" class="col-sm-2 col-form-label">State
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka">
 					</div>
 					<label for="inputcity" class="col-sm-2 col-form-label">City
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore">
 					</div>
 				</div>
@@ -110,20 +111,23 @@
 					<label for="inputpincode" class="col-sm-2 col-form-label">Pin-code
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputpincode" placeholder="500038">
 					</div>
 				</div>
 
 				<div class="row justify-content-center">
-					<div class="col-lg-6">
+					<div class="col-lg-5">
 						<button type="button" class="btn save-btn">Save</button>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-5">
 						<button type="button" class="btn save-btn">Cancel</button>
 					</div>
 				</div>
 			</form>
+
+
+
 		</div>
 
 
@@ -183,7 +187,7 @@
 				<div class="form-group row">
 					<label for="inputname1" class="col-sm-2 col-form-label">Full Name
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name" [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
 						<div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
 							<div *ngIf="f1.full_name.errors.required">Full Name is required</div>
@@ -193,7 +197,7 @@
 				<div class="form-group row">
 					<label for="inputMblnbr" class="col-sm-2 col-form-label">Mobile Number
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
 						<div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
 							<div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
@@ -203,7 +207,7 @@
 				<div class="form-group row">
 					<label for="inputhouseno" class="col-sm-2 col-form-label">House: No
 					</label>
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 						<input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no" [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
 						<div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
 							<div *ngIf="f1.house_no.errors.required">House Number is required</div>
@@ -213,7 +217,7 @@
 				<div class="form-group row">
 					<label for="inputstate" class="col-sm-2 col-form-label">Landmark
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark" [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
 						<div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">
 							<div *ngIf="f1.landmark.errors.required">Landmark is required</div>
@@ -221,7 +225,7 @@
 					</div>
 					<label for="inputcity" class="col-sm-2 col-form-label">City
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputpincode" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
 						<div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
 							<div *ngIf="f1.city.errors.required">City is required</div>
@@ -231,7 +235,7 @@
 				<div class="form-group row">
 					<label for="inputstate" class="col-sm-2 col-form-label">State
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state" [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
 						<div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
 							<div *ngIf="f1.state.errors.required">state is required</div>
@@ -239,7 +243,7 @@
 					</div>
 					<label for="inputcity" class="col-sm-2 col-form-label">Pin-code
 					</label>
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code" [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
 						<div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
 							<div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
@@ -285,7 +289,7 @@
 						<td>
 							<div class="row align-items-center">
 								<div class="col-md-4">
-									<img src="assets/images/cherry.png" class="prod-images" alt="gdksha">
+									<img src="assets/images/k2.jpg" class="prod-images" alt="gdksha">
 								</div>
 								<div class="col-md-8 prod-details">
 									<p class="mobile-manu">
@@ -298,16 +302,8 @@
 								</div>
 							</div>
 						</td>
-						<td class="pt-5">
-							<div class="plus-minus mt-3" style="display: inline;">
-								<button class="btn btn-maroon btn-minus" (click)="itemDecrease()">
-									<span>-</span>
-								</button>
-								<input type="text" value="{{item.quantity}}" [(ngModel)]="item.quantity" disabled>
-								<button class="btn btn-maroon btn-plus" (click)="itemIncrease()">
-									<span>+</span>
-								</button>
-							</div>
+						<td>
+							In Stock
 						</td>
 						<td>
 							<div class="prod-details">
@@ -325,7 +321,7 @@
 						<td>
 							<div class="row align-items-center">
 								<div class="col-md-4">
-									<img src="assets/images/tomato.png" class="prod-images" alt="gdksha">
+									<img src="assets/images/k3.jpg" class="prod-images" alt="gdksha">
 								</div>
 								<div class="col-md-8 prod-details">
 									<p class="mobile-manu">
@@ -339,15 +335,7 @@
 							</div>
 						</td>
 						<td class="pt-5">
-							<div class="plus-minus mt-3" style="display: inline;">
-								<button class="btn btn-maroon btn-minus" (click)="itemDecrease()">
-									<span>-</span>
-								</button>
-								<input type="text" value="{{item.quantity}}" [(ngModel)]="item.quantity" disabled>
-								<button class="btn btn-maroon btn-plus" (click)="itemIncrease()">
-									<span>+</span>
-								</button>
-							</div>
+							In Stock
 						</td>
 						<td>
 							<div class="prod-details">
@@ -365,7 +353,7 @@
 						<td>
 							<div class="row align-items-center">
 								<div class="col-md-4">
-									<img src="assets/images/pinapple.png" class="prod-images" alt="gdksha">
+									<img src="assets/images/kettle.jpg" class="prod-images" alt="gdksha">
 								</div>
 								<div class="col-md-8 prod-details">
 									<p class="mobile-manu">
@@ -379,15 +367,7 @@
 							</div>
 						</td>
 						<td class="pt-5">
-							<div class="plus-minus mt-3" style="display: inline;">
-								<button class="btn btn-maroon btn-minus" (click)="itemDecrease()">
-									<span>-</span>
-								</button>
-								<input type="text" value="{{item.quantity}}" [(ngModel)]="item.quantity" disabled>
-								<button class="btn btn-maroon btn-plus" (click)="itemIncrease()">
-									<span>+</span>
-								</button>
-							</div>
+							In Stock
 						</td>
 						<td>
 							<div class="prod-details">
@@ -425,7 +405,7 @@
 					<label for="inputPwd" class="col-sm-4 col-form-label">Current Password
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="password" class="form-control input-feild" id="inputpwd1" placeholder="">
 					</div>
 				</div>
@@ -433,7 +413,7 @@
 					<label for="inputNewPwd" class="col-sm-4 col-form-label">New Password
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="password" class="form-control input-feild" id="inputpwd2" placeholder="">
 					</div>
 				</div>
@@ -441,7 +421,7 @@
 					<label for="inputcnfpwd" class="col-sm-4 col-form-label">Confirm Password
 						<span class="float-right">:</span>
 					</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6 ">
 						<input type="password" class="form-control input-feild" id="inputpwd3" placeholder="">
 					</div>
 				</div>

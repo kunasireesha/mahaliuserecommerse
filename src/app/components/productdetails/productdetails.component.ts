@@ -34,7 +34,6 @@ export class ProductdetailsComponent implements OnInit {
   itemIncrease() {
     let thisObj = this;
     thisObj.item.quantity = Math.floor(thisObj.item.quantity + 1);
-
   }
   itemDecrease() {
     let thisObj = this;
