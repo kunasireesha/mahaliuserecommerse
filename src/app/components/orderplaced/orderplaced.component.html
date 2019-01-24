@@ -11,7 +11,7 @@
         <tbody>
           <tr>
             <td>Your Order Number is</td>
-            <td>: 152478</td>
+            <td>: {{ordid}}</td>
           </tr>
           <tr>
             <td>From</td>
@@ -22,16 +22,17 @@
     </div>
     <div class="col-md-12">
       <h5>Billing and Shipping Address is :</h5>
-      <p>Uni Space Business Center, Modern Tech park,
-        <br /> Bangalore
-        <br /> 500038
+      <p>{{ordSum.landmark}}
+        <br /> {{ordSum.house_no}}
+        <br /> {{ordSum.city}}, {{ordSum.pin_code}}
+        <br /> {{ordSum.state}}
       </p>
-      <p>Ph : 1234567891</p>
+      <p>Ph: {{ordSum.mobile_number}}</p>
     </div>
   </div>
   <h3>Recommended for You</h3>
   <!-- all -->
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-3 ">
       <div class="card">
         <div class="product-image" (click)="showProduxtDetails()">
@@ -51,7 +52,7 @@
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
             </select>
           </div>
-          <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
+        
         </div>
       </div>
     </div>
@@ -75,7 +76,7 @@
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
             </select>
           </div>
-          <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
+         
         </div>
       </div>
     </div>
@@ -98,7 +99,7 @@
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
             </select>
           </div>
-          <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
+         
         </div>
       </div>
     </div>
@@ -121,15 +122,15 @@
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
             </select>
           </div>
-          <!-- <button type="text" class="btn waves-effect waves-light">Add To Cart</button> -->
+         
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!--all -->
   <div class="row mt-5 justify-content-center place-order">
     <div class="col-md-9 text-right">
-      <button class="btn btn-maroon" routerLink="/Products">Continue Shopping</button>
+      <button class="btn btn-maroon" routerLink="/" href="#">Continue Shopping</button>
     </div>
   </div>
 </div>

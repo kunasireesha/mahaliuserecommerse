@@ -101,6 +101,8 @@ export class ProductdetailsComponent implements OnInit {
       }
     }
   }
+  cartDetails = [];
+  cartCount;
   addtoCart(Id, skId) {
     var inData = {
       "products": [{

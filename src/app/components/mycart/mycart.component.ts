@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ItemsComponent } from '../../components/items/items.component';
 import { PromocodesComponent } from '../../components/promocodes/promocodes.component';
+import { appService } from './../../services/mahaliServices/mahali.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-mycart',
   templateUrl: './mycart.component.html',
@@ -14,10 +16,13 @@ export class MycartComponent implements OnInit {
   showPaymentMethode = false;
   showDeliveryType = false;
   addresses = false;
-  constructor(public dialog: MatDialog) { }
+  payment_option;
+  constructor(public dialog: MatDialog, public appService: appService, private router: Router) { }
 
   ngOnInit() {
-
+    this.getCart();
+    this.getAdd();
+    this.paymentOptions();
   }
 
   showCart() {
@@ -38,29 +43,78 @@ export class MycartComponent implements OnInit {
   }
 
   //add address
+  //add address
   addAddress() {
     this.addresses = true;
     this.showAddresses = false;
   }
-
+  addData = {
+    full_name: "",
+    mobile_number: "",
+    house_no: "",
+    city: "",
+    state: "",
+    landmark: "",
+    pin_code: "",
+    address_type: "",
+    vendor_id: 44
+  }
+  type;
+  Type(type) {
+    this.type = type;
+  }
   //save address
   saveAddress() {
     this.showAddresses = true;
     this.addresses = false;
+    var inData = {
+      "full_name": this.addData.full_name,
+      "mobile_number": this.addData.mobile_number,
+      "house_no": this.addData.house_no,
+      "city": this.addData.city,
+      "state": this.addData.state,
+      "landmark": this.addData.landmark,
+      "pin_code": this.addData.pin_code,
+      "address_type": this.type,
+
+    }
+    this.appService.addaddress(inData).subscribe(res => {
+      this.getAdd();
+      this.showAddresses = true;
+      this.addresses = false;
+
+    })
 
   }
+
   billing;
+  cartData = [];
   getCart() {
     var inData = localStorage.getItem('userId');
     this.appService.getCart(inData).subscribe(res => {
-      this.cartDetails = res.json().cart_details;
+      this.cartData = res.json().cart_details;
+      for (var i = 0; i < this.cartData.length; i++) {
+        this.cartData[i].prodName = this.cartData[i].products.product_name;
+        for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
+          this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+          this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+          this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
+          this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+          this.cartData[i].products.actual_price = this.cartData[i].products.sku_details[0].actual_price;
+          this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+        }
+      }
       this.cartCount = res.json().count;
       this.billing = res.json().selling_Price_bill;
     }, err => {
 
     })
   }
-  cartDetails
+  checkout() {
+    this.showCartItems = false;
+    this.showDeliveryAddress = true;
+  }
+  cartDetails = [];
   cartCount;
   addtoCart(Id, skId) {
     var inData = {
@@ -80,13 +134,32 @@ export class MycartComponent implements OnInit {
 
     })
   }
+  getAddData = [];
+  getAdd() {
+    this.appService.getAddress().subscribe(res => {
+      this.getAddData = res.json().delivery_address;
+    }, err => {
+
+    })
+  };
+  delCart(cartId) {
+    var inData = cartId;
+    this.appService.delCart(inData).subscribe(res => {
+      swal(res.json().message, "", "success");
+      this.getCart();
+    }, err => {
+    })
+  }
   //showPayment
-  showPayment() {
+  showPayment(addId) {
     this.showPaymentMethode = !this.showPaymentMethode;
     this.showCartItems = false;
     this.showAddresses = false;
     this.showDeliveryAddress = false;
     window.scrollTo(0, 0);
+    this.addId = addId;
+
+    this.selectAdd(this.addId);
   }
   // show shipment type
   shipmentType() {
@@ -108,6 +181,49 @@ export class MycartComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialog.open(PromocodesComponent, dialogConfig);
+  }
+  checkout() {
+    this.showCartItems = false;
+    this.showDeliveryAddress = true;
+  }
+  seleOpt;
+  payId;
+  selePayOptn(index, Id) {
+    this.seleOpt = index;
+    this.payId = Id;
+  }
+  ordData = [];
+  orderPlace() {
+    var inData = {
+      "delivery_address_id": this.addId,
+      "billing_amount": this.billing,
+      "payment_type": this.payId,
+      "user_id": localStorage.getItem('userId'),
+      "item_type": "grocery",
 
+    }
+
+    this.appService.palceOrder(inData).subscribe(res => {
+      this.ordData = res.json().Order[0].order_id;
+      swal(res.json().message, "", "success");
+      this.router.navigate(['/Orderplaced'], { queryParams: { orderId: this.ordData } });
+    }, err => {
+
+    })
+  }
+  payOptions = [];
+  paymentOptions() {
+    this.appService.paymentType().subscribe(res => {
+      this.payOptions = res.json().options;
+    }, err => {
+
+    })
+  }
+  selectAdd() {
+    this.appService.setDelAdd(this.addId).subscribe(res => {
+      swal("Selected successfully", "", "success");
+      this.getAdd();
+      this.getSlots();
+    })
   }
 }

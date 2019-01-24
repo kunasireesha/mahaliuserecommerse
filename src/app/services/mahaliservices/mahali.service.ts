@@ -111,6 +111,7 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getCart + "/" + params, { headers: headers });
     }
+
     delCart(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.getItem('userId');
@@ -212,5 +213,11 @@ export class appService {
         this.user_id = localStorage.userId;
         return this.http.delete(AppSettings.delWish + "/" + this.user_id + "/" + params, { headers: headers });
     }
+    setDelAdd(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        this.user_id = localStorage.getItem('userId');
+        return this.http.put(AppSettings.setDelAdd + "/" + this.user_id + "/" + params, { headers: headers });
+    }
+
 }
 

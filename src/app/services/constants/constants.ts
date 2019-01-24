@@ -23,9 +23,9 @@ export const AppSettings = {
     searchProducts: baseUrl + 'products/search',
     addToCart: baseUrl + "vendor/cart_details",
     getCart: baseUrl + 'vendor/cart_details/users',
-    delCart: baseUrl + 'vendor/cart_details',
+    delCart: baseUrl + 'vendor/cart_details/users',
     paymentType: baseUrl + "payment_options",
-    palceOrder: baseUrl + "place_order",
+    palceOrder: baseUrl + "place_order/user_orders",
     orderSummary: baseUrl + "place_order/order_summary",
     getAccDetails: baseUrl + "vendors/account_details",
     updateAcc: baseUrl + "vendors/update_profile",
@@ -43,5 +43,6 @@ export const AppSettings = {
     addWish: baseUrl + "wish_list",
     getWish: baseUrl + "wish_list",
     delWish: baseUrl + "wish_list",
+    setDelAdd: baseUrl + "delivery_address/user",
 }
 

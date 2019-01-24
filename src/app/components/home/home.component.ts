@@ -226,6 +226,8 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  cartDetails = [];
+  cartCount;
   addtoCart(Id, skId) {
     var inData = {
       "products": [{
@@ -253,5 +255,26 @@ export class HomeComponent implements OnInit {
 
     })
   }
+  addtoWish(Id, skId) {
+    var inData = {
+      "user_id": JSON.parse(localStorage.userId),
+      "product_id": Id,
+      "sku_id": skId,
+      "item_type": "grocery"
+    }
+    this.appService.addToWish(inData).subscribe(res => {
+      console.log(res.json());
+      swal(res.json().message, "", "success");
+      this.getWish();
+    }, err => {
 
+    })
+  }
+  getWish() {
+    this.appService.getWish().subscribe(res => {
+      console.log(res.json());
+    }, err => {
+
+    })
+  }
 }
