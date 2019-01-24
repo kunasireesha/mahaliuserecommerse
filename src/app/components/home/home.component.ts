@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProductsData } from '../../services/productsdata';
 import { ProductService } from '../../services/productservice';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,14 @@ export class HomeComponent implements OnInit {
   product: ProductsData = {
     name: "Utpal Kumar Das"
   };
-  constructor(public router: Router, public productService: ProductService, private appService: appService) { }
+  constructor(private router: Router, public productService: ProductService, private appService: appService) {
+    this.getWholeSellers();
+    this.getBanners();
+    this.dealOfDay();
+    this.getJewel();
+    this.getCloth();
+    this.getEcom();
+  }
   showAllProducts = true;
   showVegetablesScreen = false;
   showFruitScreen = false;
@@ -103,11 +111,28 @@ export class HomeComponent implements OnInit {
   bannerData = [];
   offerBan = [];
   dummyBan = [];
+  bannersTotalData = [];
   getBanners() {
     this.appService.getBanners().subscribe(res => {
-      this.bannerData = res.json().result[0].banner_details;
-      this.offerBan = res.json().result[6].banner_details;
-      this.dummyBan = res.json().result[7].banner_details[0].website_banner;
+      this.bannersTotalData = res.json().result;
+      for (var i = 0; i < this.bannersTotalData.length; i++) {
+        if (this.bannersTotalData[i].banner_position === 'Main Banners') {
+          this.bannerData = this.bannersTotalData[i].banner_details;
+        } else if (this.bannersTotalData[i].banner_position === 'Feature brands') {
+          this.offerBan = this.bannersTotalData[i].banner_details;
+        } else if (this.bannersTotalData[i].banner_position === "Dummy Banner") {
+          this.dummyBan = this.bannersTotalData[i].banner_details[0].website_banner;
+        }
+      }
+
+
+
+      // if (res.json().result[6] !== undefined) {
+      //     this.offerBan = res.json().result[6].banner_details;
+      // }
+      // if (res.json().result[7] !== undefined) {
+      //     this.dummyBan = res.json().result[7].banner_details[0].website_banner;
+      // }
       console.log(this.dummyBan);
     })
   }
@@ -174,7 +199,7 @@ export class HomeComponent implements OnInit {
           this.clothData[i].sku_details[j].product_name = this.clothData[i].product_name;
           this.clothData[i].sku_details[j].product_id = this.clothData[i].product_id;
           this.clothsku = this.clothData[i].sku_details[j];
-          this.clothArr.push(this.topsku);
+          this.clothArr.push(this.clothsku);
         }
 
       }
@@ -201,4 +226,32 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  addtoCart(Id, skId) {
+    var inData = {
+      "products": [{
+        product_id: Id,
+        sku_id: skId
+      }],
+      "user_id": JSON.parse(localStorage.getItem('userId')),
+      "item_type": "ecommerce"
+    }
+    this.appService.addtoCart(inData).subscribe(res => {
+      this.getCart();
+      this.cartDetails = res.json().selling_price_total;
+      this.cartCount = res.json().count;
+      swal(res.json().message, "", "success");
+    }, err => {
+
+    })
+  }
+  getCart() {
+    var inData = localStorage.getItem('userId');
+    this.appService.getCart(inData).subscribe(res => {
+      this.cartDetails = res.json().cart_details;
+      this.cartCount = res.json().count;
+    }, err => {
+
+    })
+  }
+
 }

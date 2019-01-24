@@ -49,7 +49,37 @@ export class MycartComponent implements OnInit {
     this.addresses = false;
 
   }
+  billing;
+  getCart() {
+    var inData = localStorage.getItem('userId');
+    this.appService.getCart(inData).subscribe(res => {
+      this.cartDetails = res.json().cart_details;
+      this.cartCount = res.json().count;
+      this.billing = res.json().selling_Price_bill;
+    }, err => {
 
+    })
+  }
+  cartDetails
+  cartCount;
+  addtoCart(Id, skId) {
+    var inData = {
+      "products": [{
+        product_id: Id,
+        sku_id: skId
+      }],
+      "vendor_id": JSON.parse(localStorage.getItem('userId')),
+      "item_type": "ecommerce"
+    }
+    this.appService.addtoCart(inData).subscribe(res => {
+      this.getCart();
+      this.cartDetails = res.json().selling_price_total;
+      this.cartCount = res.json().count;
+      swal(res.json().message, "", "success");
+    }, err => {
+
+    })
+  }
   //showPayment
   showPayment() {
     this.showPaymentMethode = !this.showPaymentMethode;

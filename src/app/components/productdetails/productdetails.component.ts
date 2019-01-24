@@ -101,24 +101,24 @@ export class ProductdetailsComponent implements OnInit {
       }
     }
   }
-  addtoCart(id) {
+  addtoCart(Id, skId) {
     var inData = {
       "products": [{
-        product_id: id,
-        sku_id: this.skid
+        product_id: Id,
+        sku_id: skId
       }],
       "user_id": JSON.parse(localStorage.getItem('userId')),
       "item_type": "ecommerce"
     }
     this.appService.addtoCart(inData).subscribe(res => {
       this.getCart();
+      this.cartDetails = res.json().selling_price_total;
+      this.cartCount = res.json().count;
       swal(res.json().message, "", "success");
     }, err => {
 
     })
   }
-  cartDetails = [];
-  cartCount = [];
   getCart() {
     var inData = localStorage.getItem('userId');
     this.appService.getCart(inData).subscribe(res => {
@@ -128,6 +128,7 @@ export class ProductdetailsComponent implements OnInit {
 
     })
   }
+
   showProduxtDetails(prodId) {
     this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
   }

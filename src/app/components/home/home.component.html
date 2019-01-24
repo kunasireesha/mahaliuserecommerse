@@ -1,3 +1,4 @@
+<app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <main role="main">
 
 	<!--Carousel Wrapper-->
@@ -44,6 +45,7 @@
 </main>
 <br />
 <!-- delas -->
+
 <div class="container-fluid deals-header">
 	<div class="row justify-content-center">
 		<div class="col-lg-4">
@@ -53,6 +55,7 @@
 				</span>
 			</h4>
 		</div>
+
 	</div>
 	<hr>
 </div>
@@ -80,11 +83,8 @@
 						</div>
 					</div>
 					<ul class="expand-button">
-						<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
 						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a href="#"><i class="fas fa-heart"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -331,11 +331,8 @@
 						</div>
 					</div>
 					<ul class="expand-button">
-						<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
 						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a href="#"><i class="fas fa-heart"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -549,7 +546,11 @@
 				<div class="wrapper">
 					<div class="card">
 						<div class="bg-image">
-							<img class="img-fluid" [src]="cloth.image" alt="Card image cap" (click)="showProduxtDetails(cloth.product_id)">
+							<img class="img-fluid" *ngIf="cloth.image==undefined || cloth.image==''" src="assets/images/prod-dummy.png" alt="Card image cap"
+							 (click)="showProduxtDetails(cloth.product_id)">
+
+							<img class="img-fluid" *ngIf="cloth.image!==undefined || cloth.image!==''" [src]="cloth.image" alt="Card image cap"
+							 (click)="showProduxtDetails(cloth.product_id)">
 						</div>
 						<div class="card-block">
 							<h5 class="text-center">{{cloth.product_name}}
@@ -563,11 +564,8 @@
 						</div>
 					</div>
 					<ul class="expand-button">
-						<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
 						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a href="#"><i class="fas fa-heart"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -680,11 +678,8 @@
 						</div>
 					</div>
 					<ul class="expand-button">
-						<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(jewel.product_id,jewel.skid)"></i></a></li>
 						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a href="#"><i class="fas fa-heart"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -920,11 +915,8 @@
 						</div>
 					</div>
 					<ul class="expand-button">
-						<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
 						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a href="#"><i class="fas fa-heart"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -1002,7 +994,12 @@
 <div class="container-fluid deals-header">
 	<div class="row justify-content-center">
 		<div class="col-lg-4">
-			<h4 class="text-center">Recommended Products</h4>
+			<h4 class="text-center">Recommended Products
+				<span>
+					<a (click)="seeAll('recent')">See all</a>
+				</span>
+
+			</h4>
 		</div>
 	</div>
 	<hr>
@@ -1018,58 +1015,32 @@
 
 		<!--First slide-->
 		<div class="carousel-item active">
-			<div class="noData">
+			<!-- <div class="noData">
 				No records Found
-			</div>
-			<!-- 
-			<div class="col-md-6">
-				<div class="card">
-					<div class="row">
-						<div class="col-md-6">
-							<img class="img-fluid" src="assets/images/21.jpg" alt="Card image cap">
-						</div>
-						<div class="card-block col-md-6 recmded">
-							<h5 class="">Silver Ring
+			</div> -->
+			<div class="col-md-3" *ngFor="let data of ecomArr">
+				<div class="wrapper">
+					<div class="card">
+						<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+						<div class="card-block">
+							<h5 class="text-center">{{data.product_name}}
 							</h5>
-							<p class="">
-								Jewellery</p> -->
-			<!-- <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">
-					<i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
-				  </a> -->
-			<!-- <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
-							<br />
-							<a href>View Product&nbsp;
-								<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-							</a>
+							<p class="text-center">
+								BD {{data.selling_price}}
+
+								<strike>BD {{data.actual_price}}
+								</strike>
+
+							</p>
+
 						</div>
 					</div>
-
+					<ul class="expand-button">
+						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+						<li><a href="#"><img src="assets/images/maximize.png"></a></li>
+					</ul>
 				</div>
-			</div> -->
-
-			<!-- <div class="col-md-6 hidden-sm-down">
-				<div class="card">
-					<div class="row">
-						<div class="col-md-6">
-							<img class="img-fluid" src="assets/images/22.jpg" alt="Card image cap">
-						</div>
-						<div class="card-block col-md-6 recmded">
-							<div class="card-block">
-								<h5 class="">Men's Belt</h5>
-								<p class="">
-									clothing & Accessories
-								</p>
-								<i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
-								<br />
-								<a href>View Product&nbsp;
-									<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> -->
-
+			</div>
 
 
 
