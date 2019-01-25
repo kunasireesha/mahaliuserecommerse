@@ -167,7 +167,6 @@ export class MycartComponent implements OnInit {
     window.scrollTo(0, 0);
     this.addId = Id;
     this.selectAdd();
-
   }
   // show shipment type
   shipmentType() {
@@ -204,15 +203,12 @@ export class MycartComponent implements OnInit {
       "payment_type": this.payId,
       "user_id": localStorage.getItem('userId'),
       "item_type": "ecommerce",
-
     }
-
     this.appService.palceOrder(inData).subscribe(res => {
       this.ordData = res.json().Order[0].order_id;
       swal(res.json().message, "", "success");
       this.router.navigate(['/Orderplaced'], { queryParams: { orderId: this.ordData } });
     }, err => {
-
     })
   }
   payOptions = [];
