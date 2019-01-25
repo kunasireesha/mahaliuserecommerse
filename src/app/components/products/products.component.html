@@ -157,11 +157,11 @@
 							</div>
 						</div>
 						<ul class="expand-button">
-							<li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
-							<li><a href="#"><img src="assets/images/maximize.png"></a></li>
+							<li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+							<li><a><img src="assets/images/maximize.png"></a></li>
 						</ul>
 						<ul class="expand-button2 expand-button-2">
-							<li><a href="#"><i class="fas fa-heart"></i></a></li>
+							<li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
 						</ul>
 					</div>
 				</div>

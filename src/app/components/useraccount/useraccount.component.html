@@ -1,3 +1,4 @@
+<app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <div class="container list-items">
 	<div class="row">
 		<div class="col-lg-3">
@@ -397,7 +398,7 @@
 						<td>
 							<div class="row align-items-center">
 								<div class="col-md-4">
-									<img src="assets/images/k2.jpg" class="prod-images" alt="gdksha">
+									<img [src]="wish.image" class="prod-images" alt="gdksha">
 								</div>
 								<div class="col-md-8 prod-details">
 									<p class="mobile-manu">
@@ -416,13 +417,13 @@
 						<td class="pt-5">
 							<div class="prod-details">
 								<span>
-									<strong>{{wish.deal_price}}</strong>
+									<strong>{{wish.offer_price}}</strong>
 								</span>
 							</div>
 						</td>
 						<td>
 							<i class="fa fa-times-circle-o" aria-hidden="true" style="float:right" (click)="delWish(wish.wishlist_id)"></i>
-							<button type="button" class="btn cart-btn">Add To cart</button>
+							<button type="button" class="btn cart-btn" (click)="addtoCart(data.product_id,data.skid)">Add To cart</button>
 						</td>
 					</tr>
 					<!-- <tr>

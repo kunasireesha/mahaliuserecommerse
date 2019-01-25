@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./useraccount.component.less']
 })
 export class UseraccountComponent implements OnInit {
-
+    product;
     constructor(
         private route: ActivatedRoute, public appService: appService, private formBuilder: FormBuilder, private router: Router) {
         this.page = this.route.snapshot.data[0]['page'];
@@ -721,6 +721,35 @@ export class UseraccountComponent implements OnInit {
                 this.getWish();
                 swal(res.json().message, "", "success");
             }
+
+        })
+    }
+    cartDetails = [];
+    cartCount;
+    addtoCart(Id, skId) {
+        var inData = {
+            "products": [{
+                product_id: Id,
+                sku_id: skId
+            }],
+            "user_id": JSON.parse(localStorage.getItem('userId')),
+            "item_type": "ecommerce"
+        }
+        this.appService.addtoCart(inData).subscribe(res => {
+            this.getCart();
+            this.cartDetails = res.json().selling_price_total;
+            this.cartCount = res.json().count;
+            swal(res.json().message, "", "success");
+        }, err => {
+
+        })
+    }
+    getCart() {
+        var inData = localStorage.getItem('userId');
+        this.appService.getCart(inData).subscribe(res => {
+            this.cartDetails = res.json().cart_details;
+            this.cartCount = res.json().count;
+        }, err => {
 
         })
     }
