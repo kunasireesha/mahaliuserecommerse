@@ -44,5 +44,6 @@ export const AppSettings = {
     getWish: baseUrl + "wish_list",
     delWish: baseUrl + "wish_list",
     setDelAdd: baseUrl + "delivery_address/user",
+    // modifyCart: baseUrl + "vendor/cart_details"
 }
 

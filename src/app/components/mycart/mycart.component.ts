@@ -17,6 +17,7 @@ export class MycartComponent implements OnInit {
   showDeliveryType = false;
   addresses = false;
   payment_option;
+  addId;
   constructor(public dialog: MatDialog, public appService: appService, private router: Router) { }
 
   ngOnInit() {
@@ -41,7 +42,13 @@ export class MycartComponent implements OnInit {
     this.showDeliveryType = false;
     window.scrollTo(0, 0);
   }
-
+  selectAdd() {
+    this.appService.setDelAdd(this.addId).subscribe(res => {
+      swal("Selected successfully", "", "success");
+      this.getAdd();
+      // this.getSlots();
+    })
+  }
   //add address
   //add address
   addAddress() {
@@ -151,15 +158,15 @@ export class MycartComponent implements OnInit {
     })
   }
   //showPayment
-  showPayment(addId) {
+  showPayment(Id) {
+    alert(Id);
     this.showPaymentMethode = !this.showPaymentMethode;
     this.showCartItems = false;
     this.showAddresses = false;
     this.showDeliveryAddress = false;
     window.scrollTo(0, 0);
-    this.addId = addId;
-
-    this.selectAdd(this.addId);
+    this.addId = Id;
+    this.selectAdd();
   }
   // show shipment type
   shipmentType() {
@@ -182,10 +189,10 @@ export class MycartComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(PromocodesComponent, dialogConfig);
   }
-  checkout() {
-    this.showCartItems = false;
-    this.showDeliveryAddress = true;
-  }
+  // checkout() {
+  //   this.showCartItems = false;
+  //   this.showDeliveryAddress = true;
+  // }
   seleOpt;
   payId;
   selePayOptn(index, Id) {
@@ -194,6 +201,7 @@ export class MycartComponent implements OnInit {
   }
   ordData = [];
   orderPlace() {
+    alert(this.addId);
     var inData = {
       "delivery_address_id": this.addId,
       "billing_amount": this.billing,
@@ -219,11 +227,5 @@ export class MycartComponent implements OnInit {
 
     })
   }
-  selectAdd() {
-    this.appService.setDelAdd(this.addId).subscribe(res => {
-      swal("Selected successfully", "", "success");
-      this.getAdd();
-      this.getSlots();
-    })
-  }
+
 }
