@@ -119,20 +119,6 @@ export class HeaderComponent implements OnInit {
   showCartItems() {
     this.showCartDetail = !this.showCartDetail;
   }
-  itemIncrease() {
-    let thisObj = this;
-
-    thisObj.item.quantity = Math.floor(thisObj.item.quantity + 1);
-
-  }
-  itemDecrease() {
-    let thisObj = this;
-    if (thisObj.item.quantity === 1) {
-      return;
-    }
-    thisObj.item.quantity = Math.floor(thisObj.item.quantity - 1);
-
-  }
   showProduxtDetails() {
     this.router.navigate(['/productdetails'], { queryParams: { order: 'popular' } });
   }
@@ -295,6 +281,58 @@ export class HeaderComponent implements OnInit {
       }
       this.cartCount = res.json().count;
       this.billing = res.json().selling_Price_bill;
+    }, err => {
+
+    })
+  }
+  itemIncrease(cartId) {
+
+    for (var i = 0; i < this.cartData.length; i++) {
+      if (this.cartData[i].cart_id === cartId) {
+        this.cartData[i].quantity = this.cartData[i].quantity + 1;
+        this.modifyCart(this.cartData[i].quantity, cartId);
+        // this.getCart();
+        return;
+      }
+    }
+  }
+
+  itemDecrease(cartId) {
+
+
+    for (var i = 0; i < this.cartData.length; i++) {
+      if (this.cartData[i].cart_id === cartId) {
+        if (this.cartData[i].quantity === 1) {
+          return;
+        } else {
+          this.cartData[i].quantity = this.cartData[i].quantity - 1;
+          this.modifyCart(this.cartData[i].quantity, cartId);
+        }
+        // this.getCart();
+        return;
+      }
+    }
+
+  }
+
+  //modify cart
+
+  modifyCart(quantity, cartId) {
+    var params = {
+      "quantity": quantity
+    }
+
+    this.appService.modifyCart(params, cartId).subscribe(resp => {
+      if (resp.json().status === 200) {
+        swal(resp.json().message, "", "success");
+        jQuery("#signupmodal").modal("hide");
+        // this.showRegistration = false;
+        // localStorage.setItem('userId', (resp.json().reg_id));
+        // this.myAccount = true
+        // this.showOpacity = false;
+        // this.onCloseCancel();
+        // this.router.navigate(['/address']);
+      }
     }, err => {
 
     })

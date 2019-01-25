@@ -159,7 +159,6 @@ export class MycartComponent implements OnInit {
   }
   //showPayment
   showPayment(Id) {
-    alert(Id);
     this.showPaymentMethode = !this.showPaymentMethode;
     this.showCartItems = false;
     this.showAddresses = false;
@@ -167,6 +166,7 @@ export class MycartComponent implements OnInit {
     window.scrollTo(0, 0);
     this.addId = Id;
     this.selectAdd();
+
   }
   // show shipment type
   shipmentType() {
@@ -189,10 +189,6 @@ export class MycartComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(PromocodesComponent, dialogConfig);
   }
-  // checkout() {
-  //   this.showCartItems = false;
-  //   this.showDeliveryAddress = true;
-  // }
   seleOpt;
   payId;
   selePayOptn(index, Id) {
@@ -227,5 +223,63 @@ export class MycartComponent implements OnInit {
 
     })
   }
+  selectAdd() {
+    this.appService.setDelAdd(this.addId).subscribe(res => {
+      swal("Selected successfully", "", "success");
+      this.getAdd();
+      // this.getSlots();
+    })
+  }
+  itemIncrease(cartId) {
 
+    for (var i = 0; i < this.cartData.length; i++) {
+      if (this.cartData[i].cart_id === cartId) {
+        this.cartData[i].quantity = this.cartData[i].quantity + 1;
+        this.modifyCart(this.cartData[i].quantity, cartId);
+        // this.getCart();
+        return;
+      }
+    }
+  }
+
+  itemDecrease(cartId) {
+
+
+    for (var i = 0; i < this.cartData.length; i++) {
+      if (this.cartData[i].cart_id === cartId) {
+        if (this.cartData[i].quantity === 1) {
+          return;
+        } else {
+          this.cartData[i].quantity = this.cartData[i].quantity - 1;
+          this.modifyCart(this.cartData[i].quantity, cartId);
+        }
+        // this.getCart();
+        return;
+      }
+    }
+
+  }
+
+  //modify cart
+
+  modifyCart(quantity, cartId) {
+    var params = {
+      "quantity": quantity
+    }
+
+    this.appService.modifyCart(params, cartId).subscribe(resp => {
+      if (resp.json().status === 200) {
+        swal(resp.json().message, "", "success");
+        jQuery("#signupmodal").modal("hide");
+        // this.showRegistration = false;
+        // localStorage.setItem('userId', (resp.json().reg_id));
+        // this.myAccount = true
+        // this.showOpacity = false;
+        // this.onCloseCancel();
+        // this.router.navigate(['/address']);
+      }
+    }, err => {
+
+    })
+  }
 }
