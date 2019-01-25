@@ -17,6 +17,7 @@ export class MycartComponent implements OnInit {
   showDeliveryType = false;
   addresses = false;
   payment_option;
+  addId;
   constructor(public dialog: MatDialog, public appService: appService, private router: Router) { }
 
   ngOnInit() {
@@ -151,14 +152,13 @@ export class MycartComponent implements OnInit {
     })
   }
   //showPayment
-  showPayment(addId) {
+  showPayment(Id) {
     this.showPaymentMethode = !this.showPaymentMethode;
     this.showCartItems = false;
     this.showAddresses = false;
     this.showDeliveryAddress = false;
     window.scrollTo(0, 0);
-    this.addId = addId;
-
+    this.addId = Id;
     this.selectAdd(this.addId);
   }
   // show shipment type
@@ -182,10 +182,7 @@ export class MycartComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(PromocodesComponent, dialogConfig);
   }
-  checkout() {
-    this.showCartItems = false;
-    this.showDeliveryAddress = true;
-  }
+
   seleOpt;
   payId;
   selePayOptn(index, Id) {
@@ -219,11 +216,11 @@ export class MycartComponent implements OnInit {
 
     })
   }
-  selectAdd() {
+  selectAdd(id) {
     this.appService.setDelAdd(this.addId).subscribe(res => {
       swal("Selected successfully", "", "success");
       this.getAdd();
-      this.getSlots();
+      // this.getSlots();
     })
   }
 }
