@@ -3,7 +3,7 @@
         <div class="col-lg-3">
             <p class="bredcrum">
                 <a routerLink="/">Home</a>&nbsp;>&nbsp;My Saved List</p>
-            <ul class="saved-list">
+            <ul class="saved-list" *ngFor="let cat of ">
                 <h4 class="account-header">MY SAVED LIST</h4>
                 <h5>Category</h5>
                 <li>Vegetables & Fruits</li>
@@ -37,8 +37,10 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
@@ -46,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 ">
+                        <!-- <div class="col-md-4 ">
                             <div class="card">
                                 <div class="product-image" (click)="showProduxtDetails()">
                                     <img class="img-fluid" src="/assets/images/cherry.png" alt="Card image cap">
@@ -60,8 +62,10 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
@@ -83,18 +87,20 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
                                     <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="col-md-12 mt-3">
+                <!-- <div class="col-md-12 mt-3">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
@@ -110,8 +116,10 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
@@ -133,8 +141,10 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
@@ -156,8 +166,10 @@
                                     <div class="quantity-price text-center">
                                         <select>
                                             <option value="" disabled selected>500gms-Rs 20.40</option>
-                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                                            <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                40.80</option>
+                                            <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                40.80</option>
                                             <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
                                         </select>
                                     </div>
@@ -166,10 +178,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- slider -->
                 <div id="multi-item-example" class="carousel slide carousel-multi-item container mt-3" data-ride="carousel">
-                    <br/>
+                    <br />
                     <!--Slides-->
                     <div class="carousel-inner product-slider" role="listbox">
 
@@ -190,9 +202,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -214,9 +229,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -238,9 +256,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -268,9 +289,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -292,9 +316,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -316,9 +343,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -349,9 +379,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -373,9 +406,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
@@ -397,9 +433,12 @@
                                         <div class="quantity-price text-center">
                                             <select>
                                                 <option value="" disabled selected>500gms-Rs 20.40</option>
-                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                                                <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
+                                                <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs
+                                                    40.80</option>
                                             </select>
                                         </div>
                                         <button type="text" class="btn waves-effect waves-light">Add To Cart</button>

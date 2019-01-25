@@ -388,8 +388,8 @@
 				<thead>
 					<tr class="table-headers wishlist-items">
 						<th scope="col" width="40%">Item Name</th>
-						<th scope="col" width="20%">Stock Status</th>
 						<th scope="col" width="15%">Price</th>
+						<th scope="col" width="20%">Stock Status</th>
 						<th scope="col" width="25%">Add To Cart</th>
 					</tr>
 				</thead>
@@ -412,14 +412,14 @@
 							</div>
 						</td>
 						<td class="pt-5">
-							In Stock
-						</td>
-						<td class="pt-5">
 							<div class="prod-details">
 								<span>
 									<strong>{{wish.offer_price}}</strong>
 								</span>
 							</div>
+						</td>
+						<td class="pt-5">
+							In Stock
 						</td>
 						<td>
 							<i class="fa fa-times-circle-o" aria-hidden="true" style="float:right" (click)="delWish(wish.wishlist_id)"></i>

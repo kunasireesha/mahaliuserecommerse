@@ -139,6 +139,7 @@ export class HeaderComponent implements OnInit {
     this.phone = false;
     this.router.navigate(['/'])
   }
+  // BAYATA VALLU UNTEY
   get f() { return this.registerForm.controls; }
   registration(form: FormGroup) {
     this.submitted = true;
@@ -260,6 +261,7 @@ export class HeaderComponent implements OnInit {
   }
   showProbySubCat(SubCatId, action, catName, subCat) {
     this.showSubCats = false;
+    jQuery("#itemdesc").modal("hide");
     this.router.navigate(['/products'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
   }
   cartDetails = [];
@@ -291,7 +293,7 @@ export class HeaderComponent implements OnInit {
       if (this.cartData[i].cart_id === cartId) {
         this.cartData[i].quantity = this.cartData[i].quantity + 1;
         this.modifyCart(this.cartData[i].quantity, cartId);
-        // this.getCart();
+        this.getCart();
         return;
       }
     }
@@ -308,7 +310,7 @@ export class HeaderComponent implements OnInit {
           this.cartData[i].quantity = this.cartData[i].quantity - 1;
           this.modifyCart(this.cartData[i].quantity, cartId);
         }
-        // this.getCart();
+        this.getCart();
         return;
       }
     }

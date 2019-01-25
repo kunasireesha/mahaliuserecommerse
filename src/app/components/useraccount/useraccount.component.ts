@@ -61,6 +61,7 @@ export class UseraccountComponent implements OnInit {
         // this.editAddForm = this.formBuilder.group({
         //     full_name:['', Validators.required]
         // })
+        this.getProfile();
     }
 
     page;
@@ -707,6 +708,7 @@ export class UseraccountComponent implements OnInit {
                 for (var i = 0; i < this.wishData.length; i++) {
                     this.wishData[i].sku_details.wishlist_id = this.wishData[i].wishlist_id;
                     this.wishData[i].sku_details.product_name = this.wishData[i].product_details[0].product_name;
+                    this.wishData[i].sku_details.product_id = this.wishData[i].product_id;
                     this.wishArr.push(this.wishData[i].sku_details);
                 }
             }

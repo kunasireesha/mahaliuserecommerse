@@ -31,10 +31,10 @@
 						<hr class="cust-hr" />
 						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
 						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/addProduct">{{"common.myOrders"|translate}}
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myOrders"|translate}}
 						</a>
 						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.changePassword"|translate}}
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/changePwd">{{"common.changePassword"|translate}}
 						</a>
 						<hr class="cust-hr" />
 						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myAddress"|translate}}
@@ -147,10 +147,10 @@
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/addProduct">{{"common.myOrders"|translate}}
 					</a>
 					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.changePassword"|translate}}
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/changePwd">{{"common.changePassword"|translate}}
 					</a>
 					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myAddress"|translate}}
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/deliveryaddr">{{"common.myAddress"|translate}}
 					</a>
 					<hr class="cust-hr" />
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius href="#" (click)="signOut()">{{"common.signout"|translate}}</a>
@@ -361,7 +361,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<form [formGroup]="loginForm" (ngSubmit)="login()">
+						<form [formGroup]="loginForm">
 							<div class="form-group cust-frmgrp1 row">
 								<label class="col-sm-5 col-md-5 col-form-label">Email Id
 									<span class="float-right">:</span>
@@ -394,7 +394,7 @@
 
 									<div class="form-group cust-frmgrp">
 										<div class="col-sm-12">
-											<button type="submit" class="btn btn-danger cust-logbtn">login</button>
+											<button type="submit" class="btn btn-danger cust-logbtn" (click)="login()" data-dismiss="modal">login</button>
 										</div>
 									</div>
 								</div>
@@ -435,7 +435,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<form [formGroup]="registerForm" (ngSubmit)="registration()">
+						<form [formGroup]="registerForm">
 							<div class="form-group cust-frmgrp1 row">
 								<label class="col-sm-5 col-md-5 col-form-label">First Name
 									<span class="float-right">:</span>
@@ -493,7 +493,7 @@
 									</div>
 									<div class="form-group cust-frmgrp">
 										<div class="col-sm-12">
-											<button class="btn btn-danger cust-logbtn">Submit</button>
+											<button class="btn btn-danger cust-logbtn" (click)="registration()" data-dismiss="modal">Submit</button>
 										</div>
 									</div>
 								</div>
@@ -654,7 +654,6 @@
 <div class="modal fade cat-model" id="itemdesc" tabindex="-1" role="dialog" aria-labelledby="itemdescLabel" aria-hidden="true">
 	<div class="modal-dialog category-popup" role="document">
 		<div class="modal-content cust-subcarcont">
-
 			<div class="modal-body">
 				<div class="cat-drop" role="menu">
 					<h5 class="text-center">Categories</h5>
@@ -669,7 +668,7 @@
 											<!-- <h6>ladies finger</h6> -->
 											<li>
 												<i class="fas fa-angle-left sub-cat"></i>
-												<a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)">{{sub.sub_category_name}}</a>
+												<a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)" data-dismiss="modal">{{sub.sub_category_name}}</a>
 											</li>
 										</ul>
 									</div>

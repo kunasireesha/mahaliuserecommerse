@@ -4,6 +4,7 @@ import { ItemsComponent } from '../../components/items/items.component';
 import { PromocodesComponent } from '../../components/promocodes/promocodes.component';
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { Router } from '@angular/router';
+declare var jQuery: any;
 @Component({
   selector: 'app-mycart',
   templateUrl: './mycart.component.html',
@@ -197,13 +198,12 @@ export class MycartComponent implements OnInit {
   }
   ordData = [];
   orderPlace() {
-    alert(this.addId);
     var inData = {
       "delivery_address_id": this.addId,
       "billing_amount": this.billing,
       "payment_type": this.payId,
       "user_id": localStorage.getItem('userId'),
-      "item_type": "grocery",
+      "item_type": "ecommerce",
 
     }
 
@@ -223,20 +223,13 @@ export class MycartComponent implements OnInit {
 
     })
   }
-  selectAdd() {
-    this.appService.setDelAdd(this.addId).subscribe(res => {
-      swal("Selected successfully", "", "success");
-      this.getAdd();
-      // this.getSlots();
-    })
-  }
-  itemIncrease(cartId) {
 
+  itemIncrease(cartId) {
     for (var i = 0; i < this.cartData.length; i++) {
       if (this.cartData[i].cart_id === cartId) {
         this.cartData[i].quantity = this.cartData[i].quantity + 1;
         this.modifyCart(this.cartData[i].quantity, cartId);
-        // this.getCart();
+        this.getCart();
         return;
       }
     }
@@ -253,7 +246,7 @@ export class MycartComponent implements OnInit {
           this.cartData[i].quantity = this.cartData[i].quantity - 1;
           this.modifyCart(this.cartData[i].quantity, cartId);
         }
-        // this.getCart();
+        this.getCart();
         return;
       }
     }
@@ -269,7 +262,7 @@ export class MycartComponent implements OnInit {
 
     this.appService.modifyCart(params, cartId).subscribe(resp => {
       if (resp.json().status === 200) {
-        swal(resp.json().message, "", "success");
+        // swal(resp.json().message, "", "success");
         jQuery("#signupmodal").modal("hide");
         // this.showRegistration = false;
         // localStorage.setItem('userId', (resp.json().reg_id));

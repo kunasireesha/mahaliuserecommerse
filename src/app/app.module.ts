@@ -103,6 +103,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 			{ path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
 			{ path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
 			{ path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
+			{ path: 'deliveryaddr', component: UseraccountComponent, data: [{ page: 'deliveryaddr' }] }
+
 		], { useHash: true })
 	],
 	schemas: [NO_ERRORS_SCHEMA],
