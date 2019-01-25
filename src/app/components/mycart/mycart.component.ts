@@ -258,7 +258,7 @@ export class MycartComponent implements OnInit {
 
     this.appService.modifyCart(params, cartId).subscribe(resp => {
       if (resp.json().status === 200) {
-        // swal(resp.json().message, "", "success");
+        swal(resp.json().message, "", "success");
         jQuery("#signupmodal").modal("hide");
         // this.showRegistration = false;
         // localStorage.setItem('userId', (resp.json().reg_id));
