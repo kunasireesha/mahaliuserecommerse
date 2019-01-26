@@ -1,3 +1,4 @@
+
 import { appService } from './services/mahaliServices/mahali.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -98,7 +99,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			{ path: 'myaccount', component: UseraccountComponent, data: [{ page: 'profile' }] },
 			{ path: 'wishlistAccount', component: UseraccountComponent, data: [{ page: 'wishlist' }] },
 			{ path: 'myorders', component: UseraccountComponent, data: [{ page: 'orders' }] },
-			{ path: 'changePw', component: UseraccountComponent, data: [{ page: 'changePw' }] },
+			{ path: 'changePwd', component: UseraccountComponent, data: [{ page: 'changePw' }] },
 			{ path: 'mysavedlist', component: MysavedlistComponent, data: [{ page: 'Mysavedlist' }] },
 			{ path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
 			{ path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },

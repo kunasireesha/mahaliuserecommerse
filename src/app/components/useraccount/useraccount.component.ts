@@ -19,15 +19,22 @@ export class UseraccountComponent implements OnInit {
             this.getProfile();
         } else if (this.page === 'myproduct') {
             this.showMyProducts = true;
+            this.showProfile =false;
         } else if (this.page === 'addProduct') {
             this.showAddProducts = true;
+            this.showProfile =false;
             this.addProducts();
         }
         else if (this.page === 'orders') {
             this.showMyOrders = true;
+            this.showProfile =false;
             this.getOrders();
         } else if (this.page === 'changePw') {
             this.showChangePassword = true;
+            this.showProfile =false;
+        }else if(this.page==='deliveryaddr'){
+            this.showDeliveryAddress=true;
+            this.showProfile =false;
         }
 
     }
