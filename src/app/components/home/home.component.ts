@@ -264,7 +264,7 @@ export class HomeComponent implements OnInit {
       "user_id": JSON.parse(localStorage.userId),
       "product_id": Id,
       "sku_id": skId,
-      "item_type": "grocery"
+      "item_type": "ecommerce"
     }
     this.appService.addToWish(inData).subscribe(res => {
       console.log(res.json());

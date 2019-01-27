@@ -34,7 +34,7 @@ export const AppSettings = {
     getCloth: baseUrl + "products/cloths",
     ProductById: baseUrl + "products/product_id",
     ecomProducts: baseUrl + "products/e_commerce",
-    getPlaceOrd: baseUrl + "place_order/vendor_orders/ecommerce/vendor_id",
+    getPlaceOrd: baseUrl + "place_order/user_orders/ecom_products",
     ordById: baseUrl + "place_order/order_products",
     reqProducts: baseUrl + "place_order/request_products/vendor",
     updateProd: baseUrl + "place_order/pricing",

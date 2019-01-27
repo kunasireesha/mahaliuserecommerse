@@ -197,6 +197,10 @@ export class MycartComponent implements OnInit {
   }
   ordData = [];
   orderPlace() {
+    if (localStorage.userId === undefined) {
+      swal('Please Login', '', 'warning');
+      return;
+    }
     var inData = {
       "delivery_address_id": this.addId,
       "billing_amount": this.billing,
@@ -205,9 +209,13 @@ export class MycartComponent implements OnInit {
       "item_type": "ecommerce",
     }
     this.appService.palceOrder(inData).subscribe(res => {
+      if(res.json().message==="Success"){
       this.ordData = res.json().Order[0].order_id;
       swal(res.json().message, "", "success");
       this.router.navigate(['/Orderplaced'], { queryParams: { orderId: this.ordData } });
+      }else {
+        swal("Please Login", "", "warning");
+    }
     }, err => {
     })
   }
@@ -232,11 +240,10 @@ export class MycartComponent implements OnInit {
   }
 
   itemDecrease(cartId) {
-
-
     for (var i = 0; i < this.cartData.length; i++) {
       if (this.cartData[i].cart_id === cartId) {
         if (this.cartData[i].quantity === 1) {
+          this.delCart(cartId);
           return;
         } else {
           this.cartData[i].quantity = this.cartData[i].quantity - 1;

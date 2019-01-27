@@ -68,8 +68,11 @@ export class ProductdetailsComponent implements OnInit {
   actual_price;
   product_image;
   prodImages = [];
+  productData=[];
+  product_id:any;
   getProductById() {
     this.appService.getProductById(this.prodId).subscribe(res => {
+      this.productData = res.json().products;
       this.prodsData = res.json().products.sku_details;
       for (var j = 0; j < this.prodsData.length; j++) {
         for (var k = 0; k < this.prodsData[j].images.length; k++) {
@@ -84,6 +87,8 @@ export class ProductdetailsComponent implements OnInit {
       this.skid = this.prodData[0].skid;
       this.prodName = res.json().products.product_name;
       this.description = this.prodData[0].description;
+      this.skid = this.prodData[0].skid;
+      this.product_id = this.productData.product_id;
     }, err => {
 
     })

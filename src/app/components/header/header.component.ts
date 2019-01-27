@@ -305,6 +305,7 @@ export class HeaderComponent implements OnInit {
     for (var i = 0; i < this.cartData.length; i++) {
       if (this.cartData[i].cart_id === cartId) {
         if (this.cartData[i].quantity === 1) {
+          this.delCart(cartId);
           return;
         } else {
           this.cartData[i].quantity = this.cartData[i].quantity - 1;

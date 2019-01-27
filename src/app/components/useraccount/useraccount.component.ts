@@ -35,6 +35,13 @@ export class UseraccountComponent implements OnInit {
         }else if(this.page==='deliveryaddr'){
             this.showDeliveryAddress=true;
             this.showProfile =false;
+        }else if(this.page==='notifications'){
+            this.showNotifications=true;
+            this.showProfile =false;
+        }else if(this.page==='wishlist'){
+            this.showWishlist=true;
+            this.showProfile =false;
+            this.getWish();
         }
 
     }
@@ -69,6 +76,9 @@ export class UseraccountComponent implements OnInit {
         //     full_name:['', Validators.required]
         // })
         this.getProfile();
+        this.dealOfDay();
+        this.getCloth();
+        this.getJewel();
     }
 
     page;
@@ -235,22 +245,22 @@ export class UseraccountComponent implements OnInit {
         this.getOrders();
     }
 
-    // notifications() {
-    //     this.showNotifications = true;
-    //     this.showOrderDetails = false;
-    //     this.showMyOrders = false;
-    //     this.showChangePassword = false;
-    //     this.showWishlist = false;
-    //     this.showAddAddress = false;
-    //     this.showDeliveryAddress = false;
-    //     this.editUserProfile = false;
-    //     this.showProfile = false;
-    //     this.showAccountDetails=false;
-    //     this.editAccount = false;
-    //     this.showAddProducts=false;
-    //     this.showAddProducts5=false;
-    //     this.showOfferZone = false;
-    // }
+    notifications() {
+        this.showNotifications = true;
+        this.showOrderDetails = false;
+        this.showMyOrders = false;
+        this.showChangePassword = false;
+        this.showWishlist = false;
+        this.showAddAddress = false;
+        this.showDeliveryAddress = false;
+        this.editUserProfile = false;
+        this.showProfile = false;
+        this.showAccountDetails=false;
+        this.editAccount = false;
+        this.showAddProducts=false;
+        this.showAddProducts5=false;
+        this.showOfferZone = false;
+    }
 
     showOrderDetailsEcom(ordId) {
         this.showNotifications = false;
@@ -387,6 +397,7 @@ export class UseraccountComponent implements OnInit {
         this.showMyProducts = false;
         this.showEditAddress = false;
         this.showManageUserOrders = false;
+        this.showChangePassword = false;
     }
     myProducts() {
         this.showNotifications = false;
@@ -448,9 +459,9 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = true;
         this.editAdd(addId);
     }
-    showVendorOrderDetails() {
+    showBukedOrderDetails(ordId) {
         this.showNotifications = false;
-        this.showOrderDetails = false;
+        this.showOrderDetails = true;
         this.showMyOrders = false;
         this.showMyProducts = false;
         this.showWishlist = false;
@@ -461,12 +472,13 @@ export class UseraccountComponent implements OnInit {
         this.showOfferZone = false;
         this.showAddProducts = false;
         this.showAddProducts5 = false;
-        this.showManageUserOrders = true;
+        this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
         this.showEditAddress = false;
-    }
+        this.ordDetails(ordId);
+      }
     email;
     profileData;
     ordId;
@@ -753,6 +765,21 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
+    addtoWish(Id, skId) {
+        var inData = {
+          "user_id": JSON.parse(localStorage.userId),
+          "product_id": Id,
+          "sku_id": skId,
+          "item_type": "ecommerce"
+        }
+        this.appService.addToWish(inData).subscribe(res => {
+          console.log(res.json());
+          swal(res.json().message, "", "success");
+        //   this.getWish();
+        }, err => {
+    
+        })
+      }
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
@@ -762,5 +789,69 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
+    dealData = [];
+    skuData = [];
+    skuArr = [];
+    prodName;
+    topOfrs = [];
+    topsku = [];
+    topArr = [];
+    dealOfDay() {
+        this.skuArr=[];
+      this.appService.dealOfDay().subscribe(res => {
+        this.dealData = res.json().data.deals_of_the_day;
+        this.topOfrs = res.json().data.top_offers;
+        for (var i = 0; i < this.dealData.length; i++) {
+          // this.prodName = this.dealData[i].product_name;
+          for (var j = 0; j < this.dealData[i].sku_details.length; j++) {
+            this.dealData[i].sku_details[j].product_name = this.dealData[i].product_name;
+            this.dealData[i].sku_details[j].product_id = this.dealData[i].product_id;
+            this.skuData = this.dealData[i].sku_details[j];
+            this.skuArr.push(this.skuData);
+          }
+        }
+       
+      })
+    }
+    clothData = [];
+  clothsku = [];
+  clothArr = [];
+  getCloth() {
+      this.clothArr=[];
+    this.appService.getCloth().subscribe(res => {
+      this.clothData = res.json().data;
+      for (var i = 0; i < this.clothData.length; i++) {
+        // this.prodName = this.dealData[i].product_name;
+        for (var j = 0; j < this.clothData[i].sku_details.length; j++) {
+          this.clothData[i].sku_details[j].product_name = this.clothData[i].product_name;
+          this.clothData[i].sku_details[j].product_id = this.clothData[i].product_id;
+          this.clothsku = this.clothData[i].sku_details[j];
+          this.clothArr.push(this.clothsku);
+        }
 
+      }
+    })
+  }
+  jewelData = [];
+  jewelArr = [];
+  jewlsku = [];
+  getJewel() {
+      this.jewelArr=[];
+    this.appService.getJewel().subscribe(res => {
+      this.jewelData = res.json().data;
+      for (var i = 0; i < this.jewelData.length; i++) {
+        // this.prodName = this.dealData[i].product_name;
+        for (var j = 0; j < this.jewelData[i].sku_details.length; j++) {
+          this.jewelData[i].sku_details[j].product_name = this.jewelData[i].product_name;
+          this.jewelData[i].sku_details[j].product_id = this.jewelData[i].product_id;
+          this.jewlsku = this.jewelData[i].sku_details[j];
+          this.jewelArr.push(this.jewlsku);
+        }
+
+      }
+    })
+  }
+  showProduxtDetails(prodId) {
+    this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
+  }
 }
