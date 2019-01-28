@@ -229,6 +229,10 @@ export class HomeComponent implements OnInit {
   cartDetails = [];
   cartCount;
   addtoCart(Id, skId) {
+    if (localStorage.userId === undefined) {
+      swal('Please Login', '', 'warning');
+      return;
+    }
     var inData = {
       "products": [{
         product_id: Id,
@@ -260,7 +264,7 @@ export class HomeComponent implements OnInit {
       "user_id": JSON.parse(localStorage.userId),
       "product_id": Id,
       "sku_id": skId,
-      "item_type": "grocery"
+      "item_type": "ecommerce"
     }
     this.appService.addToWish(inData).subscribe(res => {
       console.log(res.json());

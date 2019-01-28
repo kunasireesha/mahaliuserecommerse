@@ -23,21 +23,27 @@
 						<span class="caret"></span>
 					</a>
 					<div *dropdownMenu class="dropdown-menu dropdown dropdown-primary cust-menu" role="menu">
-						<a class="waves-light" mdbRippleRadius href="http://fansadda.mobi/mahalivendorecom/#/">{{"common.eCommerce"|translate}}
+						<a class="waves-light" mdbRippleRadius href="http://fansadda.mobi/mahaliusergrocery/#/">{{"common.eCommerce"|translate}}
 						</a>
 						<!-- <hr class="cust-hr" />
 						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myaccount">{{"common.myProfile"|translate}}
 						</a> -->
 						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
-						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/addProduct">{{"common.myOrders"|translate}}
+						<!-- <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
+						<hr class="cust-hr" /> -->
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myaccount">{{"common.myAccount"|translate}}
 						</a>
 						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.changePassword"|translate}}
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/mycart">{{"common.myCart"|translate}}
 						</a>
 						<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myAddress"|translate}}
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myOrder"|translate}}
+						</a>
+						<hr class="cust-hr" />
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/wishlistAccount">{{"common.wishlist"|translate}}
+						</a>
+						<hr class="cust-hr" />
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.notifications"|translate}}
 						</a>
 						<hr class="cust-hr" />
 						<a class="waves-light" data-dismiss="modal" mdbRippleRadius href="#" (click)="signOut()">{{"common.signout"|translate}}</a>
@@ -136,22 +142,28 @@
 			<div class="modal-body">
 				<div id="triangle-up"></div>
 				<div>
-					<a class="waves-light" mdbRippleRadius href="http://fansadda.mobi/mahalivendorecom/#/">{{"common.grocery"|translate}}
+					<a class="waves-light" mdbRippleRadius href="http://fansadda.mobi/mahaliusergrocery/#/">{{"common.grocery"|translate}}
 					</a>
 					<!-- <hr class="cust-hr" />
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myaccount">{{"common.myProfile"|translate}}
 					</a> -->
 					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
-					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/addProduct">{{"common.myOrders"|translate}}
+					<!-- <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
+					<hr class="cust-hr" /> -->
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myaccount">{{"common.myAccount"|translate}}
 					</a>
 					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.changePassword"|translate}}
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/mycart">{{"common.myCart"|translate}}
 					</a>
 					<hr class="cust-hr" />
-					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myAddress"|translate}}
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.myOrder"|translate}}
 					</a>
+					<hr class="cust-hr" />
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/wishlistAccount">{{"common.wishlist"|translate}}
+					</a>
+					<hr class="cust-hr" />
+						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.notifications"|translate}}
+						</a>
 					<hr class="cust-hr" />
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius href="#" (click)="signOut()">{{"common.signout"|translate}}</a>
 				</div>
@@ -185,11 +197,12 @@
 						</div>
 						<div class="col-md-3 col-sm-3 text-right mt-3">
 							<div class="quantity">
-								<button class="minus-btn" type="button" name="button" (click)="itemDecrease()">
+								<button class="minus-btn" type="button" name="button" (click)="itemDecrease(item.cart_id)">
 									<i class="fa fa-minus " aria-hidden="true"></i>
 								</button>
+
 								<input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
-								<button class="plus-btn" type="button" name="button" (click)="itemIncrease()">
+								<button class="plus-btn" type="button" name="button" (click)="itemIncrease(item.cart_id)">
 									<i class="fa fa-plus" aria-hidden="true"></i>
 								</button>
 							</div>
@@ -360,7 +373,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<form [formGroup]="loginForm" (ngSubmit)="login()">
+						<form [formGroup]="loginForm">
 							<div class="form-group cust-frmgrp1 row">
 								<label class="col-sm-5 col-md-5 col-form-label">Email Id
 									<span class="float-right">:</span>
@@ -393,7 +406,7 @@
 
 									<div class="form-group cust-frmgrp">
 										<div class="col-sm-12">
-											<button type="submit" class="btn btn-danger cust-logbtn">login</button>
+											<button type="submit" class="btn btn-danger cust-logbtn" (click)="login()" data-dismiss="modal">login</button>
 										</div>
 									</div>
 								</div>
@@ -434,7 +447,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<form [formGroup]="registerForm" (ngSubmit)="registration()">
+						<form [formGroup]="registerForm">
 							<div class="form-group cust-frmgrp1 row">
 								<label class="col-sm-5 col-md-5 col-form-label">First Name
 									<span class="float-right">:</span>
@@ -492,7 +505,7 @@
 									</div>
 									<div class="form-group cust-frmgrp">
 										<div class="col-sm-12">
-											<button class="btn btn-danger cust-logbtn">Submit</button>
+											<button class="btn btn-danger cust-logbtn" (click)="registration()" data-dismiss="modal">Submit</button>
 										</div>
 									</div>
 								</div>
@@ -653,7 +666,6 @@
 <div class="modal fade cat-model" id="itemdesc" tabindex="-1" role="dialog" aria-labelledby="itemdescLabel" aria-hidden="true">
 	<div class="modal-dialog category-popup" role="document">
 		<div class="modal-content cust-subcarcont">
-
 			<div class="modal-body">
 				<div class="cat-drop" role="menu">
 					<h5 class="text-center">Categories</h5>
@@ -668,7 +680,7 @@
 											<!-- <h6>ladies finger</h6> -->
 											<li>
 												<i class="fas fa-angle-left sub-cat"></i>
-												<a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)">{{sub.sub_category_name}}</a>
+												<a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)" data-dismiss="modal">{{sub.sub_category_name}}</a>
 											</li>
 										</ul>
 									</div>

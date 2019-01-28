@@ -22,7 +22,7 @@ export const AppSettings = {
     productBySubCatId: baseUrl + "products/sub_category_id",
     searchProducts: baseUrl + 'products/search',
     addToCart: baseUrl + "vendor/cart_details",
-    getCart: baseUrl + 'vendor/cart_details/users',
+    getCart: baseUrl + 'vendor/cart_details/users/ecom',
     delCart: baseUrl + 'vendor/cart_details/users',
     paymentType: baseUrl + "payment_options",
     palceOrder: baseUrl + "place_order/user_orders",
@@ -34,7 +34,7 @@ export const AppSettings = {
     getCloth: baseUrl + "products/cloths",
     ProductById: baseUrl + "products/product_id",
     ecomProducts: baseUrl + "products/e_commerce",
-    getPlaceOrd: baseUrl + "place_order/vendor_orders/ecommerce/vendor_id",
+    getPlaceOrd: baseUrl + "place_order/user_orders/ecom_products",
     ordById: baseUrl + "place_order/order_products",
     reqProducts: baseUrl + "place_order/request_products/vendor",
     updateProd: baseUrl + "place_order/pricing",
@@ -44,5 +44,6 @@ export const AppSettings = {
     getWish: baseUrl + "wish_list",
     delWish: baseUrl + "wish_list",
     setDelAdd: baseUrl + "delivery_address/user",
+    modifyCart: baseUrl + "vendor/cart_details"
 }
 

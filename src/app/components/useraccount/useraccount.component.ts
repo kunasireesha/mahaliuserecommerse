@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./useraccount.component.less']
 })
 export class UseraccountComponent implements OnInit {
-
+    product;
     constructor(
         private route: ActivatedRoute, public appService: appService, private formBuilder: FormBuilder, private router: Router) {
         this.page = this.route.snapshot.data[0]['page'];
@@ -19,17 +19,30 @@ export class UseraccountComponent implements OnInit {
             this.getProfile();
         } else if (this.page === 'myproduct') {
             this.showMyProducts = true;
+            this.showProfile = false;
         } else if (this.page === 'addProduct') {
             this.showAddProducts = true;
+            this.showProfile = false;
             this.addProducts();
         }
         else if (this.page === 'orders') {
             this.showMyOrders = true;
+            this.showProfile = false;
             this.getOrders();
         } else if (this.page === 'changePw') {
             this.showChangePassword = true;
+            this.showProfile = false;
+        } else if (this.page === 'deliveryaddr') {
+            this.showDeliveryAddress = true;
+            this.showProfile = false;
+        } else if (this.page === 'notifications') {
+            this.showNotifications = true;
+            this.showProfile = false;
+        } else if (this.page === 'wishlist') {
+            this.showWishlist = true;
+            this.showProfile = false;
+            this.getWish();
         }
-
     }
     addressForm: FormGroup;
     resetForm: FormGroup;
@@ -61,6 +74,10 @@ export class UseraccountComponent implements OnInit {
         // this.editAddForm = this.formBuilder.group({
         //     full_name:['', Validators.required]
         // })
+        this.getProfile();
+        this.dealOfDay();
+        this.getCloth();
+        this.getJewel();
     }
 
     page;
@@ -227,22 +244,22 @@ export class UseraccountComponent implements OnInit {
         this.getOrders();
     }
 
-    // notifications() {
-    //     this.showNotifications = true;
-    //     this.showOrderDetails = false;
-    //     this.showMyOrders = false;
-    //     this.showChangePassword = false;
-    //     this.showWishlist = false;
-    //     this.showAddAddress = false;
-    //     this.showDeliveryAddress = false;
-    //     this.editUserProfile = false;
-    //     this.showProfile = false;
-    //     this.showAccountDetails=false;
-    //     this.editAccount = false;
-    //     this.showAddProducts=false;
-    //     this.showAddProducts5=false;
-    //     this.showOfferZone = false;
-    // }
+    notifications() {
+        this.showNotifications = true;
+        this.showOrderDetails = false;
+        this.showMyOrders = false;
+        this.showChangePassword = false;
+        this.showWishlist = false;
+        this.showAddAddress = false;
+        this.showDeliveryAddress = false;
+        this.editUserProfile = false;
+        this.showProfile = false;
+        this.showAccountDetails = false;
+        this.editAccount = false;
+        this.showAddProducts = false;
+        this.showAddProducts5 = false;
+        this.showOfferZone = false;
+    }
 
     showOrderDetailsEcom(ordId) {
         this.showNotifications = false;
@@ -379,6 +396,7 @@ export class UseraccountComponent implements OnInit {
         this.showMyProducts = false;
         this.showEditAddress = false;
         this.showManageUserOrders = false;
+        this.showChangePassword = false;
     }
     myProducts() {
         this.showNotifications = false;
@@ -440,9 +458,9 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = true;
         this.editAdd(addId);
     }
-    showVendorOrderDetails() {
+    showBukedOrderDetails(ordId) {
         this.showNotifications = false;
-        this.showOrderDetails = false;
+        this.showOrderDetails = true;
         this.showMyOrders = false;
         this.showMyProducts = false;
         this.showWishlist = false;
@@ -453,11 +471,12 @@ export class UseraccountComponent implements OnInit {
         this.showOfferZone = false;
         this.showAddProducts = false;
         this.showAddProducts5 = false;
-        this.showManageUserOrders = true;
+        this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
         this.showEditAddress = false;
+        this.ordDetails(ordId);
     }
     email;
     profileData;
@@ -707,6 +726,7 @@ export class UseraccountComponent implements OnInit {
                 for (var i = 0; i < this.wishData.length; i++) {
                     this.wishData[i].sku_details.wishlist_id = this.wishData[i].wishlist_id;
                     this.wishData[i].sku_details.product_name = this.wishData[i].product_details[0].product_name;
+                    this.wishData[i].sku_details.product_id = this.wishData[i].product_id;
                     this.wishArr.push(this.wishData[i].sku_details);
                 }
             }
@@ -724,5 +744,113 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
+    cartDetails = [];
+    cartCount;
+    addtoCart(Id, skId) {
+        var inData = {
+            "products": [{
+                product_id: Id,
+                sku_id: skId
+            }],
+            "user_id": JSON.parse(localStorage.getItem('userId')),
+            "item_type": "ecommerce"
+        }
+        this.appService.addtoCart(inData).subscribe(res => {
+            this.getCart();
+            this.cartDetails = res.json().selling_price_total;
+            this.cartCount = res.json().count;
+            swal(res.json().message, "", "success");
+        }, err => {
 
+        })
+    }
+    addtoWish(Id, skId) {
+        var inData = {
+            "user_id": JSON.parse(localStorage.userId),
+            "product_id": Id,
+            "sku_id": skId,
+            "item_type": "ecommerce"
+        }
+        this.appService.addToWish(inData).subscribe(res => {
+            console.log(res.json());
+            swal(res.json().message, "", "success");
+            //   this.getWish();
+        }, err => {
+
+        })
+    }
+    getCart() {
+        var inData = localStorage.getItem('userId');
+        this.appService.getCart(inData).subscribe(res => {
+            this.cartDetails = res.json().cart_details;
+            this.cartCount = res.json().count;
+        }, err => {
+
+        })
+    }
+    dealData = [];
+    skuData = [];
+    skuArr = [];
+    prodName;
+    topOfrs = [];
+    topsku = [];
+    topArr = [];
+    dealOfDay() {
+        this.skuArr = [];
+        this.appService.dealOfDay().subscribe(res => {
+            this.dealData = res.json().data.deals_of_the_day;
+            this.topOfrs = res.json().data.top_offers;
+            for (var i = 0; i < this.dealData.length; i++) {
+                // this.prodName = this.dealData[i].product_name;
+                for (var j = 0; j < this.dealData[i].sku_details.length; j++) {
+                    this.dealData[i].sku_details[j].product_name = this.dealData[i].product_name;
+                    this.dealData[i].sku_details[j].product_id = this.dealData[i].product_id;
+                    this.skuData = this.dealData[i].sku_details[j];
+                    this.skuArr.push(this.skuData);
+                }
+            }
+
+        })
+    }
+    clothData = [];
+    clothsku = [];
+    clothArr = [];
+    getCloth() {
+        this.clothArr = [];
+        this.appService.getCloth().subscribe(res => {
+            this.clothData = res.json().data;
+            for (var i = 0; i < this.clothData.length; i++) {
+                // this.prodName = this.dealData[i].product_name;
+                for (var j = 0; j < this.clothData[i].sku_details.length; j++) {
+                    this.clothData[i].sku_details[j].product_name = this.clothData[i].product_name;
+                    this.clothData[i].sku_details[j].product_id = this.clothData[i].product_id;
+                    this.clothsku = this.clothData[i].sku_details[j];
+                    this.clothArr.push(this.clothsku);
+                }
+
+            }
+        })
+    }
+    jewelData = [];
+    jewelArr = [];
+    jewlsku = [];
+    getJewel() {
+        this.jewelArr = [];
+        this.appService.getJewel().subscribe(res => {
+            this.jewelData = res.json().data;
+            for (var i = 0; i < this.jewelData.length; i++) {
+                // this.prodName = this.dealData[i].product_name;
+                for (var j = 0; j < this.jewelData[i].sku_details.length; j++) {
+                    this.jewelData[i].sku_details[j].product_name = this.jewelData[i].product_name;
+                    this.jewelData[i].sku_details[j].product_id = this.jewelData[i].product_id;
+                    this.jewlsku = this.jewelData[i].sku_details[j];
+                    this.jewelArr.push(this.jewlsku);
+                }
+
+            }
+        })
+    }
+    showProduxtDetails(prodId) {
+        this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
+    }
 }
