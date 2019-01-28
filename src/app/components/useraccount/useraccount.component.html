@@ -256,9 +256,9 @@
             <div class="addType">
                 <p>Choose nick name for this address</p>
                 <p class="addresses ">
-                    <a (click)="Type('Home')" [ngClass]="[bntStyle]">Home</a>
-                    <a (click)="Type('Office')" [ngClass]="[bntStyle]">Office</a>
-                    <a (click)="Type('Other')" [ngClass]="[bntStyle]">Other</a>
+                    <a (click)="Type('Home')" [ngClass]="{'activeAdd':type=='Home'}">Home</a>
+                    <a (click)="Type('Office')" [ngClass]="{'activeAdd':type=='Office'}">Office</a>
+                    <a (click)="Type('Other')" [ngClass]="{'activeAdd':type=='Other'}">Other</a>
                 </p>
             </div>
             <div class="custom-control custom-checkbox check-box">

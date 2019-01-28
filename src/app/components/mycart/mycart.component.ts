@@ -120,8 +120,8 @@ export class MycartComponent implements OnInit {
         vendor_id: 44
     }
     type;
-    Type(type) {
-        this.type = type;
+    Type(value) {
+        this.type = value;
     }
     //save address
 
