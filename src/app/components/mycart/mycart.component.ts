@@ -4,6 +4,7 @@ import { ItemsComponent } from '../../components/items/items.component';
 import { PromocodesComponent } from '../../components/promocodes/promocodes.component';
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var jQuery: any;
 @Component({
     selector: 'app-mycart',
@@ -11,6 +12,8 @@ declare var jQuery: any;
     styleUrls: ['./mycart.component.less']
 })
 export class MycartComponent implements OnInit {
+    addressForm: FormGroup;
+    submitted = false;
     showCartItems = true;
     showDeliveryAddress = false;
     showAddresses = true;
@@ -19,13 +22,62 @@ export class MycartComponent implements OnInit {
     addresses = false;
     payment_option;
     addId;
-    constructor(public dialog: MatDialog, public appService: appService, private router: Router) { }
+    constructor(public dialog: MatDialog, public appService: appService, private router: Router, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
+        this.addressForm = this.formBuilder.group({
+            full_name: ['', Validators.required],
+            mobile_number: ['', Validators.required],
+            house_no: ['', Validators.required],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            landmark: ['', Validators.required],
+            pin_code: ['', Validators.required],
+            // address_type: this.type
+        });
         this.getCart();
         this.getAdd();
         this.paymentOptions();
     }
+    get f() { return this.addressForm.controls; }
+
+    saveAddress() {
+        this.addressForm.value.address_type = this.type;
+        this.submitted = true;
+        if (this.addressForm.invalid) {
+            return;
+        }
+        this.appService.addaddress(this.addressForm.value).subscribe(res => {
+            console.log(this.addressForm.value);
+            this.getAdd();
+            this.showAddresses = true;
+            this.addresses = false;
+
+        })
+        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+    }
+    // saveAddress() {
+    //     this.showAddresses = true;
+    //     this.addresses = false;
+    //     var inData = {
+    //         "full_name": this.addData.full_name,
+    //         "mobile_number": this.addData.mobile_number,
+    //         "house_no": this.addData.house_no,
+    //         "city": this.addData.city,
+    //         "state": this.addData.state,
+    //         "landmark": this.addData.landmark,
+    //         "pin_code": this.addData.pin_code,
+    //         "address_type": this.type,
+
+    //     }
+    //     this.appService.addaddress(inData).subscribe(res => {
+    //         this.getAdd();
+    //         this.showAddresses = true;
+    //         this.addresses = false;
+
+    //     })
+
+    // }
 
     showCart() {
         this.showCartItems = !this.showCartItems;
@@ -72,28 +124,7 @@ export class MycartComponent implements OnInit {
         this.type = type;
     }
     //save address
-    saveAddress() {
-        this.showAddresses = true;
-        this.addresses = false;
-        var inData = {
-            "full_name": this.addData.full_name,
-            "mobile_number": this.addData.mobile_number,
-            "house_no": this.addData.house_no,
-            "city": this.addData.city,
-            "state": this.addData.state,
-            "landmark": this.addData.landmark,
-            "pin_code": this.addData.pin_code,
-            "address_type": this.type,
 
-        }
-        this.appService.addaddress(inData).subscribe(res => {
-            this.getAdd();
-            this.showAddresses = true;
-            this.addresses = false;
-
-        })
-
-    }
 
     billing;
     cartData = [];
