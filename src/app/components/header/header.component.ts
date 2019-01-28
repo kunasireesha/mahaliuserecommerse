@@ -177,6 +177,8 @@ export class HeaderComponent implements OnInit {
                 swal(resp.json().message, "", "success");
                 localStorage.setItem('token', JSON.stringify(resp.json().token));
                 jQuery("#loginmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.myAccount = true;
