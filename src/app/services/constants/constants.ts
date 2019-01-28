@@ -8,7 +8,7 @@ export const AppSettings = {
     productUrl: baseUrl + 'products',
     loginDetailsbyEmail: baseUrl + 'users/',
     getWholeSellersUrl: baseUrl + 'wholesalers',
-    updateProfile: baseUrl + 'vendors/update_profile',
+    updateProfile: baseUrl + 'users/update_profile',
     forgotPw: baseUrl + 'users/forgot_password',
     addaddress: baseUrl + "delivery_address/user",
     getAddress: baseUrl + "delivery_address/user",

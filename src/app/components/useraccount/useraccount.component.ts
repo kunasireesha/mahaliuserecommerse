@@ -510,15 +510,15 @@ export class UseraccountComponent implements OnInit {
             first_name: this.profileData.first_name,
             email: this.profileData.email,
             mobile_number: this.profileData.mobile_number,
-            bussiness_area: this.profileData.area,
-            bussiness_city: this.profileData.city
-
+            area: this.profileData.area,
+            city: this.profileData.city
         }
         this.appService.updateProfile(inDate).subscribe(response => {
             console.log(response.json());
             swal(response.json().message, "", "success");
             this.ngOnInit();
             this.getProfile();
+            this.cancel();
         })
     }
     cancel() {

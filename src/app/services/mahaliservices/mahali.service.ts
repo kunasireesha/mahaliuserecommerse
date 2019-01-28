@@ -38,7 +38,7 @@ export class appService {
         this.vendor_id = localStorage.userId;
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (localStorage.token),
+            // 'x-access-token': (localStorage.token),
         });
         return this.http.put(AppSettings.updateProfile + "/" + this.vendor_id, params, { headers: headers })
     }
