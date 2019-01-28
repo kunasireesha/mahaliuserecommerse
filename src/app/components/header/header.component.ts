@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var jQuery: any;
+declare var $: any;
 import swal from 'sweetalert'
 // import { } from 'googlemaps';
 declare var google: any;
@@ -137,7 +138,7 @@ export class HeaderComponent implements OnInit {
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
     }
     // BAYATA VALLU UNTEY
     get f() { return this.registerForm.controls; }
@@ -151,6 +152,8 @@ export class HeaderComponent implements OnInit {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 jQuery("#signupmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                 // this.showRegistration = false;
                 localStorage.setItem('userId', (resp.json().id));
                 // this.myAccount = true
@@ -175,10 +178,10 @@ export class HeaderComponent implements OnInit {
         this.appService.login(this.loginForm.value).subscribe(resp => {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
-                localStorage.setItem('token', JSON.stringify(resp.json().token));
                 jQuery("#loginmodal").modal("hide");
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
+                localStorage.setItem('token', JSON.stringify(resp.json().token));
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.myAccount = true;
@@ -210,8 +213,10 @@ export class HeaderComponent implements OnInit {
         }
         this.appService.forgotPassword(inData).subscribe(resp => {
             if (resp.json().status === 200) {
-                jQuery("#forgotpass").modal("hide");
                 swal(resp.json().message, "", "success");
+                jQuery("#forgotpass").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
             } else {
                 swal(resp.json().message, "", "error");
             }
@@ -259,11 +264,16 @@ export class HeaderComponent implements OnInit {
     }
     showProbyCat(catId, action, catName) {
         this.showSubCats = false;
+        jQuery("#itemdesc").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         this.router.navigate(['/products'], { queryParams: { catId: catId, action: action, catName: catName } });
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
         jQuery("#itemdesc").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         this.router.navigate(['/products'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
     }
     cartDetails = [];

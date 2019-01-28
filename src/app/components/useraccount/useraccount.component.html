@@ -493,7 +493,6 @@
         </div>
 
         <!-- change password -->
-
         <div class="col-lg-9" *ngIf="showChangePassword">
             <div>
                 <h3 class="profile-header">Change Password</h3>
@@ -542,16 +541,15 @@
             </form>
             <div class="row justify-content-center" style="margin-top: 8%;">
                 <div class="col-lg-6">
-                    <button type="button" class="btn save-btn ">Save</button>
+                    <button type="button" class="btn save-btn" (click)="onSubmit()">Save</button>
                 </div>
                 <div class="col-lg-6">
-                    <button type="button" class="btn save-btn">Cancel</button>
+                    <button type="button" class="btn save-btn" (click)="cancelChange()">Cancel</button>
                 </div>
             </div>
         </div>
 
         <!-- my order -->
-
         <div class="col-lg-9" *ngIf="showMyOrders">
             <div id="multi-item-example6" class="carousel slide" data-ride="carousel">
                 <br />
@@ -573,7 +571,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search" [(ngModel)]="filter"
+                                        name="filter">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -589,7 +588,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr class="cst-topad" *ngFor="let ord of orders;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
+                                        <tr class="cst-topad" *ngFor="let ord of orders|filter:filter;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
                                             <!-- <th scope="row">{{i+1}}</th> -->
                                             <td>
                                                 {{ord.order_id}}
@@ -610,6 +609,7 @@
 
                     <!-- Second Slide -->
                     <!-- <div class="carousel-item">
+>>>>>>> f0101c8117bcb9fdab8651d8c7f08837b5c11fc8
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
                             <h3>Vendor Orders</h3>
@@ -1019,4 +1019,5 @@
 
     </div>
     <!-- offer zone -->
+    >>>>>>> f0101c8117bcb9fdab8651d8c7f08837b5c11fc8
 </div>
