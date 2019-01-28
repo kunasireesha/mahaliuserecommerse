@@ -30,8 +30,8 @@
                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                         </span>
                                     </button>
-                                    <input type="text" class="text-center" value="1" name="quantity" [(ngModel)]="data.quantity" readonly="readonly" value="{{data.quantity}}"
-                                        disabled>
+                                    <input type="text" class="text-center" value="1" name="quantity" [(ngModel)]="data.quantity"
+                                        readonly="readonly" value="{{data.quantity}}" disabled>
                                     <button class="btn btn-icon btn-maroon btn-plus" (click)="itemIncrease(data.cart_id)">
                                         <span>
                                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -185,7 +185,8 @@
                                         <span>:</span>
                                     </label>
                                     <div class="col-sm-8 col-md-8">
-                                        <input type="text " formControlName="mobile_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                        <input type="text " formControlName="mobile_number" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                         <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                             <div *ngIf="f.mobile_number.errors.required">Mobile Number is required</div>
                                         </div>
@@ -261,7 +262,8 @@
                                     </p>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
-                                        <label class="custom-control-label" for="defaultUnchecked5">Set this as my default
+                                        <label class="custom-control-label" for="defaultUnchecked5">Set this as my
+                                            default
                                             address
                                         </label>
                                     </div>
