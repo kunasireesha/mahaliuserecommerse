@@ -26,6 +26,7 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
 import { ProductsComponent } from './components/products/products.component';
 import { MycartComponent } from './components/mycart/mycart.component';
 import { ItemsComponent } from './components/items/items.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/of';
@@ -71,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		ImageZoomModule,
+		Ng2SearchPipeModule,
 		MDBBootstrapModule.forRoot(),
 		TranslateModule.forRoot({
 			loader: {

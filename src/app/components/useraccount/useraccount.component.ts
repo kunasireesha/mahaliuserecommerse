@@ -587,6 +587,10 @@ export class UseraccountComponent implements OnInit {
 
 
     }
+    cancelChange() {
+        this.showChangePassword = false;
+        this.showProfile = true;
+    }
     seleOpt;
     addId;
     seleAddOptn(index, addId) {

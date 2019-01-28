@@ -551,75 +551,75 @@
 			</form>
 			<div class="row justify-content-center" style="margin-top: 8%;">
 				<div class="col-lg-6">
-					<button type="button" class="btn save-btn ">Save</button>
+					<button type="button" class="btn save-btn" (click)="onSubmit()">Save</button>
 				</div>
 				<div class="col-lg-6">
-					<button type="button" class="btn save-btn">Cancel</button>
+					<button type="button" class="btn save-btn" (click)="cancelChange()">Cancel</button>
 				</div>
 			</div>
 		</div>
 
 		<!-- my order -->
 
-	 <div class="col-lg-9" *ngIf="showMyOrders">
-      <div id="multi-item-example6" class="carousel slide" data-ride="carousel">
-        <br />
-        <!--Slides 1-->
-        <div class="carousel-inner cust-inner" role="listbox">
+		<div class="col-lg-9" *ngIf="showMyOrders">
+			<div id="multi-item-example6" class="carousel slide" data-ride="carousel">
+				<br />
+				<!--Slides 1-->
+				<div class="carousel-inner cust-inner" role="listbox">
 
-          <!--First slide-->
-          <div class="carousel-item active">
+					<!--First slide-->
+					<div class="carousel-item active">
 
-            <div class="row resp-table">
-              <div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
-                <h3>My Order</h3>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <!-- <div class="cust-filter" data-toggle="modal" data-target="#filter">
+						<div class="row resp-table">
+							<div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
+								<h3>My Order</h3>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3">
+								<!-- <div class="cust-filter" data-toggle="modal" data-target="#filter">
                   <i class="fa fa-filter" aria-hidden="true"></i> Filters
                 </div> -->
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <form class="form-inline form-rt">
-                  <i class="fa fa-search item-search" aria-hidden="true"></i>
-                  <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
-                    aria-label="Search">
-                </form>
-              </div>
-              <div class="table-responsive my-4">
-                <table class="table cust-table">
-                  <thead class="thead-color">
-                    <tr>
-                      <!-- <th scope="col">S.No</th> -->
-                      <th scope="col">Order no</th>
-                      <th scope="col">Items</th>
-                      <th scope="col">Details</th>
-                      <th scope="col">Amount</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody class="cust-tbody">
-                    <tr class="cst-topad" *ngFor="let ord of orders;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
-                      <!-- <th scope="row">{{i+1}}</th> -->
-                      <td>
-                        {{ord.order_id}}
-                      </td>
-                      <td>1</td>
-                      <td>
-                        {{ord.ordered_on}} </td>
-                      <td>BD.{{ord.billing_amount}}</td>
-                      <td>{{ord.order_status}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3">
+								<form class="form-inline form-rt">
+									<i class="fa fa-search item-search" aria-hidden="true"></i>
+									<input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search"
+									 [(ngModel)]="filter" name="filter">
+								</form>
+							</div>
+							<div class="table-responsive my-4">
+								<table class="table cust-table">
+									<thead class="thead-color">
+										<tr>
+											<!-- <th scope="col">S.No</th> -->
+											<th scope="col">Order no</th>
+											<th scope="col">Items</th>
+											<th scope="col">Details</th>
+											<th scope="col">Amount</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody class="cust-tbody">
+										<tr class="cst-topad" *ngFor="let ord of orders|filter:filter;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
+											<!-- <th scope="row">{{i+1}}</th> -->
+											<td>
+												{{ord.order_id}}
+											</td>
+											<td>1</td>
+											<td>
+												{{ord.ordered_on}} </td>
+											<td>BD.{{ord.billing_amount}}</td>
+											<td>{{ord.order_status}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 
-          </div>
-          <!--/.First slide-->
+					</div>
+					<!--/.First slide-->
 
-          <!-- Second Slide -->
-          <!-- <div class="carousel-item">
+					<!-- Second Slide -->
+					<!-- <div class="carousel-item">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
                             <h3>Vendor Orders</h3>
@@ -717,13 +717,13 @@
                         </div>
                     </div>
                 </div> -->
-          <!-- ./second slide -->
+					<!-- ./second slide -->
 
-        </div>
-        <!--/.Slides-->
+				</div>
+				<!--/.Slides-->
 
-        <!--Controls-->
-        <!-- <div class="controls-top controls arrow-rt">
+				<!--Controls-->
+				<!-- <div class="controls-top controls arrow-rt">
                 <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
                     <i class="fas fa-long-arrow-alt-left"></i>
                 </a>
@@ -731,306 +731,306 @@
                     <i class="fas fa-long-arrow-alt-right"></i>
                 </a>
             </div> -->
-        <!--/.Controls-->
-      </div>
-    </div>
+				<!--/.Controls-->
+			</div>
+		</div>
 
 		<!-- order details -->
-	<!-- order details -->
-    <div class="col-lg-9" *ngIf="showOrderDetails">
-		<div>
-		  <h3 class="profile-header">My Order</h3>
-		</div>
-		<div class="order-details">
-		  <p>Order no : {{ordId}}</p>
-		</div>
-		<table class="table myorder-details">
-		  <thead>
-			<tr>
-			  <th scope="col" style="font-size:18px;">Product</th>
-			  <th scope="col" style="font-size:18px;">Name</th>
-			  <th scope="col" style="font-size:18px;">Size</th>
-			  <th scope="col" style="font-size:18px;">Color</th>
-			  <th scope="col" style="font-size:18px;">Quantity</th>
-			  <th scope="col" style="font-size:18px;">Price</th>
-			</tr>
-		  </thead>
-		  <tbody class="table-data myorder-details">
-			<tr *ngFor="let orddata of ordData">
-			  <td class="add-img">
-				<img [src]="orddata.product_image">
-			</td>
-			<td>
-				<p>{{orddata.product_name}}
-				</p>
-			</td>
-			<td>{{orddata.size}}</td>
-			  <td>Red</td>
-			  <td>{{orddata.quantity}}</td>
-			  <td>BD {{orddata.selling_price}}</td>
-			</tr>
-		  </tbody>
-		</table>
-		<div class="order-details">
-		  <p>Shipping Address</p>
-		</div>
-		<div class="address-bar">
-		  <h4 class="office-header">OFFICE</h4>
-		  <p>
-			<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok Plaza, Near Masab
-			Tank, Tolichowki,
-			<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mehidipatnam,Hyderabad, 500038
-		  </p>
-		  <p>
-			<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-			<span>97005432126</span>
-		  </p>
-		</div>
-		<div class="order-details">
-		  <p>Price Details</p>
-		</div>
-		<table class="table">
-		  <tbody>
-			<tr>
-			  <td style="font-size: 16px;">Payable Amount</td>
-			  <td class="prod-price">
-				<strong>BD {{count}}</strong>
-			  </td>
-			</tr>
-			<tr>
-			  <td style="font-size: 16px;">Delivery Charges</td>
-			  <td class="prod-price">
-				<strong>BD ***</strong>
-			  </td>
-			</tr>
-			<tr>
-			  <td style="font-size: 16px;">Sub Total</td>
-			  <td class="prod-price">(COD)
-				<strong>BD {{count}}</strong>
-			  </td>
-			</tr>
-		  </tbody>
-		</table>
-		<div style="float:right;">
-		  <button type="button" class="btn invoice-btn">Email Invoice</button>
-		</div>
-	  </div>
-		
-  
-    <!-- offer zone -->
-    <div class="col-lg-9" *ngIf="showOfferZone">
-		<h3 class="profile-header">Offer Zone</h3>
-		<div class="row">
-		  <div class="col-md-6">
-			<img src="assets/images/offer-zone-1.jpg" class="img-fluid">
-		  </div>
-		  <div class="col-md-6">
-			<img src="assets/images/offer-zone-2.jpg" class="img-fluid">
-		  </div>
-		</div>
-		<div class="col-md-12 mt-3">
-			<h4>Today's Offer</h4>
-		  </div>
-		  <div class="row">
-			<div class="col-md-3 item" *ngFor="let item of skuArr">
-			  <div class="wrapper">
-				<div class="card">
-				  <div class="product-image">
-					<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-					<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-					  class="img-fluid">
-					<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-				  </div>
-				  <div class="card-block add-to-cart">
-					<h5 class="text-center">{{item.product_name}} </h5>
-					<p class="text-center">
-					  BD {{item.selling_price}}
-					  <strike>BD {{item.actual_price}}</strike>
-					</p>
-					<div class="quantity-price text-center">
-					  <select (change)="changeSize($event.target.value)">
-						<option [value]="item.skid">{{item.size}}</option>
-					  </select>
-					</div>
-					<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
-					  To Cart</button> -->
-				  </div>
-				</div>
-				<ul class="expand-button">
-				  <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-				  <li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
-				</ul>
-				<ul class="expand-button2 expand-button-2">
-				  <li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
-				</ul>
-				<div *ngIf="!skuData">
-				  No data
-				</div>
-			  </div>
-	
+		<!-- order details -->
+		<div class="col-lg-9" *ngIf="showOrderDetails">
+			<div>
+				<h3 class="profile-header">My Order</h3>
 			</div>
-		  </div>
-		<!-- end deals -->
-	  </div>
-	  <!-- offer zone -->
-  
-	  <!-- notofications -->
-  
-	  <div class="col-lg-9" *ngIf="showNotifications">
-		<div class="row">
-		  <div class="col-lg-6">
-			<h3 class="profile-header">Notifications</h3>
-		  </div>
-		  <div class="col-lg-6 clear-option">
-			<p (click)="clearAll()" class="clear">
-			  <strong>Clear All</strong>
-			</p>
-		  </div>
+			<div class="order-details">
+				<p>Order no : {{ordId}}</p>
+			</div>
+			<table class="table myorder-details">
+				<thead>
+					<tr>
+						<th scope="col" style="font-size:18px;">Product</th>
+						<th scope="col" style="font-size:18px;">Name</th>
+						<th scope="col" style="font-size:18px;">Size</th>
+						<th scope="col" style="font-size:18px;">Color</th>
+						<th scope="col" style="font-size:18px;">Quantity</th>
+						<th scope="col" style="font-size:18px;">Price</th>
+					</tr>
+				</thead>
+				<tbody class="table-data myorder-details">
+					<tr *ngFor="let orddata of ordData">
+						<td class="add-img">
+							<img [src]="orddata.product_image">
+						</td>
+						<td>
+							<p>{{orddata.product_name}}
+							</p>
+						</td>
+						<td>{{orddata.size}}</td>
+						<td>Red</td>
+						<td>{{orddata.quantity}}</td>
+						<td>BD {{orddata.selling_price}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="order-details">
+				<p>Shipping Address</p>
+			</div>
+			<div class="address-bar">
+				<h4 class="office-header">OFFICE</h4>
+				<p>
+					<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok Plaza, Near Masab
+					Tank, Tolichowki,
+					<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mehidipatnam,Hyderabad, 500038
+				</p>
+				<p>
+					<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+					<span>97005432126</span>
+				</p>
+			</div>
+			<div class="order-details">
+				<p>Price Details</p>
+			</div>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td style="font-size: 16px;">Payable Amount</td>
+						<td class="prod-price">
+							<strong>BD {{count}}</strong>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size: 16px;">Delivery Charges</td>
+						<td class="prod-price">
+							<strong>BD ***</strong>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size: 16px;">Sub Total</td>
+						<td class="prod-price">(COD)
+							<strong>BD {{count}}</strong>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="float:right;">
+				<button type="button" class="btn invoice-btn">Email Invoice</button>
+			</div>
 		</div>
-		<div class="notification-bar1">
-		  <p>
-			<i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp; Shop With Your Debit/Credit
-			Card and get 35% Discount</p>
+
+
+		<!-- offer zone -->
+		<div class="col-lg-9" *ngIf="showOfferZone">
+			<h3 class="profile-header">Offer Zone</h3>
+			<div class="row">
+				<div class="col-md-6">
+					<img src="assets/images/offer-zone-1.jpg" class="img-fluid">
+				</div>
+				<div class="col-md-6">
+					<img src="assets/images/offer-zone-2.jpg" class="img-fluid">
+				</div>
+			</div>
+			<div class="col-md-12 mt-3">
+				<h4>Today's Offer</h4>
+			</div>
+			<div class="row">
+				<div class="col-md-3 item" *ngFor="let item of skuArr">
+					<div class="wrapper">
+						<div class="card">
+							<div class="product-image">
+								<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+								<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+								 class="img-fluid">
+								<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">{{item.product_name}} </h5>
+								<p class="text-center">
+									BD {{item.selling_price}}
+									<strike>BD {{item.actual_price}}</strike>
+								</p>
+								<div class="quantity-price text-center">
+									<select (change)="changeSize($event.target.value)">
+										<option [value]="item.skid">{{item.size}}</option>
+									</select>
+								</div>
+								<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+					  To Cart</button> -->
+							</div>
+						</div>
+						<ul class="expand-button">
+							<li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+							<li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
+						</ul>
+						<ul class="expand-button2 expand-button-2">
+							<li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
+						</ul>
+						<div *ngIf="!skuData">
+							No data
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- end deals -->
 		</div>
-		<div class="notification-bar2">
-		  <p>
-			<i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp;&nbsp; Shop Upto 10000/- and
-			get Cashback upto 3000</p>
+		<!-- offer zone -->
+
+		<!-- notofications -->
+
+		<div class="col-lg-9" *ngIf="showNotifications">
+			<div class="row">
+				<div class="col-lg-6">
+					<h3 class="profile-header">Notifications</h3>
+				</div>
+				<div class="col-lg-6 clear-option">
+					<p (click)="clearAll()" class="clear">
+						<strong>Clear All</strong>
+					</p>
+				</div>
+			</div>
+			<div class="notification-bar1">
+				<p>
+					<i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp; Shop With Your Debit/Credit
+					Card and get 35% Discount</p>
+			</div>
+			<div class="notification-bar2">
+				<p>
+					<i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp;&nbsp; Shop Upto 10000/- and
+					get Cashback upto 3000</p>
+			</div>
 		</div>
-	  </div>
 	</div>
-<!-- offer zone -->
+	<!-- offer zone -->
 	<div class="row" *ngIf="showOfferZone">
 		<div class="col-md-12 mt-3">
-		  <h4>Electronics</h4>
+			<h4>Electronics</h4>
 		</div>
 		<div class="row">
 			<div class="col-md-3 item" *ngFor="let item of skuArr;let i=index">
-			  <div class="wrapper" *ngIf="i<4">
-				<div class="card" >
-				  <div class="product-image">
-					<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-					<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-					  class="img-fluid">
-					<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-				  </div>
-				  <div class="card-block add-to-cart">
-					<h5 class="text-center">{{item.product_name}} </h5>
-					<p class="text-center">
-					  BD {{item.selling_price}}
-					  <strike>BD {{item.actual_price}}</strike>
-					</p>
-					<div class="quantity-price text-center">
-					  <select (change)="changeSize($event.target.value)">
-						<option [value]="item.skid">{{item.size}}</option>
-					  </select>
-					</div>
-					<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+				<div class="wrapper" *ngIf="i<4">
+					<div class="card">
+						<div class="product-image">
+							<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+							<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+							 class="img-fluid">
+							<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">{{item.product_name}} </h5>
+							<p class="text-center">
+								BD {{item.selling_price}}
+								<strike>BD {{item.actual_price}}</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select (change)="changeSize($event.target.value)">
+									<option [value]="item.skid">{{item.size}}</option>
+								</select>
+							</div>
+							<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
 					  To Cart</button> -->
-				  </div>
+						</div>
+					</div>
+					<ul class="expand-button">
+						<li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
+					</ul>
+					<ul class="expand-button2 expand-button-2">
+						<li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
+					</ul>
+					<div *ngIf="!skuData">
+						No data
+					</div>
 				</div>
-				<ul class="expand-button">
-				  <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-				  <li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
-				</ul>
-				<ul class="expand-button2 expand-button-2">
-				  <li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
-				</ul>
-				<div *ngIf="!skuData">
-				  No data
-				</div>
-			  </div>
-	
+
 			</div>
-		  </div>
-	
+		</div>
+
 		<div class="col-md-12 mt-3">
-		  <h4>Clothing</h4>
+			<h4>Clothing</h4>
 		</div>
 		<div class="row">
 			<div class="col-md-3 item" *ngFor="let item of clothArr;let i=index">
-			  <div class="wrapper" *ngIf="i<4">
-				<div class="card" >
-				  <div class="product-image">
-					<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-					<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-					  class="img-fluid">
-					<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-				  </div>
-				  <div class="card-block add-to-cart">
-					<h5 class="text-center">{{item.product_name}} </h5>
-					<p class="text-center">
-					  BD {{item.selling_price}}
-					  <strike>BD {{item.actual_price}}</strike>
-					</p>
-					<div class="quantity-price text-center">
-					  <select (change)="changeSize($event.target.value)">
-						<option [value]="item.skid">{{item.size}}</option>
-					  </select>
-					</div>
-					<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+				<div class="wrapper" *ngIf="i<4">
+					<div class="card">
+						<div class="product-image">
+							<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+							<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+							 class="img-fluid">
+							<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">{{item.product_name}} </h5>
+							<p class="text-center">
+								BD {{item.selling_price}}
+								<strike>BD {{item.actual_price}}</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select (change)="changeSize($event.target.value)">
+									<option [value]="item.skid">{{item.size}}</option>
+								</select>
+							</div>
+							<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
 					  To Cart</button> -->
-				  </div>
+						</div>
+					</div>
+					<ul class="expand-button">
+						<li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
+					</ul>
+					<ul class="expand-button2 expand-button-2">
+						<li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
+					</ul>
+					<div *ngIf="!skuData">
+						No data
+					</div>
 				</div>
-				<ul class="expand-button">
-				  <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-				  <li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
-				</ul>
-				<ul class="expand-button2 expand-button-2">
-				  <li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
-				</ul>
-				<div *ngIf="!skuData">
-				  No data
-				</div>
-			  </div>
-	
+
 			</div>
-		  </div>
-	
+		</div>
+
 		<div class="col-md-12 mt-3">
-		  <h4>Jewellery</h4>
+			<h4>Jewellery</h4>
 		</div>
 		<div class="row">
 			<div class="col-md-3 item" *ngFor="let item of jewelArr;let i=index">
-			  <div class="wrapper">
-				<div class="card" >
-				  <div class="product-image">
-					<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-					<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-					  class="img-fluid">
-					<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-				  </div>
-				  <div class="card-block add-to-cart">
-					<h5 class="text-center">{{item.product_name}} </h5>
-					<p class="text-center">
-					  BD {{item.selling_price}}
-					  <strike>BD {{item.actual_price}}</strike>
-					</p>
-					<div class="quantity-price text-center">
-					  <select (change)="changeSize($event.target.value)">
-						<option [value]="item.skid">{{item.size}}</option>
-					  </select>
-					</div>
-					<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+				<div class="wrapper">
+					<div class="card">
+						<div class="product-image">
+							<!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+							<img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+							 class="img-fluid">
+							<img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">{{item.product_name}} </h5>
+							<p class="text-center">
+								BD {{item.selling_price}}
+								<strike>BD {{item.actual_price}}</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select (change)="changeSize($event.target.value)">
+									<option [value]="item.skid">{{item.size}}</option>
+								</select>
+							</div>
+							<!-- <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
 					  To Cart</button> -->
-				  </div>
+						</div>
+					</div>
+					<ul class="expand-button">
+						<li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+						<li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
+					</ul>
+					<ul class="expand-button2 expand-button-2">
+						<li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
+					</ul>
+					<div *ngIf="!skuData">
+						No data
+					</div>
 				</div>
-				<ul class="expand-button">
-				  <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-				  <li><a (click)="showProduxtDetails(item.product_id)"><img src="assets/images/maximize.png"></a></li>
-				</ul>
-				<ul class="expand-button2 expand-button-2">
-				  <li><a (click)="addtoWish(item.product_id,item.skid)"><i class="fas fa-heart"></i></a></li>
-				</ul>
-				<div *ngIf="!skuData">
-				  No data
-				</div>
-			  </div>
-	
+
 			</div>
-		  </div>
-		
-	
-	  </div>
-	  <!-- offer zone -->
+		</div>
+
+
+	</div>
+	<!-- offer zone -->
 </div>

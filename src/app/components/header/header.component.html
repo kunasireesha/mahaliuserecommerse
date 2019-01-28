@@ -162,8 +162,8 @@
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/wishlistAccount">{{"common.wishlist"|translate}}
 					</a>
 					<hr class="cust-hr" />
-						<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.notifications"|translate}}
-						</a>
+					<a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/notifications">{{"common.notifications"|translate}}
+					</a>
 					<hr class="cust-hr" />
 					<a class="waves-light" data-dismiss="modal" mdbRippleRadius href="#" (click)="signOut()">{{"common.signout"|translate}}</a>
 				</div>
@@ -373,7 +373,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						<form [formGroup]="loginForm">
+						<form [formGroup]="loginForm" (ngSubmit)="login()">
 							<div class="form-group cust-frmgrp1 row">
 								<label class="col-sm-5 col-md-5 col-form-label">Email Id
 									<span class="float-right">:</span>
@@ -406,7 +406,7 @@
 
 									<div class="form-group cust-frmgrp">
 										<div class="col-sm-12">
-											<button type="submit" class="btn btn-danger cust-logbtn" (click)="login()" data-dismiss="modal">login</button>
+											<button type="submit" class="btn btn-danger cust-logbtn">login</button>
 										</div>
 									</div>
 								</div>
