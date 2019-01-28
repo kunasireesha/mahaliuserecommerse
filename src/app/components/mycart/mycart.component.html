@@ -255,9 +255,9 @@
                                 <div>
                                     <p>Choose nick name for this address</p>
                                     <p class="addresses">
-                                        <a (click)="Type('Home')" [ngClass]="{'active':type=='Home'}">Home</a>
-                                        <a (click)="Type('Office')" [ngClass]="{'active':type=='Office'}">Office</a>
-                                        <a (click)="Type('Other')" [ngClass]="{'active':type=='Other'}">Other</a>
+                                        <a (click)="Type('Home')" [ngClass]="{'activeAdd':type=='Home'}">Home</a>
+                                        <a (click)="Type('Office')" [ngClass]="{'activeAdd':type=='Office'}">Office</a>
+                                        <a (click)="Type('Other')" [ngClass]="{'activeAdd':type=='Other'}">Other</a>
                                     </p>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">

@@ -704,8 +704,8 @@ export class UseraccountComponent implements OnInit {
     fromDt;
     toDt;
     type;
-    Type(type) {
-        this.type = type;
+    Type(value) {
+        this.type = value;
     }
     filterVendor() {
         var inData = {
