@@ -113,28 +113,43 @@
 				<a>Electronics</a>
 			</p>
 			<div class="row" *ngIf="searchProd">
-				<!-- <div class="col-md-3 item" *ngFor="let data of serProducts">
-					<div class="card" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/vivo.png" alt="Card image cap">
-						<div class="card-block">
-							<h5 class="text-center">Vivo V9 plus </h5>
-							<p class="text-center">
-								BD 7.500
-								<strike>BD 8.000</strike>
-							</p>
+				<div class="col-md-3 item" *ngFor="let data of skuData">
+					<div class="wrapper">
+						<div class="card">
+							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+							<div class="card-block">
+								<h5 class="text-center">{{data.product_name}} </h5>
+								<p class="text-center">
+									BD {{data.selling_price}}
+									<strike>BD {{data.actual_price}}</strike>
+								</p>
+								<div class="quantity-price text-center">
+									<select (change)="changeSize($event.target.value)">
+										<option [value]="data.skid">{{data.size}}</option>
+									</select>
+								</div>
+								<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+									To Cart</button>
+							</div>
 						</div>
+						<ul class="expand-button">
+							<li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+							<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+						</ul>
+						<ul class="expand-button2 expand-button-2">
+							<li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
+						</ul>
 					</div>
-				</div> -->
+				</div>
 				<!-- <div class="quantity-price text-center">
 					<select (change)="changeSize($event.target.value)">
 						<option  [value]="sku.skid">{{sku.size}}</option>
 					</select>
 				</div>
 				<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button> -->
-				<div class="noData">
-					No records Found
-				</div>
-
+			</div>
+			<div class="noRec">
+				No records Found
 			</div>
 			<div class="row" *ngIf="seeAll">
 				<div class="col-md-3 item" *ngFor="let data of skuArr">
@@ -165,9 +180,9 @@
 						</ul>
 					</div>
 				</div>
-				<div *ngIf="noData&&!serProducts">
+				<!-- <div *ngIf="noData&&!serProducts">
 					No records Found
-				</div>
+				</div> -->
 
 			</div>
 		</div>

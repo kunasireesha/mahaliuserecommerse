@@ -142,4 +142,19 @@ export class ProductdetailsComponent implements OnInit {
   showBigImage(image) {
     this.product_image = image;
   }
+  addtoWish() {
+    var inData = {
+      "user_id": JSON.parse(localStorage.userId),
+      "product_id": this.prodId,
+      "sku_id": this.skid,
+      "item_type": "ecommerce"
+    }
+    this.appService.addToWish(inData).subscribe(res => {
+      console.log(res.json());
+      swal(res.json().message, "", "success");
+      // this.getWish();
+    }, err => {
+
+    })
+  }
 }
