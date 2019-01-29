@@ -83,10 +83,24 @@ export class ProductsComponent implements OnInit {
   serProducts = [];
   seeAll = false;
   searchProd = false;
-  search(product) {
-    this.searchProd = true;
+//   search(product) {
+//     this.searchProd = true;
+//     this.appService.searchProducts(product).subscribe(res => {
+//       this.serProducts = res.json().data;
+//     }, err => {
+
+//     })
+//   }
+search(product) {
+    this.skuData = [];
     this.appService.searchProducts(product).subscribe(res => {
       this.serProducts = res.json().data;
+      for (var i = 0; i < this.serProducts.length; i++) {
+        for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
+          this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
+          this.skuData.push(this.serProducts[i].sku_details[j]);
+        }
+      }
     }, err => {
 
     })
