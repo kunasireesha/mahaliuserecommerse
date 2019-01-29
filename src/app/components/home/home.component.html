@@ -1,98 +1,98 @@
 <app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <main role="main">
 
-	<!--Carousel Wrapper-->
-	<div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
-		<!--Indicators-->
-		<ol class="carousel-indicators circle-indicators">
-			<li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-1z" data-slide-to="1"></li>
-			<li data-target="#carousel-example-1z" data-slide-to="2"></li>
-		</ol>
-		<!--/.Indicators-->
-		<!--Slides-->
-		<div class="carousel-inner" role="listbox">
-			<!--First slide-->
-			<div class="carousel-item banner-slider" *ngFor="let data of bannerData;let i=index" [ngClass]="{'active':i==0}">
-				<img class="d-block w-100" [src]="data.website_banner" alt="First slide">
-			</div>
-			<!--/First slide-->
-			<!--Second slide-->
-			<!-- <div class="carousel-item">
+    <!--Carousel Wrapper-->
+    <div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators circle-indicators">
+            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item banner-slider" *ngFor="let data of bannerData;let i=index" [ngClass]="{'active':i==0}">
+                <img class="d-block w-100" [src]="data.website_banner" alt="First slide">
+            </div>
+            <!--/First slide-->
+            <!--Second slide-->
+            <!-- <div class="carousel-item">
 				<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
 			</div> -->
-			<!--/Second slide-->
-			<!--Third slide-->
-			<!-- <div class="carousel-item">
+            <!--/Second slide-->
+            <!--Third slide-->
+            <!-- <div class="carousel-item">
 				<img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
 			</div> -->
-			<!--/Third slide-->
-		</div>
-		<!--/.Slides-->
-		<!--Controls-->
-		<a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-		<!--/.Controls-->
-	</div>
-	<!--/.Carousel Wrapper-->
+            <!--/Third slide-->
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+    <!--/.Carousel Wrapper-->
 
 </main>
 <br />
 <!-- delas -->
 
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Deals of the Day
-				<span>
-					<a (click)="seeAll('deals')">See all</a>
-				</span>
-			</h4>
-		</div>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Deals of the Day
+                <span>
+                    <a (click)="seeAll('deals')">See all</a>
+                </span>
+            </h4>
+        </div>
 
-	</div>
-	<hr>
+    </div>
+    <hr>
 </div>
 <div id="multi-item-example" class="carousel slide carousel-multi-item container " data-ride="carousel">
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner deals" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner deals" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active dealsAct">
+        <!--First slide-->
+        <div class="carousel-item active dealsAct">
 
-			<div class="col-md-3" *ngFor="let data of skuArr">
-				<div class="wrapper">
-					<div class="card">
-						<div class="bg-image">
-							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-						</div>
-						<div class="card-block">
-							<h5 class="text-center">{{data.product_name}}</h5>
-							<p class="text-center">
-								BD {{data.selling_price}}
+            <div class="col-md-3" *ngFor="let data of skuArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="bg-image">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        </div>
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}}</h5>
+                            <p class="text-center">
+                                BD {{data.selling_price}}
 
-								<strike>BD {{data.actual_price}}</strike>
-							</p>
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-					<ul class="expand-button2 expand-button-2">
-						<li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
-					</ul>
-				</div>
-			</div>
+                                <strike>BD {{data.actual_price}}</strike>
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                    <ul class="expand-button2 expand-button-2">
+                        <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
+                    </ul>
+                </div>
+            </div>
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/2.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -105,7 +105,7 @@
 				</div>
 			</div> -->
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/3.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 			</div> -->
-			<!-- 
+            <!-- 
 			<div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/4.jpg" alt="Card image cap">
@@ -130,11 +130,11 @@
 					</div>
 				</div>
 			</div> -->
-		</div>
-		<!--/.First slide-->
+        </div>
+        <!--/.First slide-->
 
-		<!--Second slide-->
-		<!-- <div class="carousel-item ">
+        <!--Second slide-->
+        <!-- <div class="carousel-item ">
 			<div class="col-md-3">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/1.jpg" alt="Card image cap">
@@ -191,10 +191,10 @@
 
 
 		</div> -->
-		<!--/.Second slide-->
+        <!--/.Second slide-->
 
-		<!--Third slide-->
-		<!-- <div class="carousel-item ">
+        <!--Third slide-->
+        <!-- <div class="carousel-item ">
 
 			<div class="col-md-3">
 				<div class="card">
@@ -251,95 +251,93 @@
 
 
 		</div> -->
-		<!--/.Third slide-->
+        <!--/.Third slide-->
 
-	</div>
-	<!--/.Slides-->
+    </div>
+    <!--/.Slides-->
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
-		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
-			<i class="fa fa-chevron-left"></i>
-		</a>
-		<a class="btn-floating btn-small slider-btn-right" href="#multi-item-example" data-slide="next">
-			<i class="fa fa-chevron-right"></i>
-		</a>
-	</div> -->
-	<!--/.Controls-->
+    <!--Controls-->
+    <!-- <div class="controls-top">
+        <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </div> -->
+    <!--/.Controls-->
 
 </div>
 <!-- end deals -->
 
 <!-- featurs -->
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Featured Brands
-			</h4>
-		</div>
-	</div>
-	<hr>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Featured Brands
+            </h4>
+        </div>
+    </div>
+    <hr>
 </div>
 <div class="container fetures">
 
-	<br />
-	<div class="row">
+    <br />
+    <div class="row">
 
-		<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12" *ngFor="let feature of offerBan">
-			<img [src]="feature.website_banner">
-		</div>
-	</div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12" *ngFor="let feature of offerBan">
+            <img [src]="feature.website_banner">
+        </div>
+    </div>
 </div>
 <!-- features end -->
-
-
 <br />
 <br />
 
 <!-- offers -->
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
 
-			<h4 class="text-center">Top offers
-				<span>
-					<a (click)="seeAll('typeProd')">See all</a>
-				</span>
-			</h4>
+            <h4 class="text-center">Top offers
+                <span>
+                    <a (click)="seeAll('typeProd')">See all</a>
+                </span>
+            </h4>
 
-		</div>
-	</div>
-	<hr>
+        </div>
+    </div>
+    <hr>
 </div>
 <div id="multi-item-example1" class="carousel slide carousel-multi-item container" data-ride="carousel">
 
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner deals" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner deals" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active dealsAct">
-			<div class="col-md-3" *ngFor="let data of topArr">
-				<div class="wrapper">
-					<div class="card">
-						<div class="bg-image">
-							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-						</div>
-						<div class="card-block">
-							<h5 class="text-center">{{data.product_name}}</h5>
-							<p class="text-center">
-								BD {{data.selling_price}}
-								<strike>BD {{data.actual_price}}</strike>
-							</p>
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- 
+        <!--First slide-->
+        <div class="carousel-item active dealsAct">
+            <div class="col-md-3" *ngFor="let data of topArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="bg-image">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        </div>
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}}</h5>
+                            <p class="text-center">
+                                BD {{data.selling_price}}
+                                <strike>BD {{data.actual_price}}</strike>
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 
 			<div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/6.jpg" alt="Card image cap">
@@ -380,70 +378,11 @@
 			</div> -->
 
 
-		</div>
-		<!--/.First slide-->
+        </div>
+        <!--/.First slide-->
 
-		<!--Second slide-->
-		<!-- <div class="carousel-item">
-
-			<div class="col-md-3">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/5.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Wrist Watches</h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/6.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Bedsheets</h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/7.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Bags</h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/8.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Bags</h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-					</div>
-				</div>
-			</div>
-
-
-		</div> -->
-		<!--/.Second slide-->
-
-		<!--Third slide-->
-		<!-- <div class="carousel-item">
+        <!--Second slide-->
+        <!-- <div class="carousel-item">
 
 			<div class="col-md-3">
 				<div class="card">
@@ -499,13 +438,72 @@
 
 
 		</div> -->
-		<!--/.Third slide-->
+        <!--/.Second slide-->
 
-	</div>
-	<!--/.Slides-->
+        <!--Third slide-->
+        <!-- <div class="carousel-item">
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
+			<div class="col-md-3">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/5.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Wrist Watches</h5>
+						<p class="text-center">
+							BD 7.500
+							<strike>BD 8.000</strike>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/6.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Bedsheets</h5>
+						<p class="text-center">
+							BD 7.500
+							<strike>BD 8.000</strike>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/7.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Bags</h5>
+						<p class="text-center">
+							BD 7.500
+							<strike>BD 8.000</strike>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/8.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Bags</h5>
+						<p class="text-center">
+							BD 7.500
+							<strike>BD 8.000</strike>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+		</div> -->
+        <!--/.Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <!-- <div class="controls-top">
 		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example1" data-slide="prev">
 			<i class="fa fa-chevron-left"></i>
 		</a>
@@ -513,67 +511,66 @@
 			<i class="fa fa-chevron-right"></i>
 		</a>
 	</div> -->
-	<!--/.Controls-->
+    <!--/.Controls-->
 
 </div>
 <!-- offers end -->
 
 <div class="container">
-	<img [src]="dummyBan" class="m-auto dummy" style="display: block;width: 100%">
+    <img [src]="dummyBan" class="m-auto dummy" style="display: block;width: 100%">
 </div>
 <br />
 <br />
 <br />
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Clothing & Accessories
-				<span>
-					<a (click)="seeAll('cloth')">See all</a>
-				</span>
-			</h4>
-		</div>
-	</div>
-	<hr>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Clothing & Accessories
+                <span>
+                    <a (click)="seeAll('cloth')">See all</a>
+                </span>
+            </h4>
+        </div>
+    </div>
+    <hr>
 </div>
 <!-- clothing -->
 <div id="multi-item-example3" class="carousel slide carousel-multi-item container" data-ride="carousel">
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner deals" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner deals" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active dealsAct">
+        <!--First slide-->
+        <div class="carousel-item active dealsAct">
 
-			<div class="col-md-3" *ngFor="let cloth of clothArr">
-				<div class="wrapper">
-					<div class="card">
-						<div class="bg-image">
-							<img class="img-fluid" *ngIf="cloth.image==undefined || cloth.image==''" src="assets/images/prod-dummy.png" alt="Card image cap"
-							 (click)="showProduxtDetails(cloth.product_id)">
+            <div class="col-md-3" *ngFor="let cloth of clothArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="bg-image">
+                            <img class="img-fluid" *ngIf="cloth.image==undefined || cloth.image==''" src="assets/images/prod-dummy.png" alt="Card image cap"
+                                (click)="showProduxtDetails(cloth.product_id)">
 
-							<img class="img-fluid" *ngIf="cloth.image!==undefined || cloth.image!==''" [src]="cloth.image" alt="Card image cap"
-							 (click)="showProduxtDetails(cloth.product_id)">
-						</div>
-						<div class="card-block">
-							<h5 class="text-center">{{cloth.product_name}}
+                            <img class="img-fluid" *ngIf="cloth.image!==undefined || cloth.image!==''" [src]="cloth.image" alt="Card image cap" (click)="showProduxtDetails(cloth.product_id)">
+                        </div>
+                        <div class="card-block">
+                            <h5 class="text-center">{{cloth.product_name}}
 
-							</h5>
-							<p class="text-center">
-								BD {{cloth.selling_price}}
+                            </h5>
+                            <p class="text-center">
+                                BD {{cloth.selling_price}}
 
-								<strike>BD {{cloth.actual_price}}</strike>
-							</p>
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-				</div>
-			</div>
+                                <strike>BD {{cloth.actual_price}}</strike>
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                </div>
+            </div>
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/10.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -587,7 +584,7 @@
 				</div>
 			</div> -->
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/11.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -603,7 +600,7 @@
 				</div>
 			</div> -->
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/12.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -622,14 +619,14 @@
 
 
 
-		</div>
+        </div>
 
 
-	</div>
-	<!--/.Slides-->
+    </div>
+    <!--/.Slides-->
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
+    <!--Controls-->
+    <!-- <div class="controls-top">
 		<a class="btn-floating btn-small slider-btn-left " href="#multi-item-example3" data-slide="prev">
 			<i class="fa fa-chevron-left"></i>
 		</a>
@@ -637,137 +634,65 @@
 			<i class="fa fa-chevron-right"></i>
 		</a>
 	</div> -->
-	<!--/.Controls-->
+    <!--/.Controls-->
 
 </div>
 <!-- end clothing -->
 
 <!-- jewellery -->
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Jewellery
-				<span>
-					<a (click)="seeAll('jewel')">See all</a>
-				</span>
-			</h4>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Jewellery
+                <span>
+                    <a (click)="seeAll('jewel')">See all</a>
+                </span>
+            </h4>
 
-		</div>
-	</div>
-	<hr>
+        </div>
+    </div>
+    <hr>
 </div>
 <div id="multi-item-example4" class="carousel slide carousel-multi-item container" data-ride="carousel">
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner deals" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner deals" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active dealsAct">
+        <!--First slide-->
+        <div class="carousel-item active dealsAct">
 
-			<div class="col-md-3" *ngFor="let jewel of jewelArr">
-				<div class="wrapper">
-					<div class="card">
-						<img class="img-fluid" [src]="jewel.image" alt="Card image cap" (click)="showProduxtDetails(jewel.product_id)">
-						<div class="card-block">
-							<h5 class="text-center">{{jewel.product_name}}
-							</h5>
-							<p class="text-center">
-								BD {{jewel.selling_price}}
+            <div class="col-md-3" *ngFor="let jewel of jewelArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <img class="img-fluid" [src]="jewel.image" alt="Card image cap" (click)="showProduxtDetails(jewel.product_id)">
+                        <div class="card-block">
+                            <h5 class="text-center">{{jewel.product_name}}
+                            </h5>
+                            <p class="text-center">
+                                BD {{jewel.selling_price}}
 
-								<strike>BD {{jewel.actual_price}}</strike>
+                                <strike>BD {{jewel.actual_price}}</strike>
 
-							</p>
+                            </p>
 
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(jewel.product_id,jewel.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-				</div>
-			</div>
-
-
-
-
-
-		</div>
-		<!--/.First slide-->
-
-		<!--Second slide-->
-		<!-- <div class="carousel-item">
-
-			<div class="col-md-3">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/13.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Earrings
-						</h5>
-						<p class="text-center">
-							BD 7.500
-
-							<strike>BD 8.000</strike>
-
-						</p>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/14.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Ring</h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/15.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Necklace</h5>
-						<p class="text-center">
-							BD 7.500
-
-							<strike>BD 8.000</strike>
-
-						</p>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3 hidden-sm-down">
-				<div class="card">
-					<img class="img-fluid" src="assets/images/16.jpg" alt="Card image cap">
-					<div class="card-block">
-						<h5 class="text-center">Necklace</h5>
-						<p class="text-center">
-							BD 7.500
-
-							<strike>BD 8.000</strike>
-
-						</p>
-
-					</div>
-				</div>
-			</div>
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(jewel.product_id,jewel.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                </div>
+            </div>
 
 
 
 
-		</div> -->
-		<!--/.Second slide-->
 
-		<!--Third slide-->
-		<!-- <div class="carousel-item">
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <!-- <div class="carousel-item">
 
 			<div class="col-md-3">
 				<div class="card">
@@ -836,13 +761,85 @@
 
 
 		</div> -->
-		<!--/.Third slide-->
+        <!--/.Second slide-->
 
-	</div>
-	<!--/.Slides-->
+        <!--Third slide-->
+        <!-- <div class="carousel-item">
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
+			<div class="col-md-3">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/13.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Earrings
+						</h5>
+						<p class="text-center">
+							BD 7.500
+
+							<strike>BD 8.000</strike>
+
+						</p>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/14.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Ring</h5>
+						<p class="text-center">
+							BD 7.500
+							<strike>BD 8.000</strike>
+						</p>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/15.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Necklace</h5>
+						<p class="text-center">
+							BD 7.500
+
+							<strike>BD 8.000</strike>
+
+						</p>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 hidden-sm-down">
+				<div class="card">
+					<img class="img-fluid" src="assets/images/16.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h5 class="text-center">Necklace</h5>
+						<p class="text-center">
+							BD 7.500
+
+							<strike>BD 8.000</strike>
+
+						</p>
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div> -->
+        <!--/.Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <!-- <div class="controls-top">
 		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example4" data-slide="prev">
 			<i class="fa fa-chevron-left"></i>
 		</a>
@@ -850,26 +847,26 @@
 			<i class="fa fa-chevron-right"></i>
 		</a>
 	</div> -->
-	<!--/.Controls-->
+    <!--/.Controls-->
 
 </div>
 <!-- end jewellery -->
 
 <!-- intro -->
 <div class="container intro">
-	<dic class="row data">
-		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 intro">
-			<h2 class="text-center">What is
-				<strong>{{"common.intro" | translate}}</strong>
-			</h2>
-			<br />
-			<p class="text-center">{{"common.loreum" | translate}}</p>
-			<br />
-			<button type="button" class="btn btn-danger m-auto">Read More &nbsp;
-				<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-			</button>
-		</div>
-	</dic>
+    <dic class="row data">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 intro">
+            <h2 class="text-center">What is
+                <strong>{{"common.intro" | translate}}</strong>
+            </h2>
+            <br />
+            <p class="text-center">{{"common.loreum" | translate}}</p>
+            <br />
+            <button type="button" class="btn btn-danger m-auto">Read More &nbsp;
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </dic>
 </div>
 <!-- end intro -->
 <br />
@@ -878,53 +875,53 @@
 
 <!-- recently viewed -->
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Recently Viewed
-				<span>
-					<a (click)="seeAll('recent')">See all</a>
-				</span>
-			</h4>
-		</div>
-	</div>
-	<hr>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Recently Viewed
+                <span>
+                    <a (click)="seeAll('recent')">See all</a>
+                </span>
+            </h4>
+        </div>
+    </div>
+    <hr>
 </div>
 <div id="multi-item-example5" class="carousel slide carousel-multi-item container" data-ride="carousel">
 
 
 
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner deals" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner deals" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active dealsAct">
+        <!--First slide-->
+        <div class="carousel-item active dealsAct">
 
-			<div class="col-md-3" *ngFor="let data of ecomArr">
-				<div class="wrapper">
-					<div class="card">
-						<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-						<div class="card-block">
-							<h5 class="text-center">{{data.product_name}}
-							</h5>
-							<p class="text-center">
-								BD {{data.selling_price}}
+            <div class="col-md-3" *ngFor="let data of ecomArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}}
+                            </h5>
+                            <p class="text-center">
+                                BD {{data.selling_price}}
 
-								<strike>BD {{data.actual_price}}
-								</strike>
+                                <strike>BD {{data.actual_price}}
+                                </strike>
 
-							</p>
+                            </p>
 
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-				</div>
-			</div>
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                </div>
+            </div>
 
-			<!-- <div class="col-md-3 hidden-sm-down">
+            <!-- <div class="col-md-3 hidden-sm-down">
 				<div class="card">
 					<img class="img-fluid" src="assets/images/18.jpg" alt="Card image cap">
 					<div class="card-block">
@@ -973,14 +970,14 @@
 
 
 
-		</div>
-		<!--/.First slide-->
+        </div>
+        <!--/.First slide-->
 
-	</div>
-	<!--/.Slides-->
+    </div>
+    <!--/.Slides-->
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
+    <!--Controls-->
+    <!-- <div class="controls-top">
 		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example5" data-slide="prev">
 			<i class="fa fa-chevron-left"></i>
 		</a>
@@ -988,72 +985,72 @@
 			<i class="fa fa-chevron-right"></i>
 		</a>
 	</div> -->
-	<!--/.Controls-->
+    <!--/.Controls-->
 
 </div>
 
 <!-- end recently viewed -->
 
 <div class="container-fluid deals-header">
-	<div class="row justify-content-center">
-		<div class="col-lg-4">
-			<h4 class="text-center">Recommended Products
-				<span>
-					<a (click)="seeAll('recent')">See all</a>
-				</span>
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <h4 class="text-center">Recommended Products
+                <span>
+                    <a (click)="seeAll('recent')">See all</a>
+                </span>
 
-			</h4>
-		</div>
-	</div>
-	<hr>
+            </h4>
+        </div>
+    </div>
+    <hr>
 </div>
 <!-- recommended products -->
 <div id="multi-item-example6" class="carousel slide carousel-multi-item container" data-ride="carousel">
 
 
 
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner" role="listbox">
+    <br />
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
 
-		<!--First slide-->
-		<div class="carousel-item active">
-			<!-- <div class="noData">
+        <!--First slide-->
+        <div class="carousel-item active">
+            <!-- <div class="noData">
 				No records Found
 			</div> -->
-			<div class="col-md-3" *ngFor="let data of ecomArr">
-				<div class="wrapper">
-					<div class="card">
-						<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-						<div class="card-block">
-							<h5 class="text-center">{{data.product_name}}
-							</h5>
-							<p class="text-center">
-								BD {{data.selling_price}}
+            <div class="col-md-3" *ngFor="let data of ecomArr">
+                <div class="wrapper">
+                    <div class="card">
+                        <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}}
+                            </h5>
+                            <p class="text-center">
+                                BD {{data.selling_price}}
 
-								<strike>BD {{data.actual_price}}
-								</strike>
+                                <strike>BD {{data.actual_price}}
+                                </strike>
 
-							</p>
+                            </p>
 
-						</div>
-					</div>
-					<ul class="expand-button">
-						<li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-						<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-					</ul>
-				</div>
-			</div>
-
-
+                        </div>
+                    </div>
+                    <ul class="expand-button">
+                        <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
+                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                    </ul>
+                </div>
+            </div>
 
 
 
-		</div>
-		<!--/.First slide-->
 
-		<!--Second slide-->
-		<!-- <div class="carousel-item">
+
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <!-- <div class="carousel-item">
 
 			<div class="col-md-6">
 				<div class="card">
@@ -1106,10 +1103,10 @@
 
 
 		</div> -->
-		<!--/.Second slide-->
+        <!--/.Second slide-->
 
-		<!--Third slide-->
-		<!-- <div class="carousel-item">
+        <!--Third slide-->
+        <!-- <div class="carousel-item">
 
 			<div class="col-md-6">
 				<div class="card">
@@ -1162,13 +1159,13 @@
 
 
 		</div> -->
-		<!--/.Third slide-->
+        <!--/.Third slide-->
 
-	</div>
-	<!--/.Slides-->
+    </div>
+    <!--/.Slides-->
 
-	<!--Controls-->
-	<!-- <div class="controls-top">
+    <!--Controls-->
+    <!-- <div class="controls-top">
 		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
 			<i class="fa fa-chevron-left"></i>
 		</a>
@@ -1176,7 +1173,7 @@
 			<i class="fa fa-chevron-right"></i>
 		</a>
 	</div> -->
-	<!--/.Controls-->
+    <!--/.Controls-->
 
 </div>
 

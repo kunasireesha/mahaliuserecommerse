@@ -8,8 +8,8 @@
                 <h4 class="account-header">MY ACCOUNT</h4>
                 <hr>
                 <li [ngClass]="{'active':showProfile || editUserProfile}" (click)="profile()">Profile Details</li>
-                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery
-                    Address</li>
+                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery Address
+                </li>
                 <li [ngClass]="{'active':showWishlist}" (click)="wishList()">Wishlist</li>
                 <li [ngClass]="{'active':showChangePassword}" (click)="changePassword()">Change Password</li>
                 <li [ngClass]="{'active':showMyOrders || showOrderDetails}" (click)="myOrder()">My Order</li>
@@ -28,7 +28,7 @@
             <div class="details">
                 <p>
                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-                    <span>{{profileData?.first_name}} </span>
+                    <span>{{profileData?.last_name}} </span>
                 </p>
                 <p>
                     <i class="fa fa-at" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
@@ -40,8 +40,7 @@
                     <span>{{profileData?.mobile_number}}</span>
                 </p>
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; {{profileData?.area}},
-                    {{profileData?.address}},
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; {{profileData?.area}}, {{profileData?.address}},
                     <br /> {{profileData?.city}}
                     <br /> {{profileData?.country}}
                 </p>
@@ -57,14 +56,14 @@
             <h3 class="profile-header">Edit Profile</h3>
             <br />
             <br />
-            <form class="form-details">
+            <form class="form-details" #formCtrl="ngForm">
                 <div class="form-group row">
                     <label for="inputname1" class="col-sm-2 col-form-label">Name
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name"
-                            [(ngModel)]="profileData.first_name">
+                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name" [(ngModel)]="profileData.first_name"
+                            ngControl="first_name" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -72,8 +71,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com"
-                            name="email" [(ngModel)]="profileData.email">
+                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com" name="email"
+                            [(ngModel)]="profileData.email" ngControl="email" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -81,8 +80,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputphoneno1" placeholder="8586854500"
-                            [(ngModel)]="profileData.mobile_number" name="mobile_number">
+                        <input type="text" class="form-control input-feild" id="inputphoneno1" placeholder="8586854500" [(ngModel)]="profileData.mobile_number"
+                            name="mobile_number" ngControl="mobile_number" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -90,8 +89,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" placeholder="Unispace Bussiness Center #143"
-                            [(ngModel)]="profileData.area" name="bussiness_area">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" placeholder="Unispace Bussiness Center #143" [(ngModel)]="profileData.area"
+                            name="bussiness_area" ngControl="bussiness_area" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -99,14 +98,14 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka">
+                        <input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka" ngControl="state" required>
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">City
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore"
-                            [(ngModel)]="profileData.city" name="bussiness_city">
+                        <input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore" [(ngModel)]="profileData.city"
+                            name="bussiness_city" ngControl="business_city" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -114,13 +113,13 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputpincode" placeholder="500038">
+                        <input type="text" class="form-control input-feild" id="inputpincode" placeholder="500038" ngControl="pincode" required>
                     </div>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
-                        <button type="button" class="btn save-btn" (click)="updateProfile()">Save</button>
+                        <button type="button" class="btn save-btn" (click)="updateProfile()" [disabled]="!formCtrl.form.valid">Save</button>
                     </div>
                     <div class="col-lg-5">
                         <button type="button" class="btn save-btn" (click)="cancel()">Cancel</button>
@@ -144,8 +143,7 @@
                 <div class="col-lg-10 ">
                     <h3>{{add.address_type}}</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-                        {{add.landmark}},{{add.house_no}}
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; {{add.landmark}},{{add.house_no}}
                         <br /> {{add.city}} ,{{add.pin_code}}
                         <br />
                     </P>
@@ -183,8 +181,7 @@
                     <label for="inputname1" class="col-sm-2 col-form-label">Full Name
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name"
-                            [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
+                        <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name" [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
                         <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
                             <div *ngIf="f1.full_name.errors.required">Full Name is required</div>
                         </div>
@@ -194,8 +191,7 @@
                     <label for="inputMblnbr" class="col-sm-2 col-form-label">Mobile Number
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number"
-                            [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
+                        <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
                         <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
                             <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
                         </div>
@@ -205,8 +201,7 @@
                     <label for="inputhouseno" class="col-sm-2 col-form-label">House: No
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no"
-                            [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no" [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
                         <div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
                             <div *ngIf="f1.house_no.errors.required">House Number is required</div>
                         </div>
@@ -216,8 +211,7 @@
                     <label for="inputstate" class="col-sm-2 col-form-label">Landmark
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark"
-                            [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
+                        <input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark" [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
                         <div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">
                             <div *ngIf="f1.landmark.errors.required">Landmark is required</div>
                         </div>
@@ -225,8 +219,7 @@
                     <label for="inputcity" class="col-sm-2 col-form-label">City
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city"
-                            [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
+                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
                         <div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
                             <div *ngIf="f1.city.errors.required">City is required</div>
                         </div>
@@ -236,8 +229,7 @@
                     <label for="inputstate" class="col-sm-2 col-form-label">State
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state"
-                            [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
+                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state" [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
                         <div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
                             <div *ngIf="f1.state.errors.required">state is required</div>
                         </div>
@@ -245,8 +237,7 @@
                     <label for="inputcity" class="col-sm-2 col-form-label">Pin-code
                     </label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code"
-                            [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
+                        <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code" [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
                         <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
                             <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
                         </div>
@@ -256,9 +247,9 @@
             <div class="addType">
                 <p>Choose nick name for this address</p>
                 <p class="addresses ">
-                    <a (click)="Type('Home')" [ngClass]="[bntStyle]">Home</a>
-                    <a (click)="Type('Office')" [ngClass]="[bntStyle]">Office</a>
-                    <a (click)="Type('Other')" [ngClass]="[bntStyle]">Other</a>
+                    <a (click)="Type('Home')" [ngClass]="{'activeAdd':type=='Home'}">Home</a>
+                    <a (click)="Type('Office')" [ngClass]="{'activeAdd':type=='Office'}">Office</a>
+                    <a (click)="Type('Other')" [ngClass]="{'activeAdd':type=='Other'}">Other</a>
                 </p>
             </div>
             <div class="custom-control custom-checkbox check-box">
@@ -294,8 +285,7 @@
                     </label>
                     <div class="col-sm-10">
 
-                        <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number"
-                            [(ngModel)]="editAddData.mobile_number">
+                        <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number" [(ngModel)]="editAddData.mobile_number">
                         <!-- <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
 				<div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
 			</div> -->
@@ -307,8 +297,7 @@
                     </label>
                     <div class="col-sm-10">
 
-                        <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no"
-                            [(ngModel)]="editAddData.house_no">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no" [(ngModel)]="editAddData.house_no">
                         <!-- <div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
 				<div *ngIf="f1.house_no.errors.required">House Number is required</div>
 			</div> -->
@@ -356,8 +345,7 @@
                     </label>
                     <div class="col-sm-4">
 
-                        <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code"
-                            [(ngModel)]="editAddData.pin_code">
+                        <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code" [(ngModel)]="editAddData.pin_code">
                         <!-- <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
 				<div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
 			</div> -->
@@ -414,7 +402,7 @@
                         <td class="pt-5">
                             <div class="prod-details">
                                 <span>
-                                    <strong>{{wish.offer_price}}</strong>
+                                    <strong>BD {{wish.offer_price}}</strong>
                                 </span>
                             </div>
                         </td>
@@ -515,7 +503,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" formControlName="email" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <input type="text" formControlName="email" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                        />
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                             <div *ngIf="f.email.errors.required">Email is required</div>
                             <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -527,7 +516,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-6">
-                        <input type="password" formControlName="password" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <input type="password" formControlName="password" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                        />
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -539,8 +529,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-6 ">
-                        <input type="password" formControlName="new_password" class="form-control input-feild"
-                            [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }" />
+                        <input type="password" formControlName="new_password" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }"
+                        />
                         <div *ngIf="submitted && f.new_password.errors" class="invalid-feedback">
                             <div *ngIf="f.new_password.errors.required">Confirm Password is required</div>
                             <div *ngIf="f.new_password.errors.minlength">Confirm Password must be at least 6 characters
@@ -581,8 +571,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
-                                        aria-label="Search" [(ngModel)]="filter" name="filter">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search" [(ngModel)]="filter"
+                                        name="filter">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -598,8 +588,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr class="cst-topad" *ngFor="let ord of orders|filter:filter;let i =index"
-                                            (click)="showBukedOrderDetails(ord.order_id)">
+                                        <tr class="cst-topad" *ngFor="let ord of orders|filter:filter;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
                                             <!-- <th scope="row">{{i+1}}</th> -->
                                             <td>
                                                 {{ord.order_id}}
@@ -778,8 +767,7 @@
             <div class="address-bar">
                 <h4 class="office-header">OFFICE</h4>
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok Plaza,
-                    Near
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok Plaza, Near
                     Masab Tank, Tolichowki,
                     <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mehidipatnam,Hyderabad, 500038
                 </p>
@@ -839,10 +827,8 @@
                         <div class="card">
                             <div class="product-image">
                                 <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                                <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                    class="img-fluid">
-                                <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                    class="img-fluid">
+                                <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                                <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                             </div>
                             <div class="card-block add-to-cart">
                                 <h5 class="text-center">{{item.product_name}} </h5>
@@ -892,14 +878,12 @@
             </div>
             <div class="notification-bar1">
                 <p>
-                    <i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp; Shop With Your
-                    Debit/Credit
+                    <i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp; Shop With Your Debit/Credit
                     Card and get 35% Discount</p>
             </div>
             <div class="notification-bar2">
                 <p>
-                    <i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp;&nbsp; Shop Upto
-                    10000/-
+                    <i class="fa fa-bell" aria-hidden="true" style="color:#a7a3a2;"></i>&nbsp;&nbsp;&nbsp; Shop Upto 10000/-
                     and get Cashback upto 3000</p>
             </div>
         </div>
@@ -915,10 +899,8 @@
                     <div class="card">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
@@ -959,10 +941,8 @@
                     <div class="card">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
@@ -1003,10 +983,8 @@
                     <div class="card">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
