@@ -1,31 +1,31 @@
 <app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <div class="container productDetails">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="img">
-                <img *ngFor="let img of prodImages" [src]="img" class="prod-image" (click)="showBigImage(img)">
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
-            <div class="wish-list">
-                <a><i class="fas fa-heart" (click)="addtoWish()"></i></a>
-            </div>
-            <img id="myImg" src="{{product_image}}" [imageZoom]="zoomedImageSrc" alt="Snow" (click)="showProduxtDetails(data.product_id)">
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 details">
-            <h4>{{prodName}}</h4>
-            <i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
-            &nbsp;&nbsp;&nbsp;
-            <span class="rate">Rating : 5</span>
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="size">Size
-                        <br />
-                        <a *ngFor="let data of prodsData">{{data.size}}</a> &nbsp;
-                        <!-- <a>256gb</a> -->
-                    </p>
-                </div>
-                <!-- <div class="col-md-6">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="img">
+				<img *ngFor="let img of prodImages" [src]="img" class="prod-image" (click)="showBigImage(img)">
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+			<div class="wish-list">
+				<a><i class="fas fa-heart" (click)="addtoWish()"></i></a>
+			</div>
+			<img id="myImg" src="{{product_image}}" [imageZoom]="zoomedImageSrc" alt="Snow" (click)="showProduxtDetails(data.product_id)">
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 details">
+			<h4>{{prodName}}</h4>
+			<i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
+			&nbsp;&nbsp;&nbsp;
+			<span class="rate">Rating : 5</span>
+			<div class="row">
+				<div class="col-md-6">
+					<p class="size">Size
+						<br />
+						<a *ngFor="let data of prodsData">{{data.size}}</a> &nbsp;
+						<!-- <a>256gb</a> -->
+					</p>
+				</div>
+				<!-- <div class="col-md-6">
 					<p>color</p>
 
 					<a class="black"></a>
@@ -33,46 +33,46 @@
 
 
 				</div> -->
-            </div>
+			</div>
 
-            <p><strong>BD:</strong> {{offer_price}}
-                <span>
-                    <strike><strong>BD : </strong> {{actual_price}}</strike>(Inclusive of all taxes)</span>
-            </p>
-            <p class="stoke">In Stoke</p>
-            <p>
-                <span>Sold By MRR Mobiles Stores &</span> 3 Other |
-                <span>Fulfilled by vendorEcommerce</span>
-            </p>
-            <br />
-            <button class="btn btn-maroon" routerLink="/mycart" (click)="addtoCart(skid)">Buy Now</button>
-            <button class="btn btn-maroon add-cart" value="{{prodsData.product_id}}" (click)="addtoCart(skid)">Add to Cart</button>
-        </div>
+			<p><strong>BD:</strong> {{offer_price}}
+				<span>
+					<strike><strong>BD : </strong> {{actual_price}}</strike>(Inclusive of all taxes)</span>
+			</p>
+			<p class="stoke">In Stoke</p>
+			<p>
+				<span>Sold By MRR Mobiles Stores &</span> 3 Other |
+				<span>Fulfilled by vendorEcommerce</span>
+			</p>
+			<br />
+			<button class="btn btn-maroon" routerLink="/mycart" (click)="addtoCart(skid)">Buy Now</button>
+			<button class="btn btn-maroon add-cart" value="{{prodsData.product_id}}" (click)="addtoCart(skid)">Add to Cart</button>
+		</div>
 
-    </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-    </div>
-    <br />
+	</div>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+	<br />
 
-    <div class="row desription">
-        <h5>Description</h5>
-        <div class="col-md-12">
-            <p>{{description}}
-            </p>
-        </div>
-    </div>
-    <div class="row desription">
+	<div class="row desription">
+		<h5>Description</h5>
+		<div class="col-md-12">
+			<p>{{description}}
+			</p>
+		</div>
+	</div>
+	<div class="row desription">
 
-        <h5>Specification</h5>
-        <br />
+		<h5>Specification</h5>
+		<br />
 
-        <div class="col-md-12">
-            <p>No Data</p>
-            <!-- <div class="row">
+		<div class="col-md-12">
+			<p>No Data</p>
+			<!-- <div class="row">
 				<div class="col-md-6">
 					<ul>
 						<li>
@@ -106,17 +106,17 @@
 					</ul>
 				</div>
 			</div> -->
-        </div>
-    </div>
+		</div>
+	</div>
 
-    <div class="row desription">
-        <h5>Reviews</h5>
-        <br />
+	<div class="row desription">
+		<h5>Reviews</h5>
+		<br />
 
-        <div class="col-md-12">
+		<div class="col-md-12">
 
-            <p>No Data</p>
-            <!-- <p>Showing 1-3 of 71 reviews</p>
+			<p>No Data</p>
+			<!-- <p>Showing 1-3 of 71 reviews</p>
 			<div>
 				<i *ngFor="let item of starList; let i=index " class="fa fa-star"></i>
 				<p>By
@@ -161,6 +161,6 @@
 					Post
 				</button>
 			</div> -->
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
