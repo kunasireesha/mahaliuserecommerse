@@ -110,7 +110,8 @@
         <div class="col-md-9 items">
             <p>
                 <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-                <a>Electronics</a>
+                <a>{{catName}}</a>&nbsp;&nbsp;>&nbsp;
+                <a *ngIf="subCatName">{{subCatName}}</a>
             </p>
             <div class="row" *ngIf="searchProd">
                 <div class="col-md-3 item" *ngFor="let data of skuData">
