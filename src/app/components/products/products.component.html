@@ -1,10 +1,10 @@
 <app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <div class="container products">
-	<div class="row">
-		<div class="col-md-3">
-			<h5>Category</h5>
-			<br />
-			<!-- <div class="categories">
+    <div class="row">
+        <div class="col-md-3">
+            <h5>Category</h5>
+            <br />
+            <!-- <div class="categories">
 				<div id="panel-group">
 				  <div class="panel panel-default" *ngFor="let item of category; let i = index">
 					<div class="panel-heading" (click) = "current = i;item.id">
@@ -22,169 +22,169 @@
 				  </div> 
 			  </div> -->
 
-			<div class="categories" *ngFor="let cat of category; let i = index">
-				<p [ngClass]="{'active':showCategories && i==selectedCat}">
-					<a>
-						<i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
-						<i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
+            <div class="categories" *ngFor="let cat of category; let i = index">
+                <p [ngClass]="{'active':showCategories && i==selectedCat}">
+                    <a>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
-						<i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
-					</a> &nbsp;&nbsp;<span (click)="showCateProd(cat.id,cat.name)">{{cat.category_name}}</span>
-				</p>
-				<hr>
-				<!-- categories -->
+                        <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+                    </a> &nbsp;&nbsp;<span (click)="showCateProd(cat.id,cat.name)">{{cat.category_name}}</span>
+                </p>
+                <hr>
+                <!-- categories -->
 
-				<div class="subCates">
-					<div *ngFor="let subCat of subCategory;let ii = index">
-						<p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
-							<span (click)="getSubcatProd(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
-						</p>
-					</div>
-				</div>
-			</div>
+                <div class="subCates">
+                    <div *ngFor="let subCat of subCategory;let ii = index">
+                        <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
+                            <span (click)="getSubcatProd(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-			<h5>Brand</h5>
-			<div class="brands">
-				<input type="text" placeholder="Search by Brand">
-				<br />
-				<div class="brand-names">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-						<label class="custom-control-label" for="defaultUnchecked">Apple</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-						<label class="custom-control-label" for="defaultUnchecked1">Asus</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-						<label class="custom-control-label" for="defaultUnchecked2">Celkon</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-						<label class="custom-control-label" for="defaultUnchecked3">HTC</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
-						<label class="custom-control-label" for="defaultUnchecked4">Intex</label>
-					</div>
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
-						<label class="custom-control-label" for="defaultUnchecked5">Lenovo</label>
-					</div>
-				</div>
-			</div>
+            <h5>Brand</h5>
+            <div class="brands">
+                <input type="text" placeholder="Search by Brand">
+                <br />
+                <div class="brand-names">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                        <label class="custom-control-label" for="defaultUnchecked">Apple</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+                        <label class="custom-control-label" for="defaultUnchecked1">Asus</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+                        <label class="custom-control-label" for="defaultUnchecked2">Celkon</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+                        <label class="custom-control-label" for="defaultUnchecked3">HTC</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+                        <label class="custom-control-label" for="defaultUnchecked4">Intex</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+                        <label class="custom-control-label" for="defaultUnchecked5">Lenovo</label>
+                    </div>
+                </div>
+            </div>
 
-			<h5>Sort</h5>
-			<div class="sort">
-				<select>
-					<option>Sort</option>
-				</select>
-			</div>
-			<br />
-			<h5>Price</h5>
-			<div class="price">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
-					<label class="custom-control-label" for="defaultUnchecked6">Less than 5000</label>
-				</div>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
-					<label class="custom-control-label" for="defaultUnchecked7">Less than 10000</label>
-				</div>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
-					<label class="custom-control-label" for="defaultUnchecked8">Less than 15000</label>
-				</div>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
-					<label class="custom-control-label" for="defaultUnchecked9">Less than 20000</label>
-				</div>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
-					<label class="custom-control-label" for="defaultUnchecked10">Less than 25000</label>
-				</div>
-			</div>
+            <h5>Sort</h5>
+            <div class="sort">
+                <select>
+                    <option>Sort</option>
+                </select>
+            </div>
+            <br />
+            <h5>Price</h5>
+            <div class="price">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
+                    <label class="custom-control-label" for="defaultUnchecked6">Less than 5000</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
+                    <label class="custom-control-label" for="defaultUnchecked7">Less than 10000</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
+                    <label class="custom-control-label" for="defaultUnchecked8">Less than 15000</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
+                    <label class="custom-control-label" for="defaultUnchecked9">Less than 20000</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
+                    <label class="custom-control-label" for="defaultUnchecked10">Less than 25000</label>
+                </div>
+            </div>
 
-		</div>
-		<div class="col-md-9 items">
-			<p>
-				<a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-				<a>Electronics</a>
-			</p>
-			<div class="row" *ngIf="searchProd">
-				<div class="col-md-3 item" *ngFor="let data of skuData">
-					<div class="wrapper">
-						<div class="card">
-							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-							<div class="card-block">
-								<h5 class="text-center">{{data.product_name}} </h5>
-								<p class="text-center">
-									BD {{data.selling_price}}
-									<strike>BD {{data.actual_price}}</strike>
-								</p>
-								<div class="quantity-price text-center">
-									<select (change)="changeSize($event.target.value)">
-										<option [value]="data.skid">{{data.size}}</option>
-									</select>
-								</div>
-								<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
-									To Cart</button>
-							</div>
-						</div>
-						<ul class="expand-button">
-							<li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-							<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-						</ul>
-						<ul class="expand-button2 expand-button-2">
-							<li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- <div class="quantity-price text-center">
+        </div>
+        <div class="col-md-9 items">
+            <p>
+                <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+                <a>Electronics</a>
+            </p>
+            <div class="row" *ngIf="searchProd">
+                <div class="col-md-3 item" *ngFor="let data of skuData">
+                    <div class="wrapper">
+                        <div class="card">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                            <div class="card-block">
+                                <h5 class="text-center">{{data.product_name}} </h5>
+                                <p class="text-center">
+                                    BD {{data.selling_price}}
+                                    <strike>BD {{data.actual_price}}</strike>
+                                </p>
+                                <div class="quantity-price text-center">
+                                    <select (change)="changeSize($event.target.value)">
+                                        <option [value]="data.skid">{{data.size}}</option>
+                                    </select>
+                                </div>
+                                <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+                                    To Cart</button>
+                            </div>
+                        </div>
+                        <ul class="expand-button">
+                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                            <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        </ul>
+                        <ul class="expand-button2 expand-button-2">
+                            <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="quantity-price text-center">
 					<select (change)="changeSize($event.target.value)">
 						<option  [value]="sku.skid">{{sku.size}}</option>
 					</select>
 				</div>
 				<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button> -->
-			</div>
-			<div class="noRec">
-				No records Found
-			</div>
-			<div class="row" *ngIf="seeAll">
-				<div class="col-md-3 item" *ngFor="let data of skuArr">
-					<div class="wrapper">
-						<div class="card">
-							<img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
-							<div class="card-block">
-								<h5 class="text-center">{{data.product_name}} </h5>
-								<p class="text-center">
-									BD {{data.selling_price}}
-									<strike>BD {{data.actual_price}}</strike>
-								</p>
-								<div class="quantity-price text-center">
-									<select (change)="changeSize($event.target.value)">
-										<option [value]="data.skid">{{data.size}}</option>
-									</select>
-								</div>
-								<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
-									To Cart</button>
-							</div>
-						</div>
-						<ul class="expand-button">
-							<li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
-							<li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
-						</ul>
-						<ul class="expand-button2 expand-button-2">
-							<li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<!-- <div *ngIf="noData&&!serProducts">
+            </div>
+            <div *ngIf="noRecords">
+                No records Found
+            </div>
+            <div class="row" *ngIf="seeAll">
+                <div class="col-md-3 item" *ngFor="let data of skuArr">
+                    <div class="wrapper">
+                        <div class="card">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                            <div class="card-block">
+                                <h5 class="text-center">{{data.product_name}} </h5>
+                                <p class="text-center">
+                                    BD {{data.selling_price}}
+                                    <strike>BD {{data.actual_price}}</strike>
+                                </p>
+                                <div class="quantity-price text-center">
+                                    <select (change)="changeSize($event.target.value)">
+                                        <option [value]="data.skid">{{data.size}}</option>
+                                    </select>
+                                </div>
+                                <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+                                    To Cart</button>
+                            </div>
+                        </div>
+                        <ul class="expand-button">
+                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                            <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        </ul>
+                        <ul class="expand-button2 expand-button-2">
+                            <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div *ngIf="noData&&!serProducts">
 					No records Found
 				</div> -->
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
