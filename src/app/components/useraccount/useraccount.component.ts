@@ -761,10 +761,15 @@ export class UseraccountComponent implements OnInit {
             "item_type": "ecommerce"
         }
         this.appService.addtoCart(inData).subscribe(res => {
-            this.getCart();
-            this.cartDetails = res.json().selling_price_total;
-            this.cartCount = res.json().count;
-            swal(res.json().message, "", "success");
+            if (res.json().status === 400) {
+                swal(res.json().message, "", "error");
+            } else {
+                this.getCart();
+                this.cartDetails = res.json().selling_price_total;
+                this.cartCount = res.json().count;
+                swal(res.json().message, "", "success");
+            }
+
         }, err => {
 
         })
