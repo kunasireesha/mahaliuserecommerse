@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit {
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
-            mobile_number: ['', [Validators.required]],
+            mobile_number: ['', [Validators.required, Validators.minLength(10)]],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
         this.loginForm = this.formBuilder.group({

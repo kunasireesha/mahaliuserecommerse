@@ -18,8 +18,7 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="modal" data-target="#myaccountmdl" *ngIf="myAccount">
-                    <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light"
-                        mdbRippleRadius>
+                    <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
                         <i class="fa fa-user" aria-hidden="true"></i> &nbsp;{{userName}}
                         <span class="caret"></span>
                     </a>
@@ -102,8 +101,7 @@
     <div class="navbar-collapse collapse" id="navbar5">
         <form class="mx-2 my-auto d-inline w-100">
             <div class="input-group">
-                <input type="text" class="form-control cust-srch border border-right-0" name="product1" [(ngModel)]="product1"
-                    placeholder="Search for products...">
+                <input type="text" class="form-control cust-srch border border-right-0" name="product1" [(ngModel)]="product1" placeholder="Search for products...">
                 <span class="input-group-append">
                     <button class="btn btn-outline-secondary cust-srchbtn border border-left-0" type="button" (click)="search(product1,'search')">
                         <i class="fa fa-search"></i>
@@ -194,8 +192,7 @@
                         <div class="col-md-3 col-sm-4 product-cart">
                             <p>{{item.prodName}}</p>
                             <select class="cust-slct" (change)="skuChange()">
-                                <option value="{{item.products.skid}}">{{item.products.skuValue}} - BD
-                                    {{item.products.selling_price}}
+                                <option value="{{item.products.skid}}">{{item.products.skuValue}} - BD {{item.products.selling_price}}
                                 </option>
                             </select>
                         </div>
@@ -205,8 +202,7 @@
                                     <i class="fa fa-minus " aria-hidden="true"></i>
                                 </button>
 
-                                <input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly"
-                                    value="{{item.quantity}}" />
+                                <input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
                                 <button class="plus-btn" type="button" name="button" (click)="itemIncrease(item.cart_id)">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
@@ -346,8 +342,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <a href="" class="cust-anchr">
-                            <i class="fa fa-location-arrow cust-arr" aria-hidden="true"></i> &nbsp;Choose Current
-                            Location
+                            <i class="fa fa-location-arrow cust-arr" aria-hidden="true"></i> &nbsp;Choose Current Location
                         </a>
                     </div>
                 </div>
@@ -383,7 +378,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.email.errors }" />
+                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.email.errors }"
+                                    />
                                     <div *ngIf="loginSubmitted && f1.email.errors" class="invalid-feedback">
                                         <div *ngIf="f1.email.errors.required">Email Id is required</div>
                                         <div *ngIf="f1.email.errors.email">Email must be a valid email address
@@ -396,15 +392,14 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.password.errors }" />
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.password.errors }"
+                                    />
                                     <div *ngIf="loginSubmitted && f1.password.errors" class="invalid-feedback">
                                         <div *ngIf="f1.password.errors.required">Password is required</div>
-                                        <div *ngIf="f1.password.errors.minlength">Password must be at least 6
-                                            characters
+                                        <div *ngIf="f1.password.errors.minlength">Password must be at least 6 characters
                                         </div>
                                     </div>
-                                    <a href="#" data-toggle="modal" data-target="#forgotpass" data-dismiss="modal"
-                                        class="frgt-a">
+                                    <a href="#" data-toggle="modal" data-target="#forgotpass" data-dismiss="modal" class="frgt-a">
                                         <small>Forgot Password &nbsp;?</small>
                                     </a>
 
@@ -421,8 +416,7 @@
                         <div class="cust-acnt text-center">
                             <p class="text-center">Dont have an account ?
                                 <span style="color: blue;">
-                                    <a href="" data-toggle="modal" data-target="#signupmodal" data-dismiss="modal">Sign
-                                        Up
+                                    <a href="" data-toggle="modal" data-target="#signupmodal" data-dismiss="modal">Sign Up
                                         now
                                     </a>
                                 </span>
@@ -433,7 +427,6 @@
             </div>
         </div>
     </div>
-    >>>>>>> f0101c8117bcb9fdab8651d8c7f08837b5c11fc8
 </div>
 <!-- ./login modal -->
 
@@ -459,7 +452,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"
+                                    />
                                     <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                     </div>
@@ -470,7 +464,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"
+                                    />
                                     <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                     </div>
@@ -481,7 +476,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                                    />
                                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                         <div *ngIf="f.email.errors.required">Email is required</div>
                                         <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -493,10 +489,10 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" class="form-control" formControlName="mobile_number" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                    <input type="text" class="form-control" formControlName="mobile_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                     <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                         <div *ngIf="f.mobile_number.errors.required">Mobile number is required</div>
+                                        <div *ngIf="f.mobile_number.errors.minlength">Mobile number must be 10 characters</div>
                                     </div>
                                 </div>
                             </div>
@@ -505,7 +501,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                    />
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
                                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -517,7 +514,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                    />
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
                                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -534,8 +532,7 @@
                         <div class="cust-acnt text-center">
                             <p class="text-center">Have an account ?
                                 <span style="color: blue;">
-                                    <a href="" data-toggle="modal" data-target="#loginmodal" data-dismiss="modal">login
-                                        now
+                                    <a href="" data-toggle="modal" data-target="#loginmodal" data-dismiss="modal">login now
                                     </a>
                                 </span>
                             </p>
@@ -572,7 +569,8 @@
 
                                 <div class="col-sm-7 col-md-7">
                                     <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
-                                        <input type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
+                                        <input type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }"
+                                        />
                                         <div *ngIf="forgotSubmitted && f2.mob_number.errors" class="invalid-feedback">
                                             <div *ngIf="f2.mob_number.errors.required">Mobile number is required</div>
                                         </div>
@@ -698,8 +696,7 @@
                                             <!-- <h6>ladies finger</h6> -->
                                             <li>
                                                 <i class="fas fa-angle-left sub-cat"></i>
-                                                <a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)"
-                                                    data-dismiss="modal">{{sub.sub_category_name}}</a>
+                                                <a (click)="showProbySubCat(sub.id,'subCategory',sub.cat_name,sub.sub_category_name)" data-dismiss="modal">{{sub.sub_category_name}}</a>
                                             </li>
                                         </ul>
                                     </div>
