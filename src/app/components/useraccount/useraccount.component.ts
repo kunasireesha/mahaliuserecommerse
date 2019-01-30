@@ -61,9 +61,10 @@ export class UseraccountComponent implements OnInit {
             pin_code: ['', Validators.required],
         });
         this.resetForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
+            password: ['', [Validators.required]],
             new_password: ['', [Validators.required, Validators.minLength(6)]],
+            retype_password: ['', [Validators.required, Validators.minLength(6)]],
+            user_id: localStorage.userId
         });
         this.productForm = this.formBuilder.group({
             deal_price: ['', Validators.required],
@@ -570,7 +571,7 @@ export class UseraccountComponent implements OnInit {
         // stop here if form is invalid
         if (this.resetForm.invalid) {
             return;
-        } else if (this.resetForm.value.password != this.resetForm.value.new_password) {
+        } else if (this.resetForm.value.retype_password != this.resetForm.value.new_password) {
             swal("Passwords doesn't matched", "", "warning");
             return;
         }

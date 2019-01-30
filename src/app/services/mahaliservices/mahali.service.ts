@@ -24,7 +24,8 @@ export class appService {
             'Content-Type': "application/JSON",
             'x-access-token': JSON.parse(localStorage.token)
         });
-        return this.http.post(AppSettings.changePwdUrl, params, { headers: headers });
+        this.user_id = localStorage.getItem('userId');
+        return this.http.post(AppSettings.changePwdUrl + "/"+this.user_id, params, { headers: headers });
     }
     getProduct() {
         const headers = new Headers({ 'Content-Type': "application/x-www-form-urlencoded" });
