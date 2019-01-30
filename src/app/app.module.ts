@@ -26,6 +26,7 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
 import { ProductsComponent } from './components/products/products.component';
 import { MycartComponent } from './components/mycart/mycart.component';
 import { ItemsComponent } from './components/items/items.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -61,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         UseraccountComponent,
         MysavedlistComponent,
         PromocodesComponent,
+        ContactComponent
 
     ],
     imports: [
@@ -108,7 +110,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             { path: 'addProduct', component: UseraccountComponent, data: [{ page: 'addProduct' }] },
             { path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
             { path: 'deliveryaddr', component: UseraccountComponent, data: [{ page: 'deliveryaddr' }] },
-            { path: 'notifications', component: UseraccountComponent, data: [{ page: 'notifications' }] }
+            { path: 'notifications', component: UseraccountComponent, data: [{ page: 'notifications' }] },
+            { path: 'contact', component: ContactComponent, data: [{ page: 'contact' }] }
 
         ], { useHash: true })
     ],
