@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UseraccountComponent implements OnInit {
     product;
+    p: number = 1;
     constructor(
         private route: ActivatedRoute, public appService: appService, private formBuilder: FormBuilder, private router: Router) {
         this.page = this.route.snapshot.data[0]['page'];
