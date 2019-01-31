@@ -10,6 +10,7 @@ export class ContactComponent implements OnInit {
     // name;
     // email;
     // message;
+
     contactForm: FormGroup;
     submitted = false;
     constructor(private appService: appService, private formBuilder: FormBuilder) { }
@@ -41,4 +42,5 @@ export class ContactComponent implements OnInit {
         })
     }
 
+    
 }

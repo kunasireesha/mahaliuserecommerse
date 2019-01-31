@@ -209,27 +209,39 @@ export class HeaderComponent implements OnInit {
     }
     get f2() { return this.forgotForm.controls; }
     forgot() {
-        this.forgotSubmitted = true;
-        if (this.forgotForm.invalid) {
-            return;
-        }
-        var inData = {
-            mobile_number: this.forgotForm.value.mob_number
-        }
-        this.appService.forgotPassword(inData).subscribe(resp => {
-            if (resp.json().status === 200) {
-                swal(resp.json().message, "", "success");
-                jQuery("#forgotpass").modal("hide");
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-            } else {
-                swal(resp.json().message, "", "error");
-            }
+        jQuery("#forgotpass").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        jQuery("#otpScreen").modal("show");
+
+        // this.forgotSubmitted = true;
+        // if (this.forgotForm.invalid) {
+        //     return;
+        // }
+        // var inData = {
+        //     mobile_number: this.forgotForm.value.mob_number
+        // }
+        // this.appService.forgotPassword(inData).subscribe(resp => {
+        //     if (resp.json().status === 200) {
+        //         swal(resp.json().message, "", "success");
+        //         jQuery("#forgotpass").modal("hide");
+        //         $('body').removeClass('modal-open');
+        //         $('.modal-backdrop').remove();
+        //     } else {
+        //         swal(resp.json().message, "", "error");
+        //     }
 
 
-        }, err => {
-            swal(err.json().message, "", "error");
-        })
+        // }, err => {
+        //     swal(err.json().message, "", "error");
+        // })
+    }
+    otpScreen() {
+        jQuery("#otpScreen").modal("hide");
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        jQuery("#changepwd").modal("show");
+
     }
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
