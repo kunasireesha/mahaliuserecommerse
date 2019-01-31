@@ -147,25 +147,30 @@ export class HeaderComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-        this.appService.registration(this.registerForm.value).subscribe(resp => {
-            // this.users = resp.json();
-            if (resp.json().status === 200) {
-                swal(resp.json().message, "", "success");
-                jQuery("#signupmodal").modal("hide");
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-                // this.showRegistration = false;
-                localStorage.setItem('userId', (resp.json().id));
-                // this.myAccount = true
-                // this.showOpacity = false;
-                // this.onCloseCancel();
-                this.router.navigate(['/address']);
-            }
-            else if (resp.json().status === 400) {
-                swal(resp.json().message, "", "error");
-                // jQuery("#signupmodal").modal("hide");
-            }
-        })
+        if (this.registerForm.value.password != this.registerForm.value.password) {
+            swal("Password doesn't matched", "", "warning");
+        } else {
+            this.appService.registration(this.registerForm.value).subscribe(resp => {
+                // this.users = resp.json();
+                if (resp.json().status === 200) {
+                    swal(resp.json().message, "", "success");
+                    jQuery("#signupmodal").modal("hide");
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    // this.showRegistration = false;
+                    localStorage.setItem('userId', (resp.json().id));
+                    // this.myAccount = true
+                    // this.showOpacity = false;
+                    // this.onCloseCancel();
+                    this.router.navigate(['/address']);
+                }
+                else if (resp.json().status === 400) {
+                    swal(resp.json().message, "", "error");
+                    // jQuery("#signupmodal").modal("hide");
+                }
+            })
+        }
+
 
     }
     get f1() { return this.loginForm.controls; }

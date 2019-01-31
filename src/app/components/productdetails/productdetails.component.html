@@ -1,5 +1,9 @@
 <app-header [cartCount]="cartCount" [billing]="billing"></app-header>
 <div class="container productDetails">
+	<!-- <p>
+		<a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+		<a>{{category_name}} </a>&nbsp;&nbsp;>&nbsp;<a *ngIf="sub_category_name">{{sub_category_name}}</a>
+	</p> -->
 	<div class="row">
 		<div class="col-md-2">
 			<div class="img">
@@ -7,6 +11,9 @@
 			</div>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12 col-lg-4">
+			<div class="offer-label">
+				<img src="assets/images/offer-label.png">
+			</div>
 			<div class="wish-list">
 				<a><i class="fas fa-heart" (click)="addtoWish()"></i></a>
 			</div>
