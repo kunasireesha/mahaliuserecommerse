@@ -40,7 +40,7 @@ import { PromocodesComponent } from './components/promocodes/promocodes.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImageZoomModule } from 'angular2-image-zoom';
 
-
+import { LightboxModule } from 'angular2-lightbox';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -72,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatDialogModule,
         HttpModule,
         FormsModule,
+        LightboxModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ImageZoomModule,

@@ -83,7 +83,8 @@ export class HeaderComponent implements OnInit {
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             mobile_number: ['', [Validators.required, Validators.minLength(10)]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            retype_password: ['', [Validators.required, Validators.minLength(6)]]
         });
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -151,7 +152,7 @@ export class HeaderComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-        if (this.registerForm.value.password != this.registerForm.value.password) {
+        if (this.registerForm.value.password != this.registerForm.value.retype_password) {
             swal("Password doesn't matched", "", "warning");
         } else {
             this.appService.registration(this.registerForm.value).subscribe(resp => {
@@ -232,6 +233,7 @@ export class HeaderComponent implements OnInit {
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
                 jQuery("#otpScreen").modal("show");
+                localStorage.setItem('mobile_number', (this.forgotForm.value.mob_number));
             } else {
                 swal(resp.json().message, "", "error");
             }
@@ -254,10 +256,20 @@ export class HeaderComponent implements OnInit {
     }
     otpScreen() {
         var data = {
-            'otp': this.otpNumber
+            'otp': this.otpNumber,
+            'mobile_number': localStorage.mobile_number
         }
         this.appService.otpVerify(data).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#otpScreen").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                jQuery("#changepwd").modal("show");
 
+            } else {
+                swal(resp.json().message, "", "error");
+            }
         })
         // jQuery("#otpScreen").modal("hide");
         // $('body').removeClass('modal-open');
@@ -321,19 +333,27 @@ export class HeaderComponent implements OnInit {
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
-            this.cartData = res.json().cart_details;
-            for (var i = 0; i < this.cartData.length; i++) {
-                this.cartData[i].prodName = this.cartData[i].products.product_name;
-                for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
-                    this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
-                    this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
-                    this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
-                    this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
-                    this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+            // this.cartData = res.json().cart_details;
+            if (res.json().count === 0) {
+                this.cartCount = res.json().count;
+                this.billing = 0;
+                return;
+            } else {
+                this.cartData = res.json().cart_details;
+                for (var i = 0; i < this.cartData.length; i++) {
+                    this.cartData[i].prodName = this.cartData[i].products.product_name;
+                    for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
+                        this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+                        this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+                        this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
+                        this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                        this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+                    }
                 }
+                this.cartCount = res.json().count;
+                this.billing = res.json().selling_Price_bill;
             }
-            this.cartCount = res.json().count;
-            this.billing = res.json().selling_Price_bill;
+
         }, err => {
 
         })

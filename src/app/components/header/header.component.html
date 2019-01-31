@@ -515,11 +515,12 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                    <input type="password" formControlName="retype_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.retype_password.errors }"
                                     />
-                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                        <div *ngIf="f.password.errors.required">Password is required</div>
-                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                    <div *ngIf="submitted && f.retype_password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.retype_password.errors.required">retype_password is required</div>
+                                        <div *ngIf="f.retype_password.errors.minlength">retype_password must be at least
+                                            6 characters</div>
                                     </div>
                                     <div class="form-group cust-frmgrp">
                                         <div class="col-sm-12">
@@ -621,6 +622,11 @@
                                         <input type="text" [(ngModel)]="otpNumber" name="otpNumber" />
                                         <!-- <div *ngIf="forgotSubmitted && f2.otp_number.errors" class="invalid-feedback">
                                             <div *ngIf="f2.otp_number.errors.required">Mobile number is required</div>
+                                        </div> -->
+                                        <!-- 
+                                        <input type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
+                                        <div *ngIf="forgotSubmitted && f2.mob_number.errors" class="invalid-feedback">
+                                            <div *ngIf="f2.mob_number.errors.required">Mobile number is required</div>
                                         </div> -->
                                         <div class="form-group cust-frmgrp">
                                             <div class="col-sm-12">

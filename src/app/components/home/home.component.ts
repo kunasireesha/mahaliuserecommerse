@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ProductsData } from '../../services/productsdata';
 import { ProductService } from '../../services/productservice';
 // import { Lightbox } from 'angular2-lightbox';
-
+import { Lightbox } from 'angular2-lightbox';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     product: ProductsData = {
         name: "Utpal Kumar Das"
     };
-    constructor(private router: Router, public productService: ProductService, private appService: appService) {
+    constructor(private router: Router, public productService: ProductService, private appService: appService, private _lightbox: Lightbox) {
         this.getWholeSellers();
         this.getBanners();
         this.dealOfDay();
@@ -170,6 +170,11 @@ export class HomeComponent implements OnInit {
 
             }
         })
+    }
+    open(index: number): void {
+        alert(index);
+        // open lightbox
+        this._lightbox.open(this.skuArr, index);
     }
     // enlargeImg() {
     //     alert("hai");
