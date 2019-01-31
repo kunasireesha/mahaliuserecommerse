@@ -25,7 +25,7 @@ export class appService {
             'x-access-token': JSON.parse(localStorage.token)
         });
         this.user_id = localStorage.getItem('userId');
-        return this.http.post(AppSettings.changePwdUrl + "/"+this.user_id, params, { headers: headers });
+        return this.http.post(AppSettings.changePwdUrl + "/" + this.user_id, params, { headers: headers });
     }
     getProduct() {
         const headers = new Headers({ 'Content-Type': "application/x-www-form-urlencoded" });
@@ -227,7 +227,10 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.modifyCart + '/' + cartId, params, { headers: headers });
     }
-
+    contactUs(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.contactUs, params, { headers: headers });
+    }
 }
 
 

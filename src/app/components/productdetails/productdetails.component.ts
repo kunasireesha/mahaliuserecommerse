@@ -31,18 +31,6 @@ export class ProductdetailsComponent implements OnInit {
         this.getProductById();
 
     }
-    itemIncrease() {
-        let thisObj = this;
-        thisObj.item.quantity = Math.floor(thisObj.item.quantity + 1);
-    }
-    itemDecrease() {
-        let thisObj = this;
-        if (thisObj.item.quantity === 0) {
-            return;
-        }
-        thisObj.item.quantity = Math.floor(thisObj.item.quantity - 1);
-
-    }
 
     starList: boolean[] = [true, true, true, true, true];       // create a list which contains status of 5 stars
     rating: number;
@@ -127,6 +115,57 @@ export class ProductdetailsComponent implements OnInit {
                 swal(res.json().message, "", "success");
             }
 
+        }, err => {
+
+        })
+    }
+    itemIncrease(cartId) {
+        for (var i = 0; i < this.cartDetails.length; i++) {
+            if (this.cartDetails[i].cart_id === cartId) {
+                this.cartDetails[i].quantity = this.cartDetails[i].quantity + 1;
+                this.modifyCart(this.cartDetails[i].quantity, cartId);
+                // this.getCart();
+                return;
+            }
+        }
+    }
+
+    itemDecrease(cartId) {
+        for (var i = 0; i < this.cartDetails.length; i++) {
+            if (this.cartDetails[i].cart_id === cartId) {
+                if (this.cartDetails[i].quantity === 1) {
+                    // this.delCart(cartId);
+                    return;
+                } else {
+                    this.cartDetails[i].quantity = this.cartDetails[i].quantity - 1;
+                    this.modifyCart(this.cartDetails[i].quantity, cartId);
+                }
+                // this.getCart();
+                return;
+            }
+        }
+
+    }
+
+    //modify cart
+
+    modifyCart(quantity, cartId) {
+        var params = {
+            "quantity": quantity
+        }
+
+        this.appService.modifyCart(params, cartId).subscribe(resp => {
+            if (resp.json().status === 200) {
+                // swal(resp.json().message, "", "success");
+                // jQuery("#signupmodal").modal("hide");
+                this.getCart();
+                // this.showRegistration = false;
+                // localStorage.setItem('userId', (resp.json().reg_id));
+                // this.myAccount = true
+                // this.showOpacity = false;
+                // this.onCloseCancel();
+                // this.router.navigate(['/address']);
+            }
         }, err => {
 
         })
