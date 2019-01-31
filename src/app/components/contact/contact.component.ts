@@ -13,24 +13,24 @@ export class ContactComponent implements OnInit {
 
     ngOnInit() {
     }
-    contactUs() {
-        var data = {
-            "name": this.name,
-            "email": this.email,
-            "Message": this.message
-        }
+    // contactUs() {
+    //     var data = {
+    //         "name": this.name,
+    //         "email": this.email,
+    //         "Message": this.message
+    //     }
 
-        this.appService.contactUs(data).subscribe(resp => {
-            if (resp.json().status === 200) {
-                swal(resp.json().message, '', 'success');
-                this.name = '';
-                this.email = '';
-                this.message = ''
-            }
-            else {
-                swal("something went wrong", '', 'error');
-            }
-        })
-    }
+    //     this.appService.contactUs(data).subscribe(resp => {
+    //         if (resp.json().status === 200) {
+    //             swal(resp.json().message, '', 'success');
+    //             this.name = '';
+    //             this.email = '';
+    //             this.message = ''
+    //         }
+    //         else {
+    //             swal("something went wrong", '', 'error');
+    //         }
+    //     })
+    // }
 
 }
