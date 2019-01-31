@@ -36,7 +36,7 @@ import { OrderplacedComponent } from './components/orderplaced/orderplaced.compo
 import { UseraccountComponent } from './components/useraccount/useraccount.component';
 import { MysavedlistComponent } from './components/mysavedlist/mysavedlist.component';
 import { PromocodesComponent } from './components/promocodes/promocodes.component';
-
+// import { LightboxModule } from 'angular2-lightbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImageZoomModule } from 'angular2-image-zoom';
 
@@ -76,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserAnimationsModule,
         ImageZoomModule,
         Ng2SearchPipeModule,
+        // LightboxModule,
         MDBBootstrapModule.forRoot(),
         TranslateModule.forRoot({
             loader: {

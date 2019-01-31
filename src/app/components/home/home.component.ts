@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsData } from '../../services/productsdata';
 import { ProductService } from '../../services/productservice';
-
+// import { Lightbox } from 'angular2-lightbox';
 
 @Component({
     selector: 'app-home',
@@ -140,12 +140,14 @@ export class HomeComponent implements OnInit {
     skuData = [];
     skuArr = [];
     prodName;
+    ImageLarge;
     topOfrs = [];
     topsku = [];
     topArr = [];
     dealOfDay() {
         this.appService.dealOfDay().subscribe(res => {
             this.dealData = res.json().data.deals_of_the_day;
+            this.ImageLarge = res.json().data.deals_of_the_day[0].sku_details[0].image;
             this.topOfrs = res.json().data.top_offers;
             for (var i = 0; i < this.dealData.length; i++) {
                 // this.prodName = this.dealData[i].product_name;
@@ -169,6 +171,10 @@ export class HomeComponent implements OnInit {
             }
         })
     }
+    // enlargeImg() {
+    //     alert("hai");
+    //     this._lightbox.open(this.ImageLarge);
+    // }
     jewelData = [];
     jewelArr = [];
     jewlsku = [];

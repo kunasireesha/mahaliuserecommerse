@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
     category: any;
     product: any;
     forgotForm: FormGroup;
+    otpForm: FormGroup;
     loginDetails: any;
     myAccount: boolean = false;
     phone: boolean = false;
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnInit {
     showRegistration = true;
     showOpacity = false;
     forgotSubmitted = false;
+    otpNumber: number;
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
         if (localStorage.token === undefined) {
@@ -90,7 +92,9 @@ export class HeaderComponent implements OnInit {
         this.forgotForm = this.formBuilder.group({
             mob_number: ['', [Validators.required]],
         });
-
+        this.otpForm = this.formBuilder.group({
+            otp_number: ['', [Validators.required]],
+        });
         this.getCategories();
         this.getProduct();
         this.getCart();
@@ -209,38 +213,56 @@ export class HeaderComponent implements OnInit {
     }
     get f2() { return this.forgotForm.controls; }
     forgot() {
-        jQuery("#forgotpass").modal("hide");
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-        jQuery("#otpScreen").modal("show");
+        // jQuery("#forgotpass").modal("hide");
+        // $('body').removeClass('modal-open');
+        // $('.modal-backdrop').remove();
+        // jQuery("#otpScreen").modal("show");
 
-        // this.forgotSubmitted = true;
-        // if (this.forgotForm.invalid) {
-        //     return;
-        // }
-        // var inData = {
-        //     mobile_number: this.forgotForm.value.mob_number
-        // }
-        // this.appService.forgotPassword(inData).subscribe(resp => {
-        //     if (resp.json().status === 200) {
-        //         swal(resp.json().message, "", "success");
-        //         jQuery("#forgotpass").modal("hide");
-        //         $('body').removeClass('modal-open');
-        //         $('.modal-backdrop').remove();
-        //     } else {
-        //         swal(resp.json().message, "", "error");
-        //     }
+        this.forgotSubmitted = true;
+        if (this.forgotForm.invalid) {
+            return;
+        }
+        var inData = {
+            mobile_number: this.forgotForm.value.mob_number
+        }
+        this.appService.forgotPassword(inData).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#forgotpass").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                jQuery("#otpScreen").modal("show");
+            } else {
+                swal(resp.json().message, "", "error");
+            }
 
+        }, err => {
+            swal(err.json().message, "", "error");
+        })
+    }
+    get f3() { return this.otpForm.controls; }
 
-        // }, err => {
-        //     swal(err.json().message, "", "error");
-        // })
+    onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.otpForm.invalid) {
+            return;
+        }
+
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.otpForm.value))
     }
     otpScreen() {
-        jQuery("#otpScreen").modal("hide");
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-        jQuery("#changepwd").modal("show");
+        var data = {
+            'otp': this.otpNumber
+        }
+        this.appService.otpVerify(data).subscribe(resp => {
+
+        })
+        // jQuery("#otpScreen").modal("hide");
+        // $('body').removeClass('modal-open');
+        // $('.modal-backdrop').remove();
+        // jQuery("#changepwd").modal("show");
 
     }
     getProduct() {

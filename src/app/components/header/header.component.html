@@ -618,11 +618,10 @@
 
                                 <div class="col-sm-7 col-md-7">
                                     <form>
-                                        <input type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }"
-                                        />
-                                        <div *ngIf="forgotSubmitted && f2.mob_number.errors" class="invalid-feedback">
-                                            <div *ngIf="f2.mob_number.errors.required">Mobile number is required</div>
-                                        </div>
+                                        <input type="text" [(ngModel)]="otpNumber" name="otpNumber" />
+                                        <!-- <div *ngIf="forgotSubmitted && f2.otp_number.errors" class="invalid-feedback">
+                                            <div *ngIf="f2.otp_number.errors.required">Mobile number is required</div>
+                                        </div> -->
                                         <div class="form-group cust-frmgrp">
                                             <div class="col-sm-12">
                                                 <button class="btn btn-danger cust-logbtn submt-btn" (click)="otpScreen()">Submit</button>
