@@ -65,12 +65,15 @@
     <div class="carousel-inner deals" role="listbox">
         <!--First slide-->
         <div class="carousel-item active dealsAct">
-            <div class="col-md-3" *ngFor="let data of skuArr">
+            <div class="col-md-3" *ngFor="let data of skuArr;let i=index">
                 <div class="wrapper">
                     <div class="card">
                         <div class="bg-image">
                             <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
                         </div>
+                        <!-- <div class="row">
+                            <mdb-image-modal [modalImages]="data" type="no-margin"></mdb-image-modal>
+                        </div> -->
                         <div class="card-block">
                             <h5 class="text-center">{{data.product_name}}</h5>
                             <p class="text-center">
@@ -82,7 +85,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(data.image,data.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
@@ -92,7 +95,24 @@
         </div>
     </div>
     <!--/.Slides-->
-
+    <!-- zoom model -->
+    <div class="modal fade" id="enlargeImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="img-fluid" [src]="enlargeImg" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- zoom model -->
     <!--Controls-->
     <!-- <div class="controls-top">
         <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">

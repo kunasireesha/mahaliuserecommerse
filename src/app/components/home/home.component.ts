@@ -5,12 +5,14 @@ import { ProductsData } from '../../services/productsdata';
 import { ProductService } from '../../services/productservice';
 // import { Lightbox } from 'angular2-lightbox';
 import { Lightbox } from 'angular2-lightbox';
+declare var jQuery: any;
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
+    private skuArr: Array<any> = [];
 
     product: ProductsData = {
         name: "Utpal Kumar Das"
@@ -138,7 +140,7 @@ export class HomeComponent implements OnInit {
     }
     dealData = [];
     skuData = [];
-    skuArr = [];
+    // skuArr = [];
     prodName;
     ImageLarge;
     topOfrs = [];
@@ -171,15 +173,29 @@ export class HomeComponent implements OnInit {
             }
         })
     }
-    open(index: number): void {
-        alert(index);
+    enlargeImg;
+    open(img: number, skid): void {
+        // alert(skid);
+        for (var i = 0; i < this.dealData.length; i++) {
+            for (var j = 0; j < this.dealData[i].sku_details.length; j++) {
+                if (skid === this.dealData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.dealData[i].sku_details[j].image;
+                }
+            }
+
+        }
+        // alert(proId);
+        // if (proId ===) {
+
+        // }
+        jQuery("#enlargeImg").modal("show");
+
+        // $('body').removeClass('modal-open');
+        // $('.modal-backdrop').remove();
         // open lightbox
-        this._lightbox.open(this.skuArr, index);
+        // this._lightbox.open(this.skuArr, index);
     }
-    // enlargeImg() {
-    //     alert("hai");
-    //     this._lightbox.open(this.ImageLarge);
-    // }
+
     jewelData = [];
     jewelArr = [];
     jewlsku = [];
