@@ -48,7 +48,6 @@ export class MycartComponent implements OnInit {
             return;
         }
         this.appService.addaddress(this.addressForm.value).subscribe(res => {
-            console.log(this.addressForm.value);
             this.getAdd();
             this.showAddresses = true;
             this.addresses = false;
@@ -94,13 +93,6 @@ export class MycartComponent implements OnInit {
         this.showAddresses = true;
         this.showDeliveryType = false;
         window.scrollTo(0, 0);
-    }
-    selectAdd() {
-        this.appService.setDelAdd(this.addId).subscribe(res => {
-            swal("Selected successfully", "", "success");
-            this.getAdd();
-            // this.getSlots();
-        })
     }
     //add address
     //add address
@@ -201,16 +193,24 @@ export class MycartComponent implements OnInit {
         this.showAddresses = false;
         this.showDeliveryAddress = false;
         window.scrollTo(0, 0);
-        this.addId = Id;
-        this.selectAdd();
+
     }
     // show shipment type
-    shipmentType() {
+    shipmentType(addId) {
         this.addresses = false;
         this.showAddresses = false;
         this.showDeliveryType = true;
+        this.showDeliveryAddress = false;
+        this.addId = addId;
+        this.selectAdd(this.addId);
     }
-
+    selectAdd(id) {
+        this.appService.setDelAdd(this.addId).subscribe(res => {
+            swal("Selected successfully", "", "success");
+            this.getAdd();
+            this.getSlots();
+        })
+    }
     //items popup
     showItems() {
         const dialogConfig = new MatDialogConfig();

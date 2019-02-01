@@ -256,8 +256,6 @@ export class ProductsComponent implements OnInit {
         // this.showSubCategories = false;
     }
 
-    prodData = [];
-
     getCategories() {
         this.subCatData = [];
         this.appService.getCategories().subscribe(resp => {
@@ -313,9 +311,7 @@ export class ProductsComponent implements OnInit {
         })
         this.subCatName1 = '';
     }
-    skuArr = [];
     prodData = [];
-    subId;
     subCatName1;
     getSubProducts(subid, subName) {
         this.skuArr = [];
