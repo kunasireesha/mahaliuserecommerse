@@ -29,7 +29,7 @@
                         <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
                         <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
-                    </a> &nbsp;&nbsp;<span (click)="showCateProd(cat.id,cat.name)">{{cat.category_name}}</span>
+                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.category_name)">{{cat.category_name}}</span>
                 </p>
                 <hr>
                 <!-- categories -->
@@ -37,7 +37,7 @@
                 <div class="subCates">
                     <div *ngFor="let subCat of subCategory;let ii = index">
                         <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
-                            <span (click)="getSubcatProd(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                            <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
                         </p>
                     </div>
                 </div>
@@ -110,8 +110,8 @@
         <div class="col-md-9 items">
             <p>
                 <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-                <a>{{catName}}</a>&nbsp;&nbsp;>&nbsp;
-                <a *ngIf="subCatName">{{subCatName}}</a>
+                <a>{{catName1}}</a>&nbsp;&nbsp;>&nbsp;
+                <a *ngIf="subCatName1">{{subCatName1}}</a>
             </p>
             <div class="row" *ngIf="searchProd">
                 <div class="col-md-3 item" *ngFor="let data of skuData">
