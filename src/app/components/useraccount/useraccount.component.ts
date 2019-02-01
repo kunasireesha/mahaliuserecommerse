@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+declare var jQuery: any;
 @Component({
     selector: 'app-useraccount',
     templateUrl: './useraccount.component.html',
@@ -863,5 +863,37 @@ export class UseraccountComponent implements OnInit {
     }
     showProduxtDetails(prodId) {
         this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
+    }
+    enlargeImg;
+    open(skid): void {
+        for (var i = 0; i < this.dealData.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.dealData[i].sku_details.length; j++) {
+                if (skid === this.dealData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.dealData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+        }
+        for (var i = 0; i < this.clothData.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.clothData[i].sku_details.length; j++) {
+                if (skid === this.clothData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.clothData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+
+        }
+        for (var i = 0; i < this.jewelData.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.jewelData[i].sku_details.length; j++) {
+                if (skid === this.jewelData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.jewelData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+
+        }
     }
 }

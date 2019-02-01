@@ -343,6 +343,14 @@ export class ProductsComponent implements OnInit {
                 }
             }
         }
+        for (var i = 0; i < this.serProducts.length; i++) {
+            for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
+                if (skid === this.serProducts[i].sku_details[j].skid) {
+                    this.enlargeImg = this.serProducts[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+        }
 
     }
     // getCatProducts() {
