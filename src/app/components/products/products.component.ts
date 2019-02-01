@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../services/productservice';
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { ActivatedRoute } from '@angular/router';
-
+declare var jQuery: any;
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
@@ -332,6 +332,18 @@ export class ProductsComponent implements OnInit {
         }, err => {
             // this.subCatName1 = '';
         })
+    }
+    enlargeImg;
+    open(skid) {
+        for (var i = 0; i < this.prodData.length; i++) {
+            for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+                if (skid === this.prodData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.prodData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+        }
+
     }
     // getCatProducts() {
     //     this.skuArr = [];
