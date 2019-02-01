@@ -48,6 +48,7 @@ export class MycartComponent implements OnInit {
             return;
         }
         this.appService.addaddress(this.addressForm.value).subscribe(res => {
+            console.log(this.addressForm.value);
             this.getAdd();
             this.showAddresses = true;
             this.addresses = false;
@@ -187,7 +188,7 @@ export class MycartComponent implements OnInit {
         })
     }
     //showPayment
-    showPayment(Id) {
+    showPayment() {
         this.showPaymentMethode = !this.showPaymentMethode;
         this.showCartItems = false;
         this.showAddresses = false;
@@ -199,16 +200,16 @@ export class MycartComponent implements OnInit {
     shipmentType(addId) {
         this.addresses = false;
         this.showAddresses = false;
-        this.showDeliveryType = true;
-        this.showDeliveryAddress = false;
+        // this.showDeliveryType = true;
+        this.showPaymentMethode = true;
         this.addId = addId;
+        this.showDeliveryAddress = false;
         this.selectAdd(this.addId);
     }
     selectAdd(id) {
         this.appService.setDelAdd(this.addId).subscribe(res => {
             swal("Selected successfully", "", "success");
             this.getAdd();
-            this.getSlots();
         })
     }
     //items popup
