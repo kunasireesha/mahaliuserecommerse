@@ -174,26 +174,17 @@ export class HomeComponent implements OnInit {
         })
     }
     enlargeImg;
-    open(img: number, skid): void {
+    open(skid): void {
         // alert(skid);
         for (var i = 0; i < this.dealData.length; i++) {
             for (var j = 0; j < this.dealData[i].sku_details.length; j++) {
                 if (skid === this.dealData[i].sku_details[j].skid) {
                     this.enlargeImg = this.dealData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
                 }
             }
 
         }
-        // alert(proId);
-        // if (proId ===) {
-
-        // }
-        jQuery("#enlargeImg").modal("show");
-
-        // $('body').removeClass('modal-open');
-        // $('.modal-backdrop').remove();
-        // open lightbox
-        // this._lightbox.open(this.skuArr, index);
     }
 
     jewelData = [];
@@ -214,6 +205,20 @@ export class HomeComponent implements OnInit {
             }
         })
     }
+    jewellery(skid): void {
+        // alert(skid);
+        for (var i = 0; i < this.jewelData.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.jewelData[i].sku_details.length; j++) {
+                if (skid === this.jewelData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.jewelData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+
+        }
+    }
+
     clothData = [];
     clothsku = [];
     clothArr = [];
@@ -231,6 +236,19 @@ export class HomeComponent implements OnInit {
 
             }
         })
+    }
+    clothes(skid) {
+        for (var i = 0; i < this.clothData.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.clothData[i].sku_details.length; j++) {
+                if (skid === this.clothData[i].sku_details[j].skid) {
+                    this.enlargeImg = this.clothData[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+
+        }
+
     }
     seeAll(type) {
         this.router.navigate(['/products'], { queryParams: { action: type } });
@@ -253,6 +271,20 @@ export class HomeComponent implements OnInit {
             }
         })
     }
+    recently(skid) {
+        for (var i = 0; i < this.ecomProds.length; i++) {
+            // this.prodName = this.dealData[i].product_name;
+            for (var j = 0; j < this.ecomProds[i].sku_details.length; j++) {
+                if (skid === this.ecomProds[i].sku_details[j].skid) {
+                    this.enlargeImg = this.ecomProds[i].sku_details[j].image;
+                    jQuery("#enlargeImg").modal("show");
+                }
+            }
+
+        }
+
+    }
+
     cartDetails = [];
     cartCount;
     addtoCart(Id, skId) {

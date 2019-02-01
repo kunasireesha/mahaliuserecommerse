@@ -85,7 +85,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="open(data.image,data.skid)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(data.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
@@ -122,7 +122,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- zoom model -->
     <!--Controls-->
@@ -179,7 +178,6 @@
     <hr>
 </div>
 <div id="multi-item-example1" class="carousel slide carousel-multi-item container" data-ride="carousel">
-
     <br />
     <!--Slides-->
     <div class="carousel-inner deals" role="listbox">
@@ -202,7 +200,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="open(data.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
@@ -437,7 +435,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="clothes(cloth.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
@@ -554,7 +552,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(jewel.product_id,jewel.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="jewellery(jewel.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
                         <li><a (click)="addtoWish(data.product_id,data.skid)"><i class="fas fa-heart"></i></a></li>
@@ -795,7 +793,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="recently(data.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                 </div>
             </div>
@@ -916,7 +914,7 @@
                     </div>
                     <ul class="expand-button">
                         <li><a><i class="fas fa-shopping-basket" (click)="addtoCart(data.product_id,data.skid)"></i></a></li>
-                        <li><a (click)="showProduxtDetails(data.product_id)"><img src="assets/images/maximize.png"></a></li>
+                        <li><a (click)="recently(data.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                 </div>
             </div>
