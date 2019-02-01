@@ -52,14 +52,14 @@ export class ProductsComponent implements OnInit {
                 this.catName = params.catName;
                 this.seeAll = true;
                 this.searchProd = false;
-                this.getCatProducts();
+                this.getCatProducts('', '');
             } else if (params.action === 'subCategory') {
                 this.subId = params.subId;
-                this.catName = params.catName;
+                this.catName1 = params.catName;
                 this.subCatName = params.subCat;
                 this.seeAll = true;
                 this.searchProd = false;
-                this.getSubProducts();
+                this.getSubProducts('', '');
             }
 
         })
@@ -272,26 +272,29 @@ export class ProductsComponent implements OnInit {
         })
     }
 
-    getSubProducts() {
-        this.skuArr = [];
-        this.appService.productBySubCatId(this.subId).subscribe(res => {
-            this.prodData = res.json().products;
-            this.skuData = [];
-            for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
-                    this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
-                    this.skuArr.push(this.prodData[i].sku_details[j]);
-                }
-            }
-            if (res.json().message === "No records Found") {
-                this.noData = true;
-            }
-        }, err => {
+    // getSubProducts() {
+    //     this.skuArr = [];
+    //     this.appService.productBySubCatId(this.subId).subscribe(res => {
+    //         this.prodData = res.json().products;
+    //         this.skuData = [];
+    //         for (var i = 0; i < this.prodData.length; i++) {
+    //             for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+    //                 this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
+    //                 this.skuArr.push(this.prodData[i].sku_details[j]);
+    //             }
+    //         }
+    //         if (res.json().message === "No records Found") {
+    //             this.noData = true;
+    //         }
+    //     }, err => {
 
-        })
-    }
-    getCatProducts() {
+    //     })
+    // }
+    catName1;
+    getCatProducts(id, catName) {
         this.skuArr = [];
+        this.catId = (id === '') ? this.catId : id;
+        this.catName1 = (catName === '') ? this.catName : catName;
         this.appService.productByCatId(this.catId).subscribe(res => {
             this.prodData = res.json().products;
             for (var i = 0; i < this.prodData.length; i++) {
@@ -308,7 +311,51 @@ export class ProductsComponent implements OnInit {
         }, err => {
 
         })
+        this.subCatName1 = '';
     }
+    skuArr = [];
+    prodData = [];
+    subId;
+    subCatName1;
+    getSubProducts(subid, subName) {
+        this.skuArr = [];
+        this.subId = (subid === '') ? this.subId : subid;
+        this.subCatName1 = (subName === '') ? this.subCatName : subName;
+        // this.catName1 = (catName === '') ? this.catName : catName;
+        this.appService.productBySubCatId(this.subId).subscribe(res => {
+            this.prodData = res.json().products;
+            for (var i = 0; i < this.prodData.length; i++) {
+                for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+                    this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
+                    this.skuArr.push(this.prodData[i].sku_details[j]);
+                }
+            }
+            if (res.json().message === "No records Found") {
+                this.noData = true;
+            }
+        }, err => {
+            // this.subCatName1 = '';
+        })
+    }
+    // getCatProducts() {
+    //     this.skuArr = [];
+    //     this.appService.productByCatId(this.catId).subscribe(res => {
+    //         this.prodData = res.json().products;
+    //         for (var i = 0; i < this.prodData.length; i++) {
+    //             for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+    //                 this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
+    //                 this.skuArr.push(this.prodData[i].sku_details[j]);
+    //             }
+    //         }
+    //         if (res.json().message === "No records Found") {
+    //             this.noData = true;
+    //         }
+
+
+    //     }, err => {
+
+    //     })
+    // }
     addtoWish(Id, skId) {
         var inData = {
             "user_id": JSON.parse(localStorage.userId),
