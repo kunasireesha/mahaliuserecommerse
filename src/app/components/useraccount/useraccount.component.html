@@ -82,7 +82,15 @@
                     </label>
                     <div class="col-sm-8">
                         <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com" name="email"
-                            [(ngModel)]="profileData.email" ngControl="email" required>
+                            [(ngModel)]="profileData.email" ngControl="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <!-- <div class="md-errors-spacer" [hidden]="email.valid || email.untouched">
+                            <div *ngIf="email.errors && email.errors.required">
+                                Email is required
+                            </div>
+                            <div *ngIf="email.errors && email.errors.pattern">
+                                Email is invalid
+                            </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="form-group row">
@@ -90,8 +98,11 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputphoneno1" placeholder="8586854500" [(ngModel)]="profileData.mobile_number"
-                            name="mobile_number" ngControl="mobile_number" required>
+                        <input type="number" class="form-control input-feild" id="inputphoneno1" placeholder="8586854500" [(ngModel)]="profileData.mobile_number"
+                            name="mobile_number" ngControl="mobile_number" customMin="15" #numberOne="ngModel" required>
+                        <div *ngIf="numberOne.errors?.customMin">
+                            Minimum required number is 15.
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
