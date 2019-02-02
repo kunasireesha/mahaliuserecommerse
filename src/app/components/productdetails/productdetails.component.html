@@ -28,7 +28,7 @@
 				<div class="col-md-6">
 					<p class="size">Size
 						<br />
-						<a *ngFor="let data of prodsData">{{data.size}}</a> &nbsp;
+						<a *ngFor="let data of prodsData" (click)="changeSize(data.skid)">{{data.size}}</a> &nbsp;
 						<!-- <a>256gb</a> -->
 					</p>
 				</div>
