@@ -353,6 +353,7 @@ export class ProductsComponent implements OnInit {
         }
 
     }
+
     // getCatProducts() {
     //     this.skuArr = [];
     //     this.appService.productByCatId(this.catId).subscribe(res => {

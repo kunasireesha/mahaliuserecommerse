@@ -9,21 +9,43 @@
                 <i class="fa fa-minus" aria-hidden="true"></i> -->
             </span>&nbsp;&nbsp;My Cart</h5>
         <div class="container mycart" *ngIf="showCartItems">
-            <div class="row">
+            <div class="row cart">
                 <h4 class="text-center"> My Cart</h4>
                 <div class="col-md-12 cart-1">
-                    <div class="cart-item" *ngFor="let data of cartData">
+                    <div class="cart-item" *ngFor="let data of cartData| orderBy: order ">
                         <div class="row items align-items-center">
                             <div class="col-md-3 text-center">
                                 <img [src]="data.products.img">
                             </div>
-                            <div class="col-md-3">
+
+                            <div class="col-md-4">
                                 <h6>{{data.prodName}}</h6>
+                                <!-- <div class="sort">
+                                                            <select>
+                                                                <option [value]="data.products.skid">{{data.products.skuValue}}-
+                                                                    {{data.products.offer_price}}
+                                                                </option>
+                                                            </select>
+                                                        </div> -->
+                                <p class="details">Details : {{data.products.skuValue}},{{data.products.filter_color ||
+                                    "-" }}
+                                    <!-- <span>
+                                                                    <strike>BD {{data.products.actual_price}}</strike>
+                                                                </span> -->
+                                </p>
+                                <span class="status">In Stoke</span>
+                                <h6>Price : BD {{data.products.selling_price}}
+                                    <span>
+                                        <strike>BD {{data.products.actual_price}}</strike>
+                                    </span>
+                                </h6>
                                 <!-- <div class="custom-control custom-radio mahali-radio">
-									<input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input" checked>
-									<label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label" for="customRadio3">Use
-									Promocode to get 20% Cashback</label>
-									</div> -->
+                                                            <input type="radio" id="customRadio3" name="customRadio3" class="custom-control-input mahali-input"
+                                                                checked>
+                                                            <label data-toggle="modal" data-target="#myModal" class="custom-control-label mahali-label"
+                                                                for="customRadio3">Use
+                                                                Promocode to get 20% Cashback</label>
+                                                        </div> -->
                             </div>
                             <div class="col-md-3 text-center">
                                 <div class="quantity">
@@ -32,8 +54,8 @@
                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                         </span>
                                     </button>
-                                    <input type="text" class="text-center" value="1" name="quantity" [(ngModel)]="data.quantity"
-                                        readonly="readonly" value="{{data.quantity}}" disabled>
+                                    <input type="text" value="1" name="quantity" [(ngModel)]="data.quantity" readonly="readonly"
+                                        value="{{data.quantity}}" class="text-center" disabled>
                                     <button class="btn btn-icon btn-maroon btn-plus" (click)="itemIncrease(data.cart_id)">
                                         <span>
                                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -41,73 +63,15 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <p class="close-btn" (click)="delCart(data.cart_id)">X</p>
+                            <div class="col-md-2 del-row">
+                                <img class="del-img" (click)="delCart(data.cart_id)" src="assets/images/error-1.png">
+                                <h6 class="total">Total: {{data.products.selling_price}}</h6>
                             </div>
 
-                            <div class="col-md-6 price">
-                                <h6>Price : BD {{data.products.selling_price}}
-                                    <span>
-                                        <strike>BD {{data.products.actual_price}}</strike>
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="col-md-6 price">
-                                <h6>Total : BD {{data.products.selling_price}}</h6>
+                            <div class="col-md-12 text-right">
+
                             </div>
                         </div>
-
-                        <hr>
-                        <!-- <div class="row items ">
-							<div class="col-md-3 text-center">
-								<img src="/assets/images/onion.png" height="140px" width="140px">
-							</div>
-							<div class="col-md-3">
-								<h6>Onions</h6>
-								<div class="sort">
-									<select>
-										<option>100gms</option>
-										<option>200 gms</option>
-										<option>300 gms</option>
-										<option>500 gms</option>
-									</select>
-								</div>
-								<div class="custom-control custom-radio mahali-radio">
-									<input type="radio" id="customCheck1" name="customRadio1" class="custom-control-input mahali-input">
-									<label class="custom-control-label mahali-label" for="customCheck1">Use Promocode to get 20% Cashback</label>
-								</div>
-							</div>
-							<div class="col-md-3 text-center">
-								<button class="btn btn-icon btn-maroon btn-minus">
-									<span>
-										<i class="fa fa-minus" aria-hidden="true"></i>
-									</span>
-								</button>
-								<input type="text" value="1" disabled>
-								<button class="btn btn-icon btn-maroon btn-plus">
-									<span>
-										<i class="fa fa-plus" aria-hidden="true"></i>
-									</span>
-								</button>
-							</div>
-							<div class="col-md-3">
-								<p class="close-btn">X</p>
-							</div>
-
-							<div class="col-md-6 price">
-								<h6>Price : $187
-									<span>
-										<strike>$214</strike>
-									</span>
-								</h6>
-
-							</div>
-							<div class="col-md-6 price">
-								<h6>Total : $214
-
-								</h6>
-							</div>
-						</div> -->
                     </div>
                     <div class="sub-total">
                         <table class="table table-borderless">
@@ -362,10 +326,10 @@
             <div class="row justify-content-center mb-5 ">
                 <div class="col-md-9 payment first">
                     <div class="row ">
-                        <div class="col-md-6 ">
-                            <h4>Total</h4>
+                        <div class="col-md-6">
+                            <p class="col-del">Price</p>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 prices">
                             <h4>
                                 <span>BD.{{billing}}</span>
                             </h4>
@@ -374,9 +338,20 @@
                     <hr>
                     <div class="row ">
                         <div class="col-md-6 ">
+                            <p class="col-del">Delivery Charges</p>
+                        </div>
+                        <div class="col-md-6 prices">
+                            <h4>
+                                <span>***</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row ">
+                        <div class="col-md-6 ">
                             <h4>Total Payable Amount</h4>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 prices">
                             <h4>
                                 <span>BD.{{billing}}</span>
                             </h4>
@@ -388,9 +363,9 @@
             <!-- payment option -->
             <div class="row justify-content-center">
                 <div class="col-md-9 payment sec">
-                    <h5 class="payment">Select Payment Option</h5>
+                    <p class="">Select Payment Option</p>
 
-                    <div class="row" *ngFor="let pay of payOptions;let i= index">
+                    <div class="row options" *ngFor="let pay of payOptions;let i= index">
                         <div class="col-md-12 payment-cursor">
                             <i class="far fa-circle" (click)="selePayOptn(i,pay.id)" *ngIf="seleOpt!==i"></i>
                             <i class="far fa-dot-circle" *ngIf="seleOpt==i" [ngClass]="{'activePay':seleOpt=='i'}"></i>

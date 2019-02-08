@@ -235,6 +235,10 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.post(AppSettings.otpUrl, params, { headers: headers });
     }
+    changePwForgot(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.changeForgot, params, { headers: headers });
+    }
 }
 
 

@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
     product: any;
     forgotForm: FormGroup;
     otpForm: FormGroup;
+    changePassForm: FormGroup;
     loginDetails: any;
     myAccount: boolean = false;
     phone: boolean = false;
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
     showRegistration = true;
     showOpacity = false;
     forgotSubmitted = false;
+    changePwSubmitted = false;
     otpNumber: number;
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
@@ -48,7 +50,7 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userMobile = (localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
         }
         this.getCart();
@@ -70,7 +72,7 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userMobile = (localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
         }
         // if ((localStorage.token)! === undefined) {
@@ -95,6 +97,9 @@ export class HeaderComponent implements OnInit {
         });
         this.otpForm = this.formBuilder.group({
             otp_number: ['', [Validators.required]],
+        });
+        this.changePassForm = this.formBuilder.group({
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
         this.getCategories();
         this.getProduct();
@@ -143,6 +148,7 @@ export class HeaderComponent implements OnInit {
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
+        this.getCart();
         this.router.navigate(['/']);
     }
     // BAYATA VALLU UNTEY
@@ -202,6 +208,7 @@ export class HeaderComponent implements OnInit {
                     localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
+                    this.ngOnInit();
 
                 })
             }
@@ -306,9 +313,14 @@ export class HeaderComponent implements OnInit {
     productTy;
     search(product, action) {
         // this.appService.searchProducts(product).subscribe(res=> {
-        this.productTy = product;
-        this.router.navigate(['/products'], { queryParams: { product: this.productTy, action: action } });
-        this.productTy = "";
+        if (product === undefined || "") {
+            swal("Please enter field", "", "warning");
+        } else {
+            this.productTy = product;
+            this.router.navigate(['/products'], { queryParams: { product: this.productTy, action: action } });
+            // this.productTy = "";
+        }
+
         // },err=> {
 
         // })    
@@ -340,14 +352,22 @@ export class HeaderComponent implements OnInit {
                 return;
             } else {
                 this.cartData = res.json().cart_details;
+                this.cartData.sort(function (a, b) {
+                    var keyA = new Date(a.added_on),
+                        keyB = new Date(b.added_on)
+                    if (keyA < keyB) return -1;
+                    if (keyA > keyB) return 1;
+                    return 0;
+                });
                 for (var i = 0; i < this.cartData.length; i++) {
                     this.cartData[i].prodName = this.cartData[i].products.product_name;
                     for (var j = 0; j < this.cartData[i].products.sku_details.length; j++) {
                         this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
-                        this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
                         this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
                         this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                        this.cartData[i].products.actual_price = this.cartData[i].products.sku_details[0].actual_price;
                         this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+                        this.cartData[i].products.filter_color = this.cartData[i].products.sku_details[0].filter_color;
                     }
                 }
                 this.cartCount = res.json().count;
@@ -449,5 +469,33 @@ export class HeaderComponent implements OnInit {
 
     hidesub() {
         this.showSubCats = false;
+    }
+    get f4() { return this.changePassForm.controls; }
+    ChangePw() {
+        this.changePwSubmitted = true;
+
+        if (this.changePassForm.invalid) {
+            return;
+        }
+        this.changePassForm.value.mobile_number = localStorage.mobile_number;
+        this.appService.changePwForgot(this.changePassForm.value).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#changepwd").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+        }, err => {
+
+        })
+    }
+    viewCart() {
+        if (localStorage.userId === undefined) {
+            jQuery("#loginmodal").modal("show");
+        } else {
+            this.router.navigate(["/mycart"]);
+        }
     }
 }

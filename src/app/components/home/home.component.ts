@@ -5,6 +5,7 @@ import { ProductsData } from '../../services/productsdata';
 import { ProductService } from '../../services/productservice';
 // import { Lightbox } from 'angular2-lightbox';
 import { Lightbox } from 'angular2-lightbox';
+import swal from 'sweetalert';
 declare var jQuery: any;
 @Component({
     selector: 'app-home',
@@ -324,19 +325,24 @@ export class HomeComponent implements OnInit {
         })
     }
     addtoWish(Id, skId) {
-        var inData = {
-            "user_id": JSON.parse(localStorage.userId),
-            "product_id": Id,
-            "sku_id": skId,
-            "item_type": "ecommerce"
-        }
-        this.appService.addToWish(inData).subscribe(res => {
-            console.log(res.json());
-            swal(res.json().message, "", "success");
-            this.getWish();
-        }, err => {
+        if (localStorage.userId === undefined) {
+            swal("Please Login", "", "warning");
+        } else {
+            var inData = {
+                "user_id": JSON.parse(localStorage.userId),
+                "product_id": Id,
+                "sku_id": skId,
+                "item_type": "ecommerce"
+            }
+            this.appService.addToWish(inData).subscribe(res => {
+                console.log(res.json());
+                swal(res.json().message, "", "success");
+                this.getWish();
+            }, err => {
 
-        })
+            })
+        }
+
     }
     getWish() {
         this.appService.getWish().subscribe(res => {

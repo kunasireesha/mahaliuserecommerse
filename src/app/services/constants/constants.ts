@@ -46,6 +46,7 @@ export const AppSettings = {
     setDelAdd: baseUrl + "delivery_address/user",
     modifyCart: baseUrl + "vendor/cart_details",
     contactUs: baseUrl + "contact_us",
-    otpUrl: baseUrl + "users/request_otp"
+    otpUrl: baseUrl + "users/request_otp",
+    changeForgot: baseUrl + "users/change_password"
 }
 

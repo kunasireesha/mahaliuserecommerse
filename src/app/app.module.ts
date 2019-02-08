@@ -28,6 +28,8 @@ import { MycartComponent } from './components/mycart/mycart.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrderModule } from 'ngx-order-pipe';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/of';
@@ -39,7 +41,8 @@ import { PromocodesComponent } from './components/promocodes/promocodes.componen
 // import { LightboxModule } from 'angular2-lightbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImageZoomModule } from 'angular2-image-zoom';
-
+// directives
+import { NumberOnlyDirective } from './directives/number';
 import { LightboxModule } from 'angular2-lightbox';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -62,7 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         UseraccountComponent,
         MysavedlistComponent,
         PromocodesComponent,
-        ContactComponent
+        ContactComponent,
+        NumberOnlyDirective
 
     ],
     imports: [
@@ -77,6 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserAnimationsModule,
         ImageZoomModule,
         Ng2SearchPipeModule,
+        OrderModule,
         // LightboxModule,
         MDBBootstrapModule.forRoot(),
         TranslateModule.forRoot({
