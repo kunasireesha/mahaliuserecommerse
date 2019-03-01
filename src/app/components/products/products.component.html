@@ -25,19 +25,25 @@
             <div class="categories" *ngFor="let cat of category; let i = index">
                 <p [ngClass]="{'active':showCategories && i==selectedCat}">
                     <a>
-                        <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
-                        <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories"
+                            (click)="showsubCat(i,cat.id)"></i>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat"
+                            (click)="showsubCat(i,cat.id)"></i>
 
-                        <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
-                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.category_name)">{{cat.category_name}}</span>
+                        <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat"
+                            (click)="closesubSubCat()"></i>
+                    </a> &nbsp;&nbsp;<span
+                        (click)="getCatProducts(cat.id,cat.category_name)">{{cat.category_name}}</span>
                 </p>
                 <hr>
                 <!-- categories -->
 
                 <div class="subCates">
                     <div *ngFor="let subCat of subCategory;let ii = index">
-                        <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
-                            <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                        <p *ngIf="selectedCat==i && showCategories" id="subCat"
+                            [ngClass]="{'active':showSubCategories }">
+                            <span
+                                (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
                         </p>
                     </div>
                 </div>
@@ -117,7 +123,8 @@
                 <div class="col-md-3 item" *ngFor="let data of skuData">
                     <div class="wrapper">
                         <div class="card">
-                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap"
+                                (click)="showProduxtDetails(data.product_id)">
                             <div class="card-block">
                                 <h5 class="text-center">{{data.product_name}} </h5>
                                 <p class="text-center">
@@ -129,12 +136,14 @@
                                         <option [value]="data.skid">{{data.size}}</option>
                                     </select>
                                 </div>
-                                <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+                                <button type="text" class="btn waves-effect waves-light"
+                                    (click)="addtoCart(data.product_id,data.skid)">Add
                                     To Cart</button>
                             </div>
                         </div>
                         <ul class="expand-button">
-                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i
+                                        class="fas fa-shopping-basket"></i></a></li>
                             <li><a (click)="open(data.skid)"><img src="assets/images/maximize.png"></a></li>
                         </ul>
                         <ul class="expand-button2 expand-button-2">
@@ -156,7 +165,8 @@
                 <div class="col-md-3 item" *ngFor="let data of skuArr">
                     <div class="wrapper">
                         <div class="card">
-                            <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                            <img class="img-fluid" [src]="data.image" alt="Card image cap"
+                                (click)="showProduxtDetails(data.product_id)">
                             <div class="card-block">
                                 <h5 class="text-center">{{data.product_name}} </h5>
                                 <p class="text-center">
@@ -168,12 +178,14 @@
                                         <option [value]="data.skid">{{data.size}}</option>
                                     </select>
                                 </div>
-                                <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
+                                <button type="text" class="btn waves-effect waves-light"
+                                    (click)="addtoCart(data.product_id,data.skid)">Add
                                     To Cart</button>
                             </div>
                         </div>
                         <ul class="expand-button">
-                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                            <li><a (click)="addtoCart(data.product_id,data.skid)"><i
+                                        class="fas fa-shopping-basket"></i></a></li>
                             <li><a (click)="open(data.skid)"><img src="assets/images/maximize.png"></a></li>
                         </ul>
                         <ul class="expand-button2 expand-button-2">
@@ -187,8 +199,8 @@
 
             </div>
             <!-- zoom model -->
-            <div class="modal fade" id="enlargeImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
+            <div class="modal fade" id="enlargeImg" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
@@ -206,7 +218,8 @@
                                     </div>
                                     <div class="modal-body large-body">
                                         <div class="">
-                                            <img class="img-fluid" [src]="enlargeImg" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                                            <img class="img-fluid" [src]="enlargeImg" alt="Card image cap"
+                                                (click)="showProduxtDetails(data.product_id)">
                                         </div>
                                     </div>
                                 </div>

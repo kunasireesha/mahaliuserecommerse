@@ -83,8 +83,9 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com"
-                            name="email" [(ngModel)]="profileData.email" ngControl="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <input type="email" class="form-control input-feild" id="inputEmail3"
+                            placeholder="tarunkumar321@gmail.com" name="email" [(ngModel)]="profileData.email"
+                            ngControl="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                         <!-- <div class="md-errors-spacer" [hidden]="email.valid || email.untouched">
                             <div *ngIf="email.errors && email.errors.required">
                                 Email is required
@@ -100,9 +101,9 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input myNumberOnly type="text" class="form-control input-feild" id="inputphoneno1" placeholder="8586854500"
-                            [(ngModel)]="profileData.mobile_number" name="mobile_number" ngControl="mobile_number"
-                            customMin="15" #numberOne="ngModel" required>
+                        <input myNumberOnly type="text" class="form-control input-feild" id="inputphoneno1"
+                            placeholder="8586854500" [(ngModel)]="profileData.mobile_number" name="mobile_number"
+                            ngControl="mobile_number" customMin="15" #numberOne="ngModel" required>
                         <div *ngIf="numberOne.errors?.customMin">
                             Minimum required number is 15.
                         </div>
@@ -113,8 +114,9 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" placeholder="Unispace Bussiness Center #143"
-                            [(ngModel)]="profileData.area" name="bussiness_area" ngControl="bussiness_area" required>
+                        <input type="text" class="form-control input-feild" id="inputhouseno"
+                            placeholder="Unispace Bussiness Center #143" [(ngModel)]="profileData.area"
+                            name="bussiness_area" ngControl="bussiness_area" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -138,14 +140,15 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8">
-                        <input myNumberOnly type="text" class="form-control input-feild" id="inputpincode" placeholder="500038"
-                            ngControl="pincode" required>
+                        <input myNumberOnly type="text" class="form-control input-feild" id="inputpincode"
+                            placeholder="500038" ngControl="pincode" required>
                     </div>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
-                        <button type="button" class="btn save-btn" (click)="updateProfile()" [disabled]="!formCtrl.form.valid">Save</button>
+                        <button type="button" class="btn save-btn" (click)="updateProfile()"
+                            [disabled]="!formCtrl.form.valid">Save</button>
                     </div>
                     <div class="col-lg-5">
                         <button type="button" class="btn save-btn" (click)="cancel()">Cancel</button>
@@ -220,7 +223,8 @@
                     </label>
                     <div class="col-sm-8">
                         <input myNumberOnly type="text" class="form-control input-feild" id="inputNumber"
-                            formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
+                            formControlName="mobile_number"
+                            [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
                         <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
                             <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
                         </div>
@@ -307,7 +311,8 @@
                     <label for="inputname1" class="col-sm-2 col-form-label">Full Name
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="full_name" name="full_name" [(ngModel)]="editAddData.full_name">
+                        <input type="text" class="form-control input-feild" id="full_name" name="full_name"
+                            [(ngModel)]="editAddData.full_name">
                         <!-- <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
 				<div *ngIf="f1.full_name.errors.required">Full Name is required</div>
 			</div> -->
@@ -345,7 +350,8 @@
                     </label>
                     <div class="col-sm-4">
 
-                        <input type="text" class="form-control input-feild" id="inputLand" name="landmark" [(ngModel)]="editAddData.landmark">
+                        <input type="text" class="form-control input-feild" id="inputLand" name="landmark"
+                            [(ngModel)]="editAddData.landmark">
                         <!-- <div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">name="house_no" [(ngModel)]="editAddData.house_no"
 				<div *ngIf="f1.landmark.errors.required">Landmark is required</div>
 			</div> -->
@@ -358,7 +364,8 @@
 			<option selected>Choose City</option>
 			<option *ngFor="let city of Cities" [ngValue]="city">{{city}}</option>
 		</select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode" name="city" [(ngModel)]="editAddData.city">
+                        <input type="text" class="form-control input-feild" id="inputpincode" name="city"
+                            [(ngModel)]="editAddData.city">
                         <!-- <div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
 			<div *ngIf="f1.city.errors.required">City is required</div>
 		</div> -->
@@ -372,7 +379,8 @@
 			<option selected>Choose State</option>
 			<option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
 		</select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode1" name="state" [(ngModel)]="editAddData.state">
+                        <input type="text" class="form-control input-feild" id="inputpincode1" name="state"
+                            [(ngModel)]="editAddData.state">
                         <!-- <div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
 			<div *ngIf="f1.state.errors.required">state is required</div>
 		</div> -->
@@ -447,8 +455,10 @@
                             In Stock
                         </td>
                         <td>
-                            <i class="fa fa-times-circle-o" aria-hidden="true" style="float:right" (click)="delWish(wish.wishlist_id)"></i>
-                            <button type="button" class="btn cart-btn" (click)="addtoCart(wish.product_id,wish.skid)">Add
+                            <i class="fa fa-times-circle-o" aria-hidden="true" style="float:right"
+                                (click)="delWish(wish.wishlist_id)"></i>
+                            <button type="button" class="btn cart-btn"
+                                (click)="addtoCart(wish.product_id,wish.skid)">Add
                                 To cart</button>
                         </td>
                     </tr>
@@ -519,7 +529,8 @@
                 </tbody>
                 <hr>
             </table>
-            <pagination-controls class="my-pagination" (pageChange)="p = $event" style="float:right"></pagination-controls>
+            <pagination-controls class="my-pagination" (pageChange)="p = $event" style="float:right">
+            </pagination-controls>
             <!-- <div class="row arrow-btns">
 				<button class="icon-btn">
 					<i class="fa fa-long-arrow-left" aria-hidden="true"></i>
@@ -541,7 +552,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" formControlName="password" class="form-control input-feild" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <input type="text" formControlName="password" class="form-control input-feild"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Current Password is required</div>
                         </div>
@@ -612,8 +624,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
-                                        aria-label="Search" [(ngModel)]="filter" name="filter">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search"
+                                        placeholder="Search Id" aria-label="Search" [(ngModel)]="filter" name="filter">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -629,7 +641,8 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr class="cst-topad" *ngFor="let ord of orders| filter:filter | paginate: { itemsPerPage: 3, currentPage: p };let i =index"
+                                        <tr class="cst-topad"
+                                            *ngFor="let ord of orders| filter:filter | paginate: { itemsPerPage: 3, currentPage: p };let i =index"
                                             (click)="showBukedOrderDetails(ord.order_id)">
                                             <!-- <th scope="row">{{i+1}}</th> -->
                                             <td>
@@ -643,7 +656,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <pagination-controls class="my-pagination" (pageChange)="p = $event" style="float:right"></pagination-controls>
+                                <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                                    style="float:right"></pagination-controls>
                             </div>
                         </div>
 
@@ -871,10 +885,10 @@
                         <div class="card">
                             <div class="product-image">
                                 <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                                <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                    class="img-fluid">
-                                <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                    class="img-fluid">
+                                <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
+                                    (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                                <img *ngIf="item.image!==''" src="{{item.image}}"
+                                    (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                             </div>
                             <div class="card-block add-to-cart">
                                 <h5 class="text-center">{{item.product_name}} </h5>
@@ -892,7 +906,8 @@
                             </div>
                         </div>
                         <ul class="expand-button">
-                            <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                            <li><a (click)="addtoCart(item.product_id,item.skid)"><i
+                                        class="fas fa-shopping-basket"></i></a></li>
                             <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                         </ul>
                         <ul class="expand-button2 expand-button-2">
@@ -929,7 +944,8 @@
 
                                 <div class="modal-body large-body">
                                     <div class="">
-                                        <img class="img-fluid" [src]="enlargeImg" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                                        <img class="img-fluid" [src]="enlargeImg" alt="Card image cap"
+                                            (click)="showProduxtDetails(data.product_id)">
                                     </div>
                                 </div>
                             </div>
@@ -977,10 +993,10 @@
                     <div class="card">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
@@ -998,7 +1014,8 @@
                         </div>
                     </div>
                     <ul class="expand-button">
-                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a>
+                        </li>
                         <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
@@ -1021,10 +1038,10 @@
                     <div class="card">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
@@ -1042,7 +1059,8 @@
                         </div>
                     </div>
                     <ul class="expand-button">
-                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a>
+                        </li>
                         <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
@@ -1065,10 +1083,10 @@
                     <div class="card jewel">
                         <div class="product-image">
                             <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
-                            <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                                class="img-fluid">
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img *ngIf="item.image!==''" src="{{item.image}}"
+                                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
                         </div>
                         <div class="card-block add-to-cart">
                             <h5 class="text-center">{{item.product_name}} </h5>
@@ -1086,7 +1104,8 @@
                         </div>
                     </div>
                     <ul class="expand-button">
-                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a></li>
+                        <li><a (click)="addtoCart(item.product_id,item.skid)"><i class="fas fa-shopping-basket"></i></a>
+                        </li>
                         <li><a (click)="open(item.skid)"><img src="assets/images/maximize.png"></a></li>
                     </ul>
                     <ul class="expand-button2 expand-button-2">
